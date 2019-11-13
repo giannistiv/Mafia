@@ -17,7 +17,7 @@ The following folder structure is required:
 
 ## 1. Configuration
 ### We use a enviromental variable file to init the credentials `.env`
-### Important change the APP_NAME (under INTEGRATION CONFIG -) to your teams number -> TEAMXX
+### Important change the APP_NAME (under INTEGRATION CONFIG -) to your teams number -> teamXX
 - Change any value of properties in that file
 
 ## 2. Integration
