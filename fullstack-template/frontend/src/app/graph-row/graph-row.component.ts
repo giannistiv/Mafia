@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'ami-fullstack-graph-row',
@@ -9,7 +9,13 @@ export class GraphRowComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+
+  @Input() inputWidth;
+  @Input() inputColor;
+  @Input() inputName;
+  @Input() img
+  
+    ngOnInit() {
   }
 
 }

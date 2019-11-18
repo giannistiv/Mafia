@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'ami-fullstack-avatar-icon',
@@ -9,6 +9,8 @@ export class AvatarIconComponent implements OnInit {
 
   constructor() { }
 
+  @Input() img;
+  
   ngOnInit() {
   }
 

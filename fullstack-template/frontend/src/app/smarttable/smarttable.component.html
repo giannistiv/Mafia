@@ -1,7 +1,11 @@
 <ami-fullstack-background-image></ami-fullstack-background-image>
 <div class="overlay">
     <ami-fullstack-livevoting-header></ami-fullstack-livevoting-header>
-    <ami-fullstack-vote-box
-        inputWidth="47%" inputColor="red" inputName="DeadPool"
-    ></ami-fullstack-vote-box>
+    <ami-fullstack-graph-row
+             *ngFor="let row of players"  
+             [img]="row.img"
+             [inputWidth]="row.width" 
+             [inputColor]="row.color" 
+             [inputName]="row.name">
+    </ami-fullstack-graph-row>
 </div>

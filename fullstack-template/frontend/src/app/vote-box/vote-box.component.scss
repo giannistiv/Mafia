@@ -7,16 +7,28 @@
 
     .name{
         font-size: 35px;
-        color: white;
+        color: black;
+        opacity: 100%;
         padding-top: 10px;
         text-align: right;
         padding-right: 20px;
+        font-family: Roboto;
+        font-weight: bold;
+    }
+
+    .nameOutside{
+        font-size: 35px;
+        color: white;
+        opacity: 100%;
+        padding-top: 10px;
+        text-align: left;
+        padding-right: 20px;
+        font-family: Roboto;
+        font-weight: bold;
+        width: auto;
+        position: relative;
+        left: 110%;
     }
 
 
-}
-
-.container {
-    width:1560px;
-    height:1080px;
 }

@@ -1,5 +1,24 @@
 <div class="container">
-    <div class="boxrow" [ngStyle]="style">
-        <p class="name">{{inputName}}</p>
+    <!-- <div>
+            <div class="boxrow" [ngStyle]="style">
+                    <p class="name">{{inputName}}</p>
+                </div>
     </div>
+    <div *n>
+            <div class="boxrow" [ngStyle]="style">
+            </div>
+            <p class="name">{{inputName}}</p>
+    </div> -->
+
+    <div *ngIf="widthNumber > 30; else smaller">
+        <div class="boxrow" [ngStyle]="style">
+             <p class="name">{{inputName}}</p>
+        </div>
+    </div>
+          
+    <ng-template #smaller>
+         <div class="boxrow" [ngStyle]="style">
+             <p class="nameOutside">{{inputName}}</p>
+         </div>
+    </ng-template>
 </div>

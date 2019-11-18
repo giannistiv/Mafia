@@ -7,15 +7,18 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class VoteBoxComponent implements OnInit {
 
-  @Input() inputWidth;
-  @Input() inputColor;
-  @Input() inputName;
+  @Input() inputWidth :String;
+  @Input() inputColor :String;
+  @Input() inputName :String;
+  widthNumber = 0;
   
   style:any= {}
   
   constructor() { }
   
   ngOnInit() {
+
+    this.widthNumber = +(this.inputWidth.substr(0,2));
     this.style = {
            "width": this.inputWidth,
            "background-color" : this.inputColor
