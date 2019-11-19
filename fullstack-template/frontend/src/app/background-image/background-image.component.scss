@@ -1,5 +1,19 @@
-.fullWidthHeight {
-    width: 1560px;
-    height: 1080px;
+ #night{
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 75vh;
+    margin-top:12vh
 }
 
+
+.fullWidthHeight {
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100vh;
+}
+
+.blur {
+     filter: blur(3px);
+}

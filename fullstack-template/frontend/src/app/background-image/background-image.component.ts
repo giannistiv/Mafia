@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'ami-fullstack-background-image',
@@ -9,7 +9,13 @@ export class BackgroundImageComponent implements OnInit {
 
   constructor() { }
 
+
+  @Input() type;
+  @Input() device;
+
+
   ngOnInit() {
+
   }
 
 }

@@ -1,1 +1,8 @@
-<img class="fullWidthHeight" src="assets/background.jpg">
+<div style="background: black; height:100vh">
+    <img *ngIf="type == 'start'" class="fullWidthHeight" src="assets/background.jpg">
+    <img *ngIf="type == 'day'" class="fullWidthHeight" src="assets/background.jpg">
+    <img *ngIf="type == 'night'" class="fullWidthHeight blur" id="night" src="assets/night.jpg">
+    <img *ngIf="type == 'table'" class="fullWidthHeight" src="assets/background.jpg">
+    <img *ngIf="type == 'mobile'" class="fullWidthHeight" src="assets/background.jpg">
+
+</div>
