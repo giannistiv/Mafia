@@ -11,6 +11,12 @@ import { GraphRowComponent } from './graph-row/graph-row.component';
 import { AvatarsListComponent } from './avatars-list/avatars-list.component';
 import { VoteBoxComponent } from './vote-box/vote-box.component';
 import { LivevotingHeaderComponent } from './livevoting-header/livevoting-header.component';
+import { CemeterypopupComponent } from './cemeterypopup/cemeterypopup.component';
+import { GraphpieComponent } from './graphpie/graphpie.component';
+import { WastedComponent } from './wasted/wasted.component';
+import { HanduiComponent } from './handui/handui.component';
+import { WallbackgroundComponent } from './wallbackground/wallbackground.component';
+import { WallComponent } from './wall/wall.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +27,13 @@ import { LivevotingHeaderComponent } from './livevoting-header/livevoting-header
     GraphRowComponent,
     AvatarsListComponent,
     VoteBoxComponent,
-    LivevotingHeaderComponent
+    LivevotingHeaderComponent,
+    CemeterypopupComponent,
+    GraphpieComponent,
+    WastedComponent,
+    HanduiComponent,
+    WallbackgroundComponent,
+    WallComponent
   ],
   imports: [
     BrowserModule,
