@@ -1,4 +1,4 @@
-<ami-fullstack-background-image></ami-fullstack-background-image>
+<ami-fullstack-background-image type="table"></ami-fullstack-background-image>
 <div class="overlay">
     <ami-fullstack-livevoting-header></ami-fullstack-livevoting-header>
     <ami-fullstack-graph-row
@@ -6,6 +6,7 @@
              [img]="row.img"
              [inputWidth]="row.width" 
              [inputColor]="row.color" 
-             [inputName]="row.name">
+             [inputName]="row.name"
+             [votes]="row.votes">
     </ami-fullstack-graph-row>
 </div>
