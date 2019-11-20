@@ -16,6 +16,7 @@ import { GraphpieComponent } from './graphpie/graphpie.component';
 import { WastedComponent } from './wasted/wasted.component';
 import { HanduiComponent } from './handui/handui.component';
 import { WallbackgroundComponent } from './wallbackground/wallbackground.component';
+import { SmarttvComponent } from './smarttv/smarttv.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { WallbackgroundComponent } from './wallbackground/wallbackground.compone
     GraphpieComponent,
     WastedComponent,
     HanduiComponent,
-    WallbackgroundComponent
+    WallbackgroundComponent,
+    SmarttvComponent
   ],
   imports: [
     BrowserModule,
