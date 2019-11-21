@@ -42,19 +42,14 @@ import { WallComponent } from './wall/wall.component';
     MobileBodyComponent,
     MobileBottomComponent,
     MobilePhaseComponent,
-    MobileInitComponent
-    LivevotingHeaderComponent,
+    MobileInitComponent,
     CemeterypopupComponent,
     GraphpieComponent,
     WastedComponent,
     HanduiComponent,
     WallbackgroundComponent,
-<<<<<<< HEAD
     SmarttvComponent,
     PlayerschoiceComponent
-=======
-    WallComponent
->>>>>>> Tsirakos
   ],
   imports: [
     BrowserModule,

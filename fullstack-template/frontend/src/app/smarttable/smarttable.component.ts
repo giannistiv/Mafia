@@ -18,7 +18,7 @@ export class SmarttableComponent implements OnInit {
 
   players = [
     {"width" : "40vw" , "color" : "red" , "name" : "DeadPool" , "img" : "assets/avatars/deadpool.png" , "votes" : 4},
-    {"width" : "30vw" , "color" : "yellow" , "name" : "Picachu" , "img" : "assets/avatars/picachu.png" , "votes" : 3},
+    {"width" : "30vw" , "color" : "yellow" , "name" : "Pikachu" , "img" : "assets/avatars/pikachu.png" , "votes" : 3},
     {"width" : "20vw" , "color" : "orange" , "name" : "Iron Man" , "img" : "assets/avatars/ironman.png" , "votes" : 2},
     {"width" : "10vw" , "color" : "red" , "name" : "Spiderman" , "img" : "assets/avatars/spiderman.png" , "votes" : 1},
     {"width" : "0vw" , "color" : "brown" , "name" : "Bear" , "img" : "assets/avatars/bear.png" , "votes" : 0},
