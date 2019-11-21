@@ -18,6 +18,11 @@ import { MobileBodyComponent } from './mobile-body/mobile-body.component';
 import { MobileBottomComponent } from './mobile-bottom/mobile-bottom.component';
 import { MobilePhaseComponent } from './mobile-phase/mobile-phase.component';
 import { MobileInitComponent } from './mobile-init/mobile-init.component';
+import { CemeterypopupComponent } from './cemeterypopup/cemeterypopup.component';
+import { GraphpieComponent } from './graphpie/graphpie.component';
+import { WastedComponent } from './wasted/wasted.component';
+import { HanduiComponent } from './handui/handui.component';
+import { WallbackgroundComponent } from './wallbackground/wallbackground.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +41,12 @@ import { MobileInitComponent } from './mobile-init/mobile-init.component';
     MobileBottomComponent,
     MobilePhaseComponent,
     MobileInitComponent
+    LivevotingHeaderComponent,
+    CemeterypopupComponent,
+    GraphpieComponent,
+    WastedComponent,
+    HanduiComponent,
+    WallbackgroundComponent
   ],
   imports: [
     BrowserModule,
