@@ -1,1 +1,21 @@
-<p>handui works!</p>
+<div class="grid-container" [ngStyle]="position">
+    <div class="grid-item"></div>
+    <div class="grid-item">
+        <button class="button">U</button>
+    </div>
+    <div class="grid-item"></div>
+    <div class="grid-item">
+        <button class="button">P</button>
+    </div>
+    <div class="grid-item">
+        <button class="button" (click)="cancel()">X</button>
+    </div>
+    <div class="grid-item">
+        <button class="button" (click)="cemetery()">C</button>
+    </div>
+    <div class="grid-item"></div>
+    <div class="grid-item">
+        <button class="button">D</button>
+    </div>
+    <div class="grid-item"></div>
+</div>

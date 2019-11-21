@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'ami-fullstack-avatars-list',
@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AvatarsListComponent implements OnInit {
 
-  constructor() { }
-
+  @Input() votes;
+  player = []
+  constructor() {
+  }
+  
+  
+  
   ngOnInit() {
+    for(var i = 0; i < this.votes; i++){
+      console.log("added")
+      this.player.push("assets/avatars/deadpool.png")
+    }
+
   }
 
 }

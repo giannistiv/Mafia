@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { EventEmitter } from 'events';
 
 @Component({
   selector: 'ami-fullstack-cemeterypopup',
@@ -9,7 +10,13 @@ export class CemeterypopupComponent implements OnInit {
 
   constructor() { }
 
+  @Output() CemeteryMessager = new EventEmitter();
+
   ngOnInit() {
+  }
+
+  close(){
+    this.CemeteryMessager.emit("close")
   }
 
 }

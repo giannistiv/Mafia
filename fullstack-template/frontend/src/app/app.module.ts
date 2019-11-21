@@ -11,7 +11,6 @@ import { GraphRowComponent } from './graph-row/graph-row.component';
 import { AvatarsListComponent } from './avatars-list/avatars-list.component';
 import { VoteBoxComponent } from './vote-box/vote-box.component';
 import { LivevotingHeaderComponent } from './livevoting-header/livevoting-header.component';
-import { WallComponent } from './wall/wall.component';
 import { MobileComponent } from './mobile/mobile.component';
 import { MobileHeaderComponent } from './mobile-header/mobile-header.component';
 import { MobileBodyComponent } from './mobile-body/mobile-body.component';
@@ -25,6 +24,7 @@ import { HanduiComponent } from './handui/handui.component';
 import { WallbackgroundComponent } from './wallbackground/wallbackground.component';
 import { SmarttvComponent } from './smarttv/smarttv.component';
 import { PlayerschoiceComponent } from './playerschoice/playerschoice.component';
+import { WallComponent } from './wall/wall.component';
 
 @NgModule({
   declarations: [
@@ -49,8 +49,12 @@ import { PlayerschoiceComponent } from './playerschoice/playerschoice.component'
     WastedComponent,
     HanduiComponent,
     WallbackgroundComponent,
+<<<<<<< HEAD
     SmarttvComponent,
     PlayerschoiceComponent
+=======
+    WallComponent
+>>>>>>> Tsirakos
   ],
   imports: [
     BrowserModule,

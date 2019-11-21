@@ -13,7 +13,8 @@ export class GraphRowComponent implements OnInit {
   @Input() inputWidth;
   @Input() inputColor;
   @Input() inputName;
-  @Input() img
+  @Input() img;
+  @Input() votes;
   
     ngOnInit() {
   }
