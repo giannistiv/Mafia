@@ -3,8 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { SmarttableComponent } from 'src/app/smarttable/smarttable.component'
 import { SmarttvComponent } from './smarttv/smarttv.component';
 import { PlayerschoiceComponent } from './playerschoice/playerschoice.component';
+import { PlayerhistoryComponent } from './playerhistory/playerhistory.component';
 
 const routes: Routes = [
+  { path: 'playerhistory' , component: PlayerhistoryComponent},
   { path: 'nightkilling' , component: PlayerschoiceComponent},
   { path: 'smarttv' , component: SmarttvComponent },
   { path: 'smarttable' , component: SmarttableComponent},

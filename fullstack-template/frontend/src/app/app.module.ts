@@ -18,6 +18,7 @@ import { HanduiComponent } from './handui/handui.component';
 import { WallbackgroundComponent } from './wallbackground/wallbackground.component';
 import { SmarttvComponent } from './smarttv/smarttv.component';
 import { PlayerschoiceComponent } from './playerschoice/playerschoice.component';
+import { PlayerhistoryComponent } from './playerhistory/playerhistory.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { PlayerschoiceComponent } from './playerschoice/playerschoice.component'
     HanduiComponent,
     WallbackgroundComponent,
     SmarttvComponent,
-    PlayerschoiceComponent
+    PlayerschoiceComponent,
+    PlayerhistoryComponent
   ],
   imports: [
     BrowserModule,
