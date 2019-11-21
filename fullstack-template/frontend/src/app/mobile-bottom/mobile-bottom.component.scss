@@ -1,0 +1,31 @@
+.bottom{
+  display: grid;
+  grid-template-columns: 80% 20%;
+  background-color: transparent;
+  border-top: solid white;
+  height:10vh;
+}
+.avatar{
+  width:6vh;
+  margin:0 auto;
+  padding-top: 2vh;
+  padding-bottom: 2vh ;
+  float: right;
+}
+.button{
+  font-size:3.5vh;
+  background-color:#E84D4A;
+  text-align: center;
+  font-weight: 1000;
+  color:black;
+  height:100%;
+  border: none;
+  border-radius: 10px;
+  align-self: center;
+}
+.state{
+  height:auto;
+  width:auto;
+  text-align: center;
+  margin-top:2.8vh;
+}

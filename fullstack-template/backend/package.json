@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A Node.js backend serving the REST API",
   "scripts": {
+    "start":"gulp serve",
     "start:development": "gulp serve",
     "start:production": "gulp build_dist && node dist",
     "test": "echo \"Error: no test specified\" && exit 1"

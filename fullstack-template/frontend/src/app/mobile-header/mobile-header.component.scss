@@ -1,0 +1,38 @@
+.top {
+    display: grid;
+    grid-template-columns: 20% 40% 20% 20%;
+    background-color: transparent;
+    border-bottom: solid white;
+  }
+
+.avatar {
+  height:auto;
+  width:auto;
+  text-align: center;
+  margin-top:0.5vh;
+}
+
+.username{
+    display: flex;
+    font-size:2.5vh;
+    color:white;
+    margin-top:2vh;
+}
+
+.mask{
+    height:auto;
+    width:auto;
+    text-align: center;
+    background-color: black;
+    margin-top:1.5vh;
+    margin-left:5vw;
+    background-color: transparent;
+    }
+
+.history{
+    height:auto;
+    width:auto;
+    text-align: center;
+    margin-top:1.8vh;
+    margin-left:2vw;
+    }

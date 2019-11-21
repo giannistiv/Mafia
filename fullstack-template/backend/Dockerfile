@@ -19,4 +19,4 @@ COPY . /backend
 # -------------- STAGE 2: Run --------------
 
 # Run npm script
-CMD ["sh", "-c", "npm run start:${ENVIRONMENT}"]
+CMD ["sh", "-c", "npm run start"]

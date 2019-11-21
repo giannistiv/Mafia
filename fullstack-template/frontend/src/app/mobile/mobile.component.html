@@ -1,0 +1,14 @@
+<ami-fullstack-background-image type="mobile"></ami-fullstack-background-image>
+<div class="overlay">
+    <ami-fullstack-mobile-header></ami-fullstack-mobile-header>
+</div>
+<div class="overlay1">
+<ami-fullstack-mobile-phase></ami-fullstack-mobile-phase>
+</div>
+<div class="overlay2">
+    <ami-fullstack-mobile-body [image]="row.img" [name]="row.name" *ngFor="let row of players">
+    </ami-fullstack-mobile-body>
+</div>
+<div class="overlay3">
+    <ami-fullstack-mobile-bottom></ami-fullstack-mobile-bottom>
+</div>
