@@ -17,6 +17,7 @@ import { WastedComponent } from './wasted/wasted.component';
 import { HanduiComponent } from './handui/handui.component';
 import { WallbackgroundComponent } from './wallbackground/wallbackground.component';
 import { SmarttvComponent } from './smarttv/smarttv.component';
+import { PlayerschoiceComponent } from './playerschoice/playerschoice.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { SmarttvComponent } from './smarttv/smarttv.component';
     WastedComponent,
     HanduiComponent,
     WallbackgroundComponent,
-    SmarttvComponent
+    SmarttvComponent,
+    PlayerschoiceComponent
   ],
   imports: [
     BrowserModule,
