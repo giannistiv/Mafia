@@ -8,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
 export class MobileComponent implements OnInit {
 
   constructor() { }
-
   players = [
     {"name": "DeadPool", "img": "assets/avatars/deadpool.png" },
     {"name": "Picachu", "img": "assets/avatars/picachu.png" },

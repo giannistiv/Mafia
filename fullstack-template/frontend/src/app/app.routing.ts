@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SmarttableComponent } from 'src/app/smarttable/smarttable.component'
 import { MobileComponent } from 'src/app/mobile/mobile.component'
+import { MobileInitComponent } from 'src/app/mobile-init/mobile-init.component'
 import { WallComponent } from './wall/wall.component';
 
 const routes: Routes = [
   { path: 'mobile' , component: MobileComponent},
+  { path: 'mobile-init' , component: MobileInitComponent},
   { path: 'smarttable' , component: SmarttableComponent},
   { path: 'wall' , component: WallComponent},
   { path: 'home', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule) },

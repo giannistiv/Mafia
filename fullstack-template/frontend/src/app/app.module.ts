@@ -11,17 +11,13 @@ import { GraphRowComponent } from './graph-row/graph-row.component';
 import { AvatarsListComponent } from './avatars-list/avatars-list.component';
 import { VoteBoxComponent } from './vote-box/vote-box.component';
 import { LivevotingHeaderComponent } from './livevoting-header/livevoting-header.component';
-import { CemeterypopupComponent } from './cemeterypopup/cemeterypopup.component';
-import { GraphpieComponent } from './graphpie/graphpie.component';
-import { WastedComponent } from './wasted/wasted.component';
-import { HanduiComponent } from './handui/handui.component';
-import { WallbackgroundComponent } from './wallbackground/wallbackground.component';
 import { WallComponent } from './wall/wall.component';
 import { MobileComponent } from './mobile/mobile.component';
 import { MobileHeaderComponent } from './mobile-header/mobile-header.component';
 import { MobileBodyComponent } from './mobile-body/mobile-body.component';
 import { MobileBottomComponent } from './mobile-bottom/mobile-bottom.component';
 import { MobilePhaseComponent } from './mobile-phase/mobile-phase.component';
+import { MobileInitComponent } from './mobile-init/mobile-init.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +34,8 @@ import { MobilePhaseComponent } from './mobile-phase/mobile-phase.component';
     MobileHeaderComponent,
     MobileBodyComponent,
     MobileBottomComponent,
-    MobilePhaseComponent
+    MobilePhaseComponent,
+    MobileInitComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,78 @@
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width:100%;
+    overflow-x: auto;
+  }
+.top {
+  background-color: transparent;
+  border-bottom: solid white;
+}
+.title{
+    color:white;
+    font-size:8vh;
+    text-align:center;
+    margin: 0;
+    font-family: 'Redressed';
+}
+.username{
+    text-align:center;
+}
+.name{
+    color:white;
+    font-size:4vh;
+    text-align:center;
+    font-family: 'Redressed';
+    margin-top:4.5vh;
+}  
+input{
+    width:80%;
+    border-radius: 5px;
+    
+}
+.avatar{
+    color:white;
+    font-size:4.5vh;
+    text-align:center;
+    font-family: 'Redressed';
+    margin-top:5vh;
+}
+.avataricons{
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    background-color: transparent;
+    margin-top:-1vh;
+}
+.icon{
+    height:auto;
+    width:auto;
+    text-align: center;
+    padding-top:2vh;
+    padding-bottom:3vh;
+}
+.footer{
+    position: fixed;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    background-color: transparent;
+    left:0;
+    bottom:0;
+    clear: both;
+    width:100%;
+}
+.ready{
+    font-size:2.7vh;
+    color:white;
+    padding-top:3vh;
+    text-align: right;
+}
+.check{
+    width:inherit;
+    height:inherit;
+    margin:0 auto;
+    background-color:transparent;
+    border:none;
+    float:left;
+    padding-bottom:-0.1vh;
+}

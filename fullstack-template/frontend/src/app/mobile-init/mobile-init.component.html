@@ -1,0 +1,20 @@
+<link href='https://fonts.googleapis.com/css?family=Redressed' rel='stylesheet'>
+
+<ami-fullstack-background-image type="mobile"></ami-fullstack-background-image>
+<div class="overlay">
+    <div class="top">
+        <p class="title">Start Game</p>
+    </div>
+    <div class="username">
+        <p class="name">Enter Your Name</p>
+        <input id="textfield" type="text" name="username"><br>
+    </div>
+    <p class="avatar">Choose your avatar:</p>
+    <div class="avataricons">
+        <div class="icon" *ngFor="let row of avatars"> <img [src]="row.img" style="width: 7vh;"> </div>
+    </div>
+    <div class="footer">
+        <p class="ready">Press button when ready </p>
+        <button class="check"><img src="assets/checked.png" style="width:8vh"></button>
+    </div>
+</div>
