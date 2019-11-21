@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SmarttableComponent } from 'src/app/smarttable/smarttable.component'
 import { SmarttvComponent } from './smarttv/smarttv.component';
+import { PlayerschoiceComponent } from './playerschoice/playerschoice.component';
 
 const routes: Routes = [
+  { path: 'nightkilling' , component: PlayerschoiceComponent},
   { path: 'smarttv' , component: SmarttvComponent },
   { path: 'smarttable' , component: SmarttableComponent},
   { path: 'home', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule) },
