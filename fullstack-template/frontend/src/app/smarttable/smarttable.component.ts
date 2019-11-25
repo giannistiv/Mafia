@@ -15,6 +15,18 @@ export class SmarttableComponent implements OnInit {
   mouseY = 0;
   mutexTime = 1;
   showCemetery = false;
+  showWasted = true;
+  showGraph = false;
+
+  thisRoundDeadPerson = {
+    "name" : "Iron Man",
+    "img"  : "assets/avatars/ironman.png",
+    "role" : "assets/avatars/spiderman.png"
+  }
+  wastedImgStyle = {
+    "width":"400px",
+    "height":"400px"
+  }
 
   players = [
     {"width" : "40vw" , "color" : "red" , "name" : "DeadPool" , "img" : "assets/avatars/deadpool.png" , "votes" : 4},

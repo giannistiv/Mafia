@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'ami-fullstack-wasted',
@@ -9,6 +9,16 @@ export class WastedComponent implements OnInit {
 
   constructor() { }
 
+
+  @Input() img;
+  @Input() imgStyle;
+  @Input() deadPerson;
+  
+
+  roleStyle = {
+    "width" : "100px",
+    "height" : "100px"
+  }
   ngOnInit() {
   }
 
