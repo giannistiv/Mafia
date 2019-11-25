@@ -15,8 +15,8 @@ export class SmarttableComponent implements OnInit {
   mouseY = 0;
   mutexTime = 1;
   showCemetery = false;
-  showWasted = true;
-  showGraph = false;
+  showWasted = false;
+  showGraph = true;
 
   thisRoundDeadPerson = {
     "name" : "Iron Man",
@@ -44,8 +44,8 @@ export class SmarttableComponent implements OnInit {
     }
 
     console.log(event.screenX , event.screenY)
-    this.mouseX = event.screenX;
-    this.mouseY = event.screenY;
+    this.mouseX = event.pageX;
+    this.mouseY = event.pageY;
   }
 
   ngOnInit() {
