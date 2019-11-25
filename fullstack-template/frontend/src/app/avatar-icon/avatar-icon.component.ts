@@ -10,6 +10,7 @@ export class AvatarIconComponent implements OnInit {
   constructor() { }
 
   @Input() img;
+  @Input() imgStyle = {};
   
   ngOnInit() {
   }
