@@ -14,6 +14,7 @@ export class SmarttableComponent implements OnInit {
   mouseX = 0;
   mouseY = 0;
   mutexTime = 1;
+  buttonScrollHeight = 200;
   showCemetery = false;
   showWasted = false;
   showGraph = true;
@@ -67,6 +68,17 @@ export class SmarttableComponent implements OnInit {
       setTimeout(() => {
         this.mutexTime = 1
       } , 500)
+    }else if(event == "up"){
+
+      const scrollDiv = document.getElementById('containerDiv');
+      scrollDiv.scrollTop = scrollDiv.scrollTop - this.buttonScrollHeight;
+      this.mouseX = this.mouseX - 100;
+
+    }else if(event == "down"){
+
+      const scrollDiv = document.getElementById('containerDiv');
+      scrollDiv.scrollTop = scrollDiv.scrollTop + this.buttonScrollHeight;
+      console.log(scrollDiv.scrollTop);
     }
 
     console.log(event);

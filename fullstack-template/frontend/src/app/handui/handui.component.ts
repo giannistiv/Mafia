@@ -36,4 +36,13 @@ export class HanduiComponent implements OnInit {
   cemetery(){
     this.HandUiMesseger.emit("showCemetery")
   }
+
+
+  up(){
+    this.HandUiMesseger.emit("up");
+  }
+
+  down(){
+    this.HandUiMesseger.emit("down");
+  }
 }

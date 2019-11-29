@@ -1,20 +1,19 @@
 <ami-fullstack-background-image type="table"></ami-fullstack-background-image>
-<div class="overlay" (click)="coordinates($event)">
+<ami-fullstack-handui (HandUiMesseger)="messagesFromUI($event)" *ngIf="showUi" [x]="mouseX" [y]="mouseY" class="overlay zindex2"></ami-fullstack-handui>
+<div class="overlay" id="containerDiv" (click)="coordinates($event)">
     <div *ngIf="showGraph" id="graphDiv">
         <ami-fullstack-livevoting-header *ngIf="showGraph"></ami-fullstack-livevoting-header>
         <ami-fullstack-graph-row  
-                 *ngFor="let row of players"  
-                 [img]="row.img"
-                 [inputWidth]="row.width" 
-                 [inputColor]="row.color" 
-                 [inputName]="row.name"
-                 [votes]="row.votes">
-        </ami-fullstack-graph-row>
-    </div>
+        *ngFor="let row of players"  
+        [img]="row.img"
+        [inputWidth]="row.width" 
+        [inputColor]="row.color" 
+        [inputName]="row.name"
+        [votes]="row.votes">
+    </ami-fullstack-graph-row>
+</div>
 
-    <ami-fullstack-handui (HandUiMesseger)="messagesFromUI($event)" *ngIf="showUi" [x]="mouseX" [y]="mouseY"></ami-fullstack-handui>
     <ami-fullstack-cemeterypopup  *ngIf="showCemetery"></ami-fullstack-cemeterypopup>
-
     <div *ngIf="showWasted">
         <ami-fullstack-wasted [deadPerson]="thisRoundDeadPerson" [imgStyle]="wastedImgStyle"></ami-fullstack-wasted>
     </div>
