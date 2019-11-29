@@ -40,7 +40,7 @@ export class SmarttableComponent implements OnInit {
   ]
 
   coordinates(event){
-    if(this.mutexTime == 1){
+    if(this.mutexTime == 1 && this.showCemetery == false){
       this.showUi = true;
     }
 
@@ -64,6 +64,8 @@ export class SmarttableComponent implements OnInit {
     }else if(event == "showCemetery"){
       this.showCemetery = true;
       this.showUi = false;
+      const scrollDiv = document.getElementById('containerDiv');
+      scrollDiv.scrollTop = 0;
       this.mutexTime = 0;
       setTimeout(() => {
         this.mutexTime = 1
@@ -90,6 +92,10 @@ export class SmarttableComponent implements OnInit {
 
     if(event == "close"){
       this.showCemetery = false;
+      this.mutexTime = 0;
+      setTimeout(() => {
+        this.mutexTime = 1
+      } , 500)
     }
   }
 

@@ -13,7 +13,7 @@
     </ami-fullstack-graph-row>
 </div>
 
-    <ami-fullstack-cemeterypopup  *ngIf="showCemetery"></ami-fullstack-cemeterypopup>
+    <ami-fullstack-cemeterypopup  (cemeteryMessager)="messagesFromCemetery($event)" *ngIf="showCemetery zindex3"></ami-fullstack-cemeterypopup>
     <div *ngIf="showWasted">
         <ami-fullstack-wasted [deadPerson]="thisRoundDeadPerson" [imgStyle]="wastedImgStyle"></ami-fullstack-wasted>
     </div>

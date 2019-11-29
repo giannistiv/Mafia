@@ -1,6 +1,5 @@
-import { Component, OnInit, Output } from '@angular/core';
-import { EventEmitter } from 'events';
-import { getInterpolationArgsLength } from '@angular/compiler/src/render3/view/util';
+import { Component, OnInit, Output , EventEmitter } from '@angular/core';
+
 
 @Component({
   selector: 'ami-fullstack-cemeterypopup',
@@ -11,7 +10,7 @@ export class CemeterypopupComponent implements OnInit {
 
   constructor() { }
 
-  @Output() CemeteryMessager = new EventEmitter();
+  @Output() cemeteryMessager = new EventEmitter();
 
   cemeteryImagesStyle = {
     "width" : "150px",
@@ -52,7 +51,10 @@ export class CemeterypopupComponent implements OnInit {
   }
 
   close(){
-    this.CemeteryMessager.emit("close")
+    console.log("Called");
+    this.cemeteryMessager.emit("close")
   }
+
+
 
 }
