@@ -51,7 +51,6 @@ export class CemeterypopupComponent implements OnInit {
   }
 
   close(){
-    console.log("Called");
     this.cemeteryMessager.emit("close")
   }
 
