@@ -6,8 +6,10 @@ import { MobileInitComponent } from 'src/app/mobile-init/mobile-init.component'
 import { WallComponent } from './wall/wall.component';
 import { PlayerschoiceComponent } from './playerschoice/playerschoice.component';
 import { SmarttvComponent } from './smarttv/smarttv.component';
+import { BackendTesterComponent } from './backend-tester/backend-tester.component';
 
 const routes: Routes = [
+  { path: 'backend' , component: BackendTesterComponent},
   { path: 'mobile' , component: MobileComponent},
   { path: 'mobile-init' , component: MobileInitComponent},
   { path: 'nightkilling' , component: PlayerschoiceComponent},
