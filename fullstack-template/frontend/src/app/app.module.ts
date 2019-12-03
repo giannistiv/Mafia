@@ -51,8 +51,8 @@ import { MobileInit2Component } from './mobile-init2/mobile-init2.component';
     HanduiComponent,
     WallbackgroundComponent,
     SmarttvComponent,
-    PlayerschoiceComponent
-    MobileInit2Component
+    PlayerschoiceComponent,
+    MobileInit2Component,
   ],
   imports: [
     BrowserModule,
