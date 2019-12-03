@@ -23,6 +23,7 @@ import { GraphpieComponent } from './graphpie/graphpie.component';
 import { WastedComponent } from './wasted/wasted.component';
 import { HanduiComponent } from './handui/handui.component';
 import { WallbackgroundComponent } from './wallbackground/wallbackground.component';
+import { MobileInit2Component } from './mobile-init2/mobile-init2.component';
 
 @NgModule({
   declarations: [
@@ -40,13 +41,14 @@ import { WallbackgroundComponent } from './wallbackground/wallbackground.compone
     MobileBodyComponent,
     MobileBottomComponent,
     MobilePhaseComponent,
-    MobileInitComponent
+    MobileInitComponent,
     LivevotingHeaderComponent,
     CemeterypopupComponent,
     GraphpieComponent,
     WastedComponent,
     HanduiComponent,
-    WallbackgroundComponent
+    WallbackgroundComponent,
+    MobileInit2Component
   ],
   imports: [
     BrowserModule,
