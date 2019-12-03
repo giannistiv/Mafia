@@ -11,5 +11,11 @@ import { Injectable } from '@angular/core';
  */
 export class VotingService {
 
+
+
   constructor() { }
+
+
+  votePlayer(playername){
+  }
 }
