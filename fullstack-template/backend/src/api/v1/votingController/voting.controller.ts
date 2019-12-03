@@ -46,6 +46,10 @@ export class VotingController {
             }
         })
 
+
+        const socket = DIContainer.get(SocketsService);
+        socket.broadcast("voting_on_change" , VotingController.votingData);
+        
         res.status(200).send({"message":"Voting Completed"})
     }
 
