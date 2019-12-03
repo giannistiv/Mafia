@@ -22,6 +22,9 @@ export class RequestService {
   getAvailableIconsEndpoint = "/api/initprocedure/availableicons"
   getPlayersEndpoint = "/api/initprocedure/players"
 
+  votingPlayerEndpoint = "/api/voting/vote"
+  setVotingDataEndpoint = "/api/voting/setdata"
+  getVotingResultsEndpoing = "/api/voting/votingresults"
   public checkServerRunning(){
     return new Promise((resolve , reject) => {
       this.http.get(this.url + this.testingEndpoint).subscribe((data) => {
@@ -56,5 +59,32 @@ export class RequestService {
     })
   }
 
+  public vote(user , votedName){
+    return new Promise((resolve , reject) => {
+      this.http.post(this.url + this.votingPlayerEndpoint , {"name" : user , "vote" : votedName}).subscribe((data) => {
+        resolve(data);
+      })
+    })
+  }
+
+  public startGame(){
+    return new Promise((resolve , reject) => {
+      this.http.get(this.url + this.getPlayersEndpoint).subscribe((data) => {
+        console.log("Start game" , data);
+        this.http.post(this.url + this.setVotingDataEndpoint , data).subscribe((data) => {
+          resolve(data);
+        })
+      })
+    })
+  }
+
+
+  public getVotingResults(){
+    return new Promise((resolve , reject) => {
+      this.http.get(this.url + this.getVotingResultsEndpoing).subscribe((data) => {
+        resolve(data);
+      })
+    })
+  }
 
 }

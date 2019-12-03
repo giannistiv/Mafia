@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { RequestService } from './request.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +14,15 @@ export class VotingService {
 
 
 
-  constructor() { }
+  constructor(private requestService: RequestService) { }
 
+  user = "Zelda"
 
   votePlayer(playername){
+    this.requestService.vote(this.user , playername).then((data) => console.log(data)).catch(err => console.error(err));
+  }
+
+  getResult(){
+    this.requestService.getVotingResults().then((data) => console.log(data)).catch(err => console.error(err));
   }
 }
