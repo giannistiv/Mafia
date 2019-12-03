@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\fullstack-template",
+    "\\fullstack-template\\frontend",
+    "\\fullstack-template\\frontend\\src",
+    "\\fullstack-template\\frontend\\src\\app",
+    "\\fullstack-template\\frontend\\src\\app\\global\\services",
+    "\\fullstack-template\\frontend\\src\\app\\global\\services\\tasks",
+    "\\fullstack-template\\frontend\\src\\app\\smarttable",
+    "\\fullstack-template\\frontend\\src\\app\\smarttv"
+  ],
+  "SelectedNode": "\\fullstack-template\\frontend\\src\\app\\smarttv\\smarttv.component.html",
+  "PreviewInSolutionExplorer": false
+}

@@ -9,7 +9,8 @@
 
 .grid-container {
     display: grid;
-    grid-template-columns: 10% 70% 20%;
+    grid-template-columns: 10% 65% min-content 20%;
+    grid-auto-columns: auto;
     // background-color: #2196F3;
     padding: 10px;
   }
@@ -21,4 +22,13 @@
     font-size: 30px;
     text-align: center;
     max-width: 100%;
+  }
+
+
+  .number {
+    color : white;
+    font-family: Stylish;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 4pc;
   }

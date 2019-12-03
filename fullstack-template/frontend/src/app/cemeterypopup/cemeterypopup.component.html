@@ -1,1 +1,17 @@
-<p>cemeterypopup works!</p>
+<div class="box">
+    <button class="button" (click)="close()">X</button>
+    <div>
+        <img class="background" src="assets/cemetery.png"/>
+    </div>
+    
+    <div class="secondoverlay" id="secondoverlay">
+        <div id="gridContainer" class="grid-container">
+            <div class="grid-item" *ngFor="let player of dead">
+                <ami-fullstack-avatar-icon [imgStyle]="cemeteryImagesStyle" [img]="player.img"></ami-fullstack-avatar-icon>
+                <div class="roleDiv">
+                    <img class="role" [src]="player.role"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

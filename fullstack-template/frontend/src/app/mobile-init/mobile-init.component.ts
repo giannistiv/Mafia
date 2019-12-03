@@ -14,7 +14,7 @@ export class MobileInitComponent implements OnInit {
 
   avatars = [
     {"img": "assets/avatars/deadpool.png" },
-    {"img": "assets/avatars/picachu.png" },
+    {"img": "assets/avatars/pikachu.png" },
     {"img": "assets/avatars/ironman.png" },
     {"img": "assets/avatars/spiderman.png" },
     {"img": "assets/avatars/mario.png" },

@@ -1,11 +1,15 @@
-<ami-fullstack-background-image></ami-fullstack-background-image>
-<div class="overlay">
+<ami-fullstack-background-image type="table"></ami-fullstack-background-image>
+<div class="overlay" (click)="coordinates($event)">
     <ami-fullstack-livevoting-header></ami-fullstack-livevoting-header>
     <ami-fullstack-graph-row
              *ngFor="let row of players"  
              [img]="row.img"
              [inputWidth]="row.width" 
              [inputColor]="row.color" 
-             [inputName]="row.name">
+             [inputName]="row.name"
+             [votes]="row.votes">
     </ami-fullstack-graph-row>
+
+    <ami-fullstack-handui (HandUiMesseger)="messagesFromUI($event)" *ngIf="showUi" [x]="mouseX" [y]="mouseY"></ami-fullstack-handui>
+    <ami-fullstack-cemeterypopup  *ngIf="showCemetery"></ami-fullstack-cemeterypopup>
 </div>

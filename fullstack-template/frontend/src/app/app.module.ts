@@ -11,7 +11,6 @@ import { GraphRowComponent } from './graph-row/graph-row.component';
 import { AvatarsListComponent } from './avatars-list/avatars-list.component';
 import { VoteBoxComponent } from './vote-box/vote-box.component';
 import { LivevotingHeaderComponent } from './livevoting-header/livevoting-header.component';
-import { WallComponent } from './wall/wall.component';
 import { MobileComponent } from './mobile/mobile.component';
 import { MobileHeaderComponent } from './mobile-header/mobile-header.component';
 import { MobileBodyComponent } from './mobile-body/mobile-body.component';
@@ -23,6 +22,9 @@ import { GraphpieComponent } from './graphpie/graphpie.component';
 import { WastedComponent } from './wasted/wasted.component';
 import { HanduiComponent } from './handui/handui.component';
 import { WallbackgroundComponent } from './wallbackground/wallbackground.component';
+import { SmarttvComponent } from './smarttv/smarttv.component';
+import { PlayerschoiceComponent } from './playerschoice/playerschoice.component';
+import { WallComponent } from './wall/wall.component';
 import { MobileInit2Component } from './mobile-init2/mobile-init2.component';
 
 @NgModule({
@@ -48,6 +50,8 @@ import { MobileInit2Component } from './mobile-init2/mobile-init2.component';
     WastedComponent,
     HanduiComponent,
     WallbackgroundComponent,
+    SmarttvComponent,
+    PlayerschoiceComponent
     MobileInit2Component
   ],
   imports: [

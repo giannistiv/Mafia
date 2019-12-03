@@ -1,0 +1,58 @@
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1920px;
+    height: 1080px;
+    overflow-x: visible;
+    background-image: url(/assets/background.jpg);
+    background-color: #cccccc;
+    background-size: 1920px 1080px;
+  }
+
+.grid-container {
+    width: 1920px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    // padding-bottom: 70px;
+}
+.grid-item {
+    border-right: 5px solid white;
+    padding: 70px;
+    font-size: 50px;
+    text-align: center;
+    align-self: center;
+}
+
+.grid-container2 {
+    // height: 500px;
+    width: 1920px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 0px;
+}
+.grid-item2 {
+    border-top: 5px solid white;
+    border-right: 5px solid white;
+    padding: 10px;
+    font-size: 50px;
+    text-align: center;
+    align-self: center;
+}
+
+.grid-container3 {
+    height: 620px;
+    width: 1920px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 0px;
+}
+.grid-item3 {
+    height: 620px;
+    padding: 170px;
+    border-right: 5px solid white;
+    font-size: 50px;
+    text-align: center;
+    align-self: center;
+    vertical-align: middle;
+}
