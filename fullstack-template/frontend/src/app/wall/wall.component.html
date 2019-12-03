@@ -1,1 +1,51 @@
-<ami-fullstack-background-image type="mobile"></ami-fullstack-background-image>
+<div *ngIf="init">
+    <ami-fullstack-background-image type="mobile"></ami-fullstack-background-image>
+    
+    <div class="overlay">
+        <table class="table">
+            <tr  class="firstrow">
+                <td>
+                        <p class="header">Mafia game</p>
+                </td>
+            </tr>
+            <tr  class="secondrow">
+                <td>
+    
+                        <p class="explaination">Please scan the QR-Code from the smart table to enter the game</p>           
+                </td>
+            </tr>
+            <tr class="thirdrow">
+                <td class="onethirdWidth registered">
+                    <p>Registered Players:</p>
+                </td>
+                <td class="onethirdWidth count">
+                    <p>
+                        <span class="count">
+                                {{activePlayers}}
+                        </span> 
+                        <span class="slash">
+                            /
+                        </span>
+                        <span class="count">
+                            7
+                        </span>
+                    </p>
+                </td>
+                <td class="onethirdWidth google">
+                    <p *ngIf="activePlayers < 6" style="color:red">We need {{ 7 - activePlayers}} more players</p>
+                    <p *ngIf="activePlayers > 6" style="color:green">Ok google play game</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+<div *ngIf="day">
+
+</div>
+
+
+<div *ngIf="night">
+
+</div>

@@ -1,11 +1,11 @@
 <div class="grid-container" [ngStyle]="position">
     <div class="grid-item"></div>
     <div class="grid-item">
-        <button class="button">U</button>
+        <button class="button" (click)="up()">U</button>
     </div>
     <div class="grid-item"></div>
     <div class="grid-item">
-        <button class="button">P</button>
+        <button class="button" >P</button>
     </div>
     <div class="grid-item">
         <button class="button" (click)="cancel()">X</button>
@@ -15,7 +15,7 @@
     </div>
     <div class="grid-item"></div>
     <div class="grid-item">
-        <button class="button">D</button>
+        <button class="button" (click)="down()">D</button>
     </div>
     <div class="grid-item"></div>
 </div>
