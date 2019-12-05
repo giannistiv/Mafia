@@ -27,6 +27,7 @@ import { PlayerschoiceComponent } from './playerschoice/playerschoice.component'
 import { WallComponent } from './wall/wall.component';
 import { BackendTesterComponent } from './backend-tester/backend-tester.component';
 import { MobileInit2Component } from './mobile-init2/mobile-init2.component';
+import { MobileBioComponent } from './mobile-bio/mobile-bio.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { MobileInit2Component } from './mobile-init2/mobile-init2.component';
     SmarttvComponent,
     MobileInit2Component,
     PlayerschoiceComponent,
-    BackendTesterComponent
+    BackendTesterComponent,
+    MobileBioComponent
   ],
   imports: [
     BrowserModule,

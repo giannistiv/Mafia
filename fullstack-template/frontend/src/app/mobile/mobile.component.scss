@@ -14,15 +14,15 @@
 }
 .overlay2 {
   position: absolute;
-  top: 8vh;
+  top: 10vh;
   left: 0;
   width:100%;
   overflow-x: auto;
 }
 .overlay3 {
-  position: absolute;
+  position: fixed;
+  left:0;
   bottom:0;
-  left: 0;
+  clear: both;
   width:100%;
-  overflow-x: auto;
 }

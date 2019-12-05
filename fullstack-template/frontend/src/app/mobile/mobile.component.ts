@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mobile.component.scss']
 })
 export class MobileComponent implements OnInit {
+  
+  public bio: boolean;
 
   constructor() { }
   players = [
@@ -17,6 +19,14 @@ export class MobileComponent implements OnInit {
   ]
 
   ngOnInit() {
+    this.bio = false;
   }
+
+  messagesfrombio(event){
+    this.bio = true;
+   }
+  messagesfromexit(event){
+    this.bio = false;
+   }
 
 }

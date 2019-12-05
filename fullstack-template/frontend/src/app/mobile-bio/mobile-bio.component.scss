@@ -1,0 +1,59 @@
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width:100%;
+    overflow-x: auto;
+  }
+.container{
+    position:absolute;
+    border:solid white;
+    height:83vh;
+    width:100%;
+    background-color: url("/fullstack-template/frontend/src/assets/background.jpg") !important;
+    top:8vh;
+}
+.exit{
+    background-color: transparent;
+    border:none;
+    float:right;
+    padding-top: 3vh;
+}
+.role{
+    position:absolute;
+    text-align: center;
+    top:15vh;
+    left:0;
+    width:100vw;
+}
+.icon{
+    border-radius: 100%;
+    border: 3px solid #05FF00;
+}
+.name{
+    text-align: center;
+    color:white;
+    font-size:5vh;
+}
+#info{
+    position:absolute;
+    color:white;
+    font-size: 2.5vh;
+    float:left;
+    width:90%;
+    font-weight: lighter;
+    left:2vh;
+    text-align:left;
+}
+#ability{
+    position:absolute;
+    color:white;
+    font-size: 2.5vh;
+    float:left;
+    width:90%;
+    font-weight: lighter;
+    left:2vh;
+    top: 40vh;
+    text-align:left
+}
+
