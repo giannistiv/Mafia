@@ -19,10 +19,14 @@ export class VotingService {
   user = "Zelda"
 
   votePlayer(playername){
-    this.requestService.vote(this.user , playername).then((data) => console.log(data)).catch(err => console.error(err));
+    return new Promise((resolve , reject) => {
+      this.requestService.vote(this.user , playername).then((data) => resolve(data)).catch(err => reject(err));
+    })
   }
 
   getResult(){
-    this.requestService.getVotingResults().then((data) => console.log(data)).catch(err => console.error(err));
+    return new Promise((resolve , reject) => {
+      this.requestService.getVotingResults().then((data) => resolve(data)).catch(err => reject(err));
+    })
   }
 }
