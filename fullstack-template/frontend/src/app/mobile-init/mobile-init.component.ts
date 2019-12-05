@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MobileInitComponent implements OnInit {
 
-  constructor() { }
+  public isViewable: boolean;
+  
+
+  constructor() {}
 
   avatars = [
     {"img": "assets/avatars/deadpool.png" },
@@ -22,6 +25,17 @@ export class MobileInitComponent implements OnInit {
   ]
 
   ngOnInit() {
+    this.isViewable = true;
   }
+
+  public ready(): void
+   {
+      this.isViewable = !this.isViewable; 
+   }
+
+   messagesfrominit2(event){
+    this.isViewable = !this.isViewable;
+   }
+  
 
 }

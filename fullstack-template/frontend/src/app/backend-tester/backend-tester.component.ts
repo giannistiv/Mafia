@@ -62,11 +62,11 @@ export class BackendTesterComponent implements OnInit {
   }
 
   vote(player){
-    this.votingService.votePlayer(player);
+    this.votingService.votePlayer(player).then((data) => console.log(data)).catch((err) => console.error(err));
     console.log(player);
   }
 
   getVoting(){
-    this.votingService.getResult();
+    this.votingService.getResult().then((data) => console.log(data)).catch((err) => console.error(err));
   }
 }

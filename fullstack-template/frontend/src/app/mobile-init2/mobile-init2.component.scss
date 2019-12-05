@@ -16,40 +16,29 @@
     margin: 0;
     font-family: 'Redressed';
 }
-.username{
-    text-align:center;
-}
-.name{
-    color:white;
-    font-size:4vh;
-    text-align:center;
-    font-family: 'Redressed';
-    margin-top:4.5vh;
-}  
-input{
-    width:80%;
-    border-radius: 5px;
-    
-}
-.avatar{
-    color:white;
-    font-size:4.5vh;
-    text-align:center;
-    font-family: 'Redressed';
-    padding-top:5vh;
-}
-.avataricons{
-    display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
-    background-color: transparent;
-    margin-top:-1vh;
+.back{
+    height:auto;
+    width:auto;
+    vertical-align: center;
+    padding-left:1vh;
+    padding-bottom:3vh;
+    background-color:transparent;
+    border:none;
 }
 .icon{
     height:auto;
     width:auto;
     text-align: center;
-    padding-top:2vh;
+    vertical-align: center;
+    top:10vh;
     padding-bottom:3vh;
+}
+.avatar{
+    color:white;
+    font-size:4.5vh;
+    text-align:center;
+    vertical-align: center;
+    margin-top:5vh;
 }
 .footer{
     position: fixed;
