@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RequestService } from '../services/request.service'
 import { SocketsService } from 'src/app/global/services';
 import { VotingService } from '../services/voting.service';
+import { NameService } from '../services/name.service';
 
 @Component({
   selector: 'ami-fullstack-backend-tester',
@@ -13,7 +14,8 @@ export class BackendTesterComponent implements OnInit {
   constructor(
               private requestService: RequestService,
               private socketService: SocketsService,
-              private votingService: VotingService
+              private votingService: VotingService,
+              private nameService: NameService
               ) { }
 
   ngOnInit() {
@@ -22,6 +24,7 @@ export class BackendTesterComponent implements OnInit {
     this.socketService.initAndConnect();
 
     this.socketService.syncMessages("icons_on_change").subscribe((data) => console.log(data))
+    this.socketService.syncMessages("voting_on_change").subscribe((data) => console.log(data))
   }
 
 
@@ -39,14 +42,15 @@ export class BackendTesterComponent implements OnInit {
   }
 
 
-  addPlayer(playername){
+  addPlayer(username , charname){
     var player = {
-      "username" : "Konstantinos Tsirakos",
-      "name" : playername,
-      "img" : "assets/avatars/ironman.png",
+      "username" : username,
+      "name" : charname,
+      "img" : this.nameService.getDataByChar(charname).img,
       "votes" : 0,
       "voted" : [],
-      "votedBy" : []
+      "votedBy" : [],
+      "color": this.nameService.getDataByChar(charname).color
     }
 
     this.requestService.addPlayer(player).then((data) => console.log(data)).catch(err => console.log(err));

@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { NameService } from './name.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +16,10 @@ import { HttpClient } from '@angular/common/http';
  */
 export class RequestService {
 
-  constructor(public http: HttpClient) { }
+  constructor(
+                public http: HttpClient,
+                private nameService: NameService
+              ) { }
 
   url = "http://localhost:8080";
   testingEndpoint = "/api/initprocedure/availableicons"
@@ -36,6 +41,8 @@ export class RequestService {
 
 
   public addPlayer(player : any){
+    debugger;
+    this.nameService.setPersonalData(player);
     return new Promise((resolve , reject) => {
       this.http.post(this.url + this.addPlayerEndpoint , player).subscribe((data) => {
         resolve(data);
@@ -68,6 +75,8 @@ export class RequestService {
   }
 
   public startGame(){
+
+
     return new Promise((resolve , reject) => {
       this.http.get(this.url + this.getPlayersEndpoint).subscribe((data) => {
         console.log("Start game" , data);

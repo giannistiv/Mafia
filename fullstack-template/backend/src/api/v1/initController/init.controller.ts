@@ -21,6 +21,7 @@ export class InitController {
     ]
 
 
+
     static playerChoises : JSON[] = []
 
     /**
@@ -47,7 +48,7 @@ export class InitController {
 
 
     public addPlayer(req: Request, res: Response){
-        var body = req.body;
+        var body:any = req.body;
         console.log("Adding Player" , req.body);
         InitController.playerChoises.push(body);
 

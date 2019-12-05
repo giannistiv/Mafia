@@ -49,14 +49,12 @@ export class VotingController {
 
         const socket = DIContainer.get(SocketsService);
         socket.broadcast("voting_on_change" , VotingController.votingData);
-        
         res.status(200).send({"message":"Voting Completed"})
     }
 
 
 
     public setVotingData(req: Request, res:Response){
-
         VotingController.votingData = req.body;
         res.status(200).send(VotingController.votingData);
     }
