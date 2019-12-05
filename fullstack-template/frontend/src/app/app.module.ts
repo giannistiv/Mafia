@@ -28,6 +28,7 @@ import { WallComponent } from './wall/wall.component';
 import { BackendTesterComponent } from './backend-tester/backend-tester.component';
 import { MobileInit2Component } from './mobile-init2/mobile-init2.component';
 import { MobileBioComponent } from './mobile-bio/mobile-bio.component';
+import { MobileAbilityComponent } from './mobile-ability/mobile-ability.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { MobileBioComponent } from './mobile-bio/mobile-bio.component';
     MobileInit2Component,
     PlayerschoiceComponent,
     BackendTesterComponent,
-    MobileBioComponent
+    MobileBioComponent,
+    MobileAbilityComponent
   ],
   imports: [
     BrowserModule,

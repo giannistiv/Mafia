@@ -17,6 +17,7 @@
     font-size:2.5vh;
     color:white;
     margin-top:2.2vh;
+    float:left;
 }
 
 .mask{
@@ -41,3 +42,9 @@
     background-color: transparent;
     border:none;
     }
+
+#day{
+  position: absolute;
+  width:4vh;
+  right:20vh;
+}

@@ -1,0 +1,20 @@
+.overlay {
+    position: absolute;
+    top: 10vh;
+    left: 0;
+    width:100%;
+    overflow-x: auto;
+    text-align: center;
+  }
+.avatar{
+    color:white;
+    font-size:4.5vh;
+    text-align:center;
+    vertical-align: center;
+    margin-top:15vh;
+    margin-bottom:12vh;
+}
+.icon{
+    border-radius: 100%;
+    border: 3px solid #05FF00;
+}

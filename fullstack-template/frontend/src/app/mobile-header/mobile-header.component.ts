@@ -8,6 +8,7 @@ import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 export class MobileHeaderComponent implements OnInit {
 
   @Output() HeaderMessages= new EventEmitter();
+  @Output() DayMessages= new EventEmitter();
 
   constructor() { }
   
@@ -16,6 +17,11 @@ export class MobileHeaderComponent implements OnInit {
 
   bio(){
     this.HeaderMessages.emit("bio");
+  }
+
+  day(){
+    console.log("mpika");
+    this.DayMessages.emit("day");
   }
 
 }

@@ -1,15 +1,16 @@
 <ami-fullstack-background-image type="mobile"></ami-fullstack-background-image>
 <div class="overlay">
-    <ami-fullstack-mobile-header  (HeaderMessages)="messagesfrombio($event)" ></ami-fullstack-mobile-header>
+    <ami-fullstack-mobile-header (DayMessages)="messagesfromday($event)"  (HeaderMessages)="messagesfrombio($event)" ></ami-fullstack-mobile-header>
 </div>
-<div class="overlay1">
+<div class="overlay1" *ngIf="(!bio && day)">
 <ami-fullstack-mobile-phase></ami-fullstack-mobile-phase>
 </div>
-<div class="overlay2" *ngIf="!bio">
+<div class="overlay2" *ngIf="(!bio && day)">
     <ami-fullstack-mobile-body [image]="row.img" [name]="row.name" *ngFor="let row of players">
     </ami-fullstack-mobile-body>
 </div>
-<div class="overlay3" *ngIf="!bio">
+<div class="overlay3" *ngIf="(!bio && day)">
     <ami-fullstack-mobile-bottom></ami-fullstack-mobile-bottom>
 </div>
 <ami-fullstack-mobile-bio (ExitMessage)="messagesfromexit($event)" *ngIf="bio"></ami-fullstack-mobile-bio>
+<ami-fullstack-mobile-ability *ngIf="(!bio && !day)"></ami-fullstack-mobile-ability>

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SmarttableComponent } from 'src/app/smarttable/smarttable.component'
-import { MobileComponent } from 'src/app/mobile/mobile.component'
-import { MobileInitComponent } from 'src/app/mobile-init/mobile-init.component'
+import { SmarttableComponent } from 'src/app/smarttable/smarttable.component';
+import { MobileComponent } from 'src/app/mobile/mobile.component';
+import { MobileInitComponent } from 'src/app/mobile-init/mobile-init.component';
 import { WallComponent } from './wall/wall.component';
 import { PlayerschoiceComponent } from './playerschoice/playerschoice.component';
 import { SmarttvComponent } from './smarttv/smarttv.component';
