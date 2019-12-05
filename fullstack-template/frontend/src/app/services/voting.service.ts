@@ -12,10 +12,9 @@ import { RequestService } from './request.service';
  */
 export class VotingService {
 
-
+  user = "Sonic";
 
   constructor(private requestService: RequestService) { }
-
   votePlayer(playername){
     return new Promise((resolve , reject) => {
       this.requestService.vote(this.user , playername).then((data) => resolve(data)).catch(err => reject(err));

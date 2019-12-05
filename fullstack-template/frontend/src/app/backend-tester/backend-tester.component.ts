@@ -45,12 +45,10 @@ export class BackendTesterComponent implements OnInit {
   addPlayer(username , charname){
     var player = {
       "username" : username,
-      "name" : charname,
-      "img" : this.nameService.getDataByChar(charname).img,
+      "char" : {"name" : charname , "img" : undefined , "color" : undefined},
       "votes" : 0,
       "voted" : [],
-      "votedBy" : [],
-      "color": this.nameService.getDataByChar(charname).color
+      "votedBy" : []
     }
 
     this.requestService.addPlayer(player).then((data) => console.log(data)).catch(err => console.log(err));

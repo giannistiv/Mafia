@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { timingSafeEqual } from 'crypto';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +12,8 @@ import { timingSafeEqual } from 'crypto';
  * 
  * Name
  * Icon
- * Votes
+ * Votes Number
+ * Votes he mad
  * From who was voted
  * 
  * for each player of the game!
@@ -70,6 +70,10 @@ export class NameService {
 
   public setPersonalData(data){
     this.personalData = data;
+  }
+
+  public getPersonalData(){
+    return this.personalData;
   }
 
 

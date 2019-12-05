@@ -41,7 +41,6 @@ export class RequestService {
 
 
   public addPlayer(player : any){
-    debugger;
     this.nameService.setPersonalData(player);
     return new Promise((resolve , reject) => {
       this.http.post(this.url + this.addPlayerEndpoint , player).subscribe((data) => {
