@@ -9,6 +9,7 @@ export class MobileComponent implements OnInit {
 
   public bio: boolean;
   public day: boolean;
+  public img: string;
 
   constructor() { }
   players = [
@@ -36,5 +37,11 @@ export class MobileComponent implements OnInit {
     console.log(event);
     this.day = !this.day;
   }
+
+  messagesfrombody(event){
+    console.log(event);
+    this.img=event;
+  }
+
 
 }

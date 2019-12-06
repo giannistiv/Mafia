@@ -1,7 +1,6 @@
-<div class="middle">
-    <div class="avatar"> <img [src]="image" style="width: 6vh;"> </div>
-    <div class="username">
-        <p>{{ name }}</p>
-    </div>
-    <div class="radio_button"> <img src="assets/circle.png" style="width: 3.2vh;"> </div>
-</div>
+<button class="middle" (click)="changeimg();">
+     <img class="avatar" [src]="image" style="width: 6vh;">
+        <p class="username" *ngIf="name!='Mario'">{{ name }}</p>
+        <p class="username" *ngIf="name=='Mario'" style="padding-top:2vh;">{{ name }}</p>
+<img class="radio_button" src="assets/circle.png" style="width: 3.2vh;">
+</button>

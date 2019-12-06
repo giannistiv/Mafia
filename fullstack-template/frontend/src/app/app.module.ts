@@ -58,7 +58,7 @@ import { MobileAbilityComponent } from './mobile-ability/mobile-ability.componen
     PlayerschoiceComponent,
     BackendTesterComponent,
     MobileBioComponent,
-    MobileAbilityComponent
+    MobileAbilityComponent,
   ],
   imports: [
     BrowserModule,
