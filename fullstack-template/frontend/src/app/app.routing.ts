@@ -4,8 +4,10 @@ import { SmarttableComponent } from 'src/app/smarttable/smarttable.component'
 import { SmarttvComponent } from './smarttv/smarttv.component';
 import { PlayerschoiceComponent } from './playerschoice/playerschoice.component';
 import { PlayerhistoryComponent } from './playerhistory/playerhistory.component';
+import { WallComponent } from './wall/wall.component';
 
 const routes: Routes = [
+  { path: 'wall' , component: WallComponent},
   { path: 'playerhistory' , component: PlayerhistoryComponent},
   { path: 'nightkilling' , component: PlayerschoiceComponent},
   { path: 'smarttv' , component: SmarttvComponent },

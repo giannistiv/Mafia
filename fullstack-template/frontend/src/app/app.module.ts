@@ -19,6 +19,7 @@ import { WallbackgroundComponent } from './wallbackground/wallbackground.compone
 import { SmarttvComponent } from './smarttv/smarttv.component';
 import { PlayerschoiceComponent } from './playerschoice/playerschoice.component';
 import { PlayerhistoryComponent } from './playerhistory/playerhistory.component';
+import { WallComponent } from './wall/wall.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { PlayerhistoryComponent } from './playerhistory/playerhistory.component'
     WallbackgroundComponent,
     SmarttvComponent,
     PlayerschoiceComponent,
-    PlayerhistoryComponent
+    PlayerhistoryComponent,
+    WallComponent
   ],
   imports: [
     BrowserModule,
