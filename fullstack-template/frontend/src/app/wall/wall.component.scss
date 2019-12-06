@@ -1,0 +1,126 @@
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1780px;
+    height: 800px;
+    overflow-x: visible;
+    background-image: url(/assets/background.jpg);
+    background-color: #cccccc;
+    background-size: 1780px 800px;
+  }
+
+  .grid-container {
+    clear:both;
+    width: 1780px;
+    height: 800px;
+    display: grid;
+    grid-template-columns: 81% 19%;
+  }
+
+  .grid-container2 {
+    clear:both;
+    width: 1780px;
+    height: 400px;
+    display: grid;
+    grid-template-columns: 27% 27% 27%;
+  }
+
+  .grid-item3 {
+    font-size: 150px;
+    margin-top: 0px;
+  }
+
+  .grid-item3 img {
+    margin-left: 150px;
+    margin-top: -20px;
+    margin-right: 10px;
+  }
+
+  .grid-item3 p {
+    font-size: 24px;
+    text-align: center;
+    padding-left: 80px;
+  }
+
+  span.note {
+    font-size: 36px;
+    margin-right: 10px;
+  }
+
+  .grid-item4 {
+    font-size: 150px;
+    margin-top: 0px;
+  }
+
+  .grid-item4 img {
+    margin-left: 150px;
+    margin-top: -20px;
+    margin-right: 10px;
+  }
+
+  .grid-item4 p {
+    font-size: 24px;
+    text-align: center;
+    padding-left: 80px;
+  }
+
+  .grid-item5 {
+    font-size: 150px;
+    margin-top: 0px;
+  }
+
+  .grid-item5 img {
+    margin-left: 150px;
+    margin-top: -20px;
+    margin-right: 10px;
+  }
+
+  .grid-item5 p {
+    font-size: 24px;
+    text-align: center;
+    padding-left: 80px;
+  }
+
+  .grid-container3 {
+    clear:both;
+    display: grid;
+    height: 400px;
+    grid-template-columns: 50% 50%;
+  }
+
+  .grid-item6 {
+    font-size: 150px;
+    padding-left: 100px;
+    padding-right: 60px;
+  }
+
+  .grid-item6 img {
+    margin-left: 190px;
+    margin-top: -20px;
+    margin-right: 10px;
+  }
+
+  .grid-item6 p {
+    font-size: 24px;
+    text-align: center;
+    padding-left: 80px;
+  }
+
+  .grid-item7 {
+    font-size: 150px;
+    padding-left: 100px;
+    padding-right: 60px;
+  }
+
+  .grid-item7 img {
+    margin-left: 190px;
+    margin-top: -20px;
+    margin-right: 10px;
+  }
+
+  .grid-item7 p {
+    font-size: 24px;
+    text-align: center;
+    padding-left: 80px;
+  }
