@@ -9,6 +9,7 @@ export class MobileHeaderComponent implements OnInit {
 
   @Output() HeaderMessages= new EventEmitter();
   @Output() DayMessages= new EventEmitter();
+  @Output() HistoryMessages= new EventEmitter();
 
   constructor() { }
   
@@ -17,6 +18,10 @@ export class MobileHeaderComponent implements OnInit {
 
   bio(){
     this.HeaderMessages.emit("bio");
+  }
+
+  history(){
+    this.HistoryMessages.emit("history");
   }
 
   day(){

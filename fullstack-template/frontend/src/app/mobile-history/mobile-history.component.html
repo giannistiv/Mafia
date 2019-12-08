@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="header">
+        <p>Voting History</p>
+    </div>
+    <button class="exit" (click)="exit()"> <img src="assets/x-button.png" style="width: 4.5vh;"> </button>
+    <div class="title">Votes</div>
+    <div class="table">
+        <div class="player" *ngFor="let row of players">
+            <div class="position">1</div>
+            <div class="avatar"><img [src]="row.img" style="width: 6vh;"></div>
+            <div class="username">
+                <p>{{row.name}}</p>
+            </div>
+            <div class="votes">1</div>
+            <button class="drop_button" (click)="drop(row)"><img src="assets/expand.png" style="width: 3.2vh;"></button>
+            <div class="rounds" id={{row.name}}>
+                <p>Rounds</p>
+                <p>1 2 3 5 6 </p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -29,6 +29,7 @@ import { BackendTesterComponent } from './backend-tester/backend-tester.componen
 import { MobileInit2Component } from './mobile-init2/mobile-init2.component';
 import { MobileBioComponent } from './mobile-bio/mobile-bio.component';
 import { MobileAbilityComponent } from './mobile-ability/mobile-ability.component';
+import { MobileHistoryComponent } from './mobile-history/mobile-history.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { MobileAbilityComponent } from './mobile-ability/mobile-ability.componen
     BackendTesterComponent,
     MobileBioComponent,
     MobileAbilityComponent,
+    MobileHistoryComponent,
   ],
   imports: [
     BrowserModule,
