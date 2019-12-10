@@ -19,8 +19,8 @@ export class MobileInitComponent implements OnInit {
     {"img": "assets/avatars/spiderman.png" },
     {"img": "assets/avatars/mario.png" },
     {"img": "assets/avatars/sonic.png" },
-    {"img": "assets/avatars/bear.png" },
-    {"img": "assets/avatars/batman.jpg" },
+    {"img": "assets/avatars/luigi.png" },
+    {"img": "assets/avatars/batman.png" },
     {"img": "assets/avatars/spongebob.png" },
   ]
 
