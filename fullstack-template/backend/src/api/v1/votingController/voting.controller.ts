@@ -68,6 +68,7 @@ export class VotingController {
 
 
     public setVotingData(req: Request, res:Response){
+
         VotingController.votingData = req.body;
         res.status(200).send(VotingController.votingData);
     }

@@ -2,6 +2,7 @@ import { Request, Response, NextFunction, Router } from 'express';
 import { NotFound, BadRequest } from 'http-errors';
 import { DIContainer, MinioService, SocketsService } from '@app/services';
 import { logger } from '../../../utils/logger';
+import { resolve } from 'dns';
 
 export class InitController {
 
@@ -45,7 +46,10 @@ export class InitController {
         router
             .get('/availableicons' , this.getAvailableIcons)
             .get('/players' , this.getPlayers)
-            .post('/addplayer' , this.addPlayer);
+            .post('/addplayer' , this.addPlayer)
+            .get('/startgame' , this.startGame)
+            .post("/reserveicon" , this.reserveIcon)
+            .post("/unreserveicon" , this.unreserveIcon)
 
         return router;
     }
@@ -78,5 +82,39 @@ export class InitController {
 
     public getPlayers(req: Request , res: Response){
         res.status(200).send(InitController.playerChoises);
+    }
+
+
+    public startGame(req: Request , res: Response){
+        
+        const socket = DIContainer.get(SocketsService);
+        socket.broadcast("start_game" , "");
+        res.status(200).send();
+
+    }
+
+    public reserveIcon(req: Request , res:Response){
+        InitController.charactersMapping.forEach((icon) => {
+            if(icon.img == req.body.img){
+                icon.available = false;
+                const socketService = DIContainer.get(SocketsService);
+                socketService.broadcast("icons_on_change", InitController.charactersMapping);
+            }
+        })
+
+        res.status(200).send();       
+    }
+
+
+    public unreserveIcon(req : Request , res:Response){
+        InitController.charactersMapping.forEach((icon) => {
+            if(icon.img == req.body.img){
+                icon.available = true;
+                const socketService = DIContainer.get(SocketsService);
+                socketService.broadcast("icons_on_change", InitController.charactersMapping);
+            }
+        })
+
+        res.status(200).send();
     }
 }

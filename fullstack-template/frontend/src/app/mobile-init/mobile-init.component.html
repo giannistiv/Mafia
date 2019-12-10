@@ -7,11 +7,11 @@
         </div>
         <div class="username">
             <p class="name">Enter Your Name</p>
-            <input id="textfield" type="text" name="username"><br>
+            <input id="textfield" type="text" name="username" [(ngModel)]="username"><br>
         </div>
         <p class="avatar">Choose your avatar:</p>
         <div class="avataricons">
-            <button class="icon" *ngFor="let row of avatars" [disabled]="!row.available" [style]="row.opacity" [id]="row.name" (click)="iconSelected(row.name)"> <img [src]="row.img" style="width: 7vh;"> </button>
+            <button class="icon" *ngFor="let row of avatars" [disabled]="!row.available" [style]="row.opacity" [id]="row.name" (click)="iconSelected(row.name)"> <img  [id]="row.name + '_img'"[src]="row.img" style="width: 7vh;"> </button>
         </div>
         <div class="footer">
             <p class="ready">Press button when ready </p>
@@ -19,4 +19,4 @@
         </div>
     </div>
 </div>
-<ami-fullstack-mobile-init2  (Init2messages)="messagesfrominit2($event)" *ngIf="!isViewable"></ami-fullstack-mobile-init2>
+<ami-fullstack-mobile-init2 [inputName]="selectedObject.name" [imputImg]="selectedObject.img" (Init2messages)="messagesfrominit2($event)" *ngIf="!isViewable"></ami-fullstack-mobile-init2>

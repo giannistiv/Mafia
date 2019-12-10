@@ -26,7 +26,9 @@ export class RequestService {
   addPlayerEndpoint = "/api/initprocedure/addPlayer"
   getAvailableIconsEndpoint = "/api/initprocedure/availableicons"
   getPlayersEndpoint = "/api/initprocedure/players"
-
+  startgameEndpoint = "/api/initprocedure/startgame"
+  reserveIcon = "/api/initprocedure/reserveicon"
+  unreserveIcon = "/api/initprocedure/unreserveicon"
   votingPlayerEndpoint = "/api/voting/vote"
   setVotingDataEndpoint = "/api/voting/setdata"
   getVotingResultsEndpoing = "/api/voting/votingresults"
@@ -73,7 +75,17 @@ export class RequestService {
     })
   }
 
+
   public startGame(){
+    return new Promise((resolve , reject) => {
+      this.http.get(this.url + this.startgameEndpoint).subscribe((data) => {
+        resolve(data);
+      });
+    })
+  }
+
+
+  public setVotingData(){
 
 
     return new Promise((resolve , reject) => {
@@ -87,9 +99,25 @@ export class RequestService {
   }
 
 
+  public reserve(icon){
+    return new Promise((resolve , reject) => {
+      this.http.post(this.url + this.reserveIcon , { "img" : icon}).subscribe((data) => {
+        resolve(data);
+      })
+    })
+  }
+
   public getVotingResults(){
     return new Promise((resolve , reject) => {
       this.http.get(this.url + this.getVotingResultsEndpoing).subscribe((data) => {
+        resolve(data);
+      })
+    })
+  }
+
+  public unreserve(icon){
+    return new Promise((resolve , reject) => {
+      this.http.post(this.url + this.unreserveIcon , { "img" : icon}).subscribe((data) => {
         resolve(data);
       })
     })
