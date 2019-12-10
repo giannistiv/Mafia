@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input,Output,EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'ami-fullstack-mobile-body',
@@ -7,10 +7,16 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class MobileBodyComponent implements OnInit {
 
+  @Output() imgMessage= new EventEmitter();
+
   constructor() { }
   @Input() image : String;
   @Input() name : String;
   ngOnInit() {
+  }
+
+  changeimg(){
+    this.imgMessage.emit(this.image);
   }
 
 }

@@ -1,0 +1,94 @@
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width:100%;
+    overflow-x: auto;
+  }
+.container{
+    position:absolute;
+    border:solid white;
+    height:91vh;
+    max-width:100vw;
+    top:8vh;
+    z-index: 1000;
+}
+.header {
+    text-align: center;
+    color: white;
+    font-size: 3vh;
+    padding:3vh;
+    padding-left:1vh;
+  }
+.exit{
+    position: fixed;
+    background-color: transparent;
+    border:none;
+    right: 2.5vh;
+    top: 11vh;
+}
+.title {
+    text-align: center;
+    color: white;
+    font-size: 2.2vh;
+    float:right;
+    padding-right:8.7vh;
+    font-weight: bold;
+  }
+.table{
+  overflow-y:scroll;
+  height:74vh;
+}
+.row{
+  clear: both;
+}
+.player{
+    display: grid;
+    grid-template-columns: 10% 20% 40% 10% 20%;
+    clear: both;
+    margin-bottom:3.5vh;
+    z-index: -1;
+}
+.position {
+  color: white;
+  font-size:3vh;
+  padding-top:1vh;
+  text-align: center; 
+}
+.avatar{
+  height:auto;
+  width:auto;
+  text-align: center;
+  float: left;
+  overflow: hidden;
+}
+.username{
+  font-size:2.2vh;
+  color:white;
+  padding-top:1.5vh; 
+  float: left;
+  padding-left:1vh;
+}
+.votes{
+    color: white;
+    font-size:2.5vh;
+    padding-top:1vh;
+    font-weight: bold;
+}
+.drop_button{
+  height:auto;
+  width:auto;
+  text-align: center;
+  padding-bottom: 1.5vh;
+  float: right;
+  border:none;
+  background-color: transparent;
+}
+.rounds{
+  grid-column-start: 1; 
+  grid-column-end: 6;
+  text-align: center;
+  color: white;
+  font-size: 3vh;
+  display:none;
+}

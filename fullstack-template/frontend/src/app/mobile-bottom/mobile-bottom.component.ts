@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Input } from '@angular/core';
 
 @Component({
   selector: 'ami-fullstack-mobile-bottom',
@@ -8,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class MobileBottomComponent implements OnInit {
 
   constructor() { }
+  @Input() image : String;
 
   ngOnInit() {
   }
+
 
 }

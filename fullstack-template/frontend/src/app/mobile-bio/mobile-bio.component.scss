@@ -1,0 +1,59 @@
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width:100%;
+    overflow-x: auto;
+  }
+.container{
+  position:absolute;
+  border:solid white;
+  height:91vh;
+  max-width:100vw;
+  top:8vh;
+}
+.exit{
+    position: fixed;
+    background-color: transparent;
+    border:none;
+    right: 2.5vh;
+    top: 11vh;
+}
+.role{
+    position:absolute;
+    text-align: center;
+    top:15vh;
+    left:0;
+    width:100vw;
+}
+.icon{
+    border-radius: 100%;
+    border: 3px solid #05FF00;
+}
+.name{
+    text-align: center;
+    color:white;
+    font-size:5vh;
+}
+#info{
+    position:absolute;
+    color:white;
+    font-size: 2.5vh;
+    float:left;
+    width:90%;
+    font-weight: lighter;
+    left:2vh;
+    text-align:left;
+}
+#ability{
+    position:absolute;
+    color:white;
+    font-size: 2.5vh;
+    float:left;
+    width:90%;
+    font-weight: lighter;
+    left:2vh;
+    top: 40vh;
+    text-align:left
+}
+
