@@ -22,7 +22,7 @@ export class InitController {
     static charactersMapping = [
         {"name" : "Batman" , "img" : "assets/avatars/batman.png" , "color" : "grey" , "available":true},
         {"name" : "Deadpool" , "img" : "assets/avatars/deadpool.png" , "color" : "red", "available":true},
-        {"name" : "Bear" , "img" : "assets/avatars/luigi.png" , "color" : "brown", "available":true},
+        {"name" : "Luigi" , "img" : "assets/avatars/luigi.png" , "color" : "green", "available":true},
         {"name" : "Iron Man" , "img" : "assets/avatars/ironman.png" , "color" : "orange", "available":true},
         {"name" : "Mario" , "img" : "assets/avatars/mario.png" , "color" : "red", "available":true},
         {"name" : "Pikachu" , "img" : "assets/avatars/pikachu.png" , "color" : "yellow", "available":true},

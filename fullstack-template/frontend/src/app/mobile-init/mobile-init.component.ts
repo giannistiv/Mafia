@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { SocketsService } from '../global/services';
+import { RequestService } from '../services/request.service';
 
 @Component({
   selector: 'ami-fullstack-mobile-init',
@@ -10,7 +12,11 @@ export class MobileInitComponent implements OnInit {
   public isViewable: boolean;
   
 
-  constructor() {}
+  constructor(
+    private socketService : SocketsService,
+    private requestService : RequestService,
+    private cdr : ChangeDetectorRef
+  ) {}
 
   avatars = [
     {"img": "assets/avatars/deadpool.png" },
@@ -24,8 +30,32 @@ export class MobileInitComponent implements OnInit {
     {"img": "assets/avatars/spongebob.png" },
   ]
 
+
+  opacityStyle = {
+    "opacity" : 0.5
+  }
+
   ngOnInit() {
+    this.requestService.getAvailableIcons().then((icons : any) => {
+      console.log(icons);
+      this.avatars = icons;
+    })
+
+
     this.isViewable = true;
+    this.socketService.syncMessages("icons_on_change").subscribe((data : any) => {
+      this.avatars = data.message;
+      console.log(this.avatars);
+
+      this.avatars.forEach((icon:any) => {
+        if(!icon.available){
+          console.log(document.getElementById(icon.name))
+          document.getElementById(icon.name).style.opacity = "0.2"
+        }
+        this.cdr.detectChanges();
+      })
+    })
+    
   }
 
   public ready(): void
@@ -36,6 +66,18 @@ export class MobileInitComponent implements OnInit {
    messagesfrominit2(event){
     this.isViewable = !this.isViewable;
    }
+
+
+   iconSelected(name){
+     console.log(name);
+
+
+     const pressedImage = document.getElementById(name);
+    pressedImage.style.border = "2px solid green";
+   }
+
+
+
   
 
 }

@@ -50,6 +50,8 @@ input{
     text-align: center;
     padding-top:2vh;
     padding-bottom:3vh;
+    background : inherit;
+    border : none;
 }
 .footer{
     position: fixed;
@@ -75,4 +77,8 @@ input{
     border:none;
     float:left;
     padding-bottom:-0.1vh;
+}
+
+.opacityReduces {
+    opacity: 0.5
 }

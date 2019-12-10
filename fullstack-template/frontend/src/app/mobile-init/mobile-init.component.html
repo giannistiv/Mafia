@@ -11,7 +11,7 @@
         </div>
         <p class="avatar">Choose your avatar:</p>
         <div class="avataricons">
-            <div class="icon" *ngFor="let row of avatars"> <img [src]="row.img" style="width: 7vh;"> </div>
+            <button class="icon" *ngFor="let row of avatars" [disabled]="!row.available" [style]="row.opacity" [id]="row.name" (click)="iconSelected(row.name)"> <img [src]="row.img" style="width: 7vh;"> </button>
         </div>
         <div class="footer">
             <p class="ready">Press button when ready </p>
