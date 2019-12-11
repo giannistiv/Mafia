@@ -8,12 +8,16 @@ import { WallComponent } from './wall/wall.component';
 import { PlayerschoiceComponent } from './playerschoice/playerschoice.component';
 import { SmarttvComponent } from './smarttv/smarttv.component';
 import { BackendTesterComponent } from './backend-tester/backend-tester.component';
+import { PlayerhistoryComponent } from './playerhistory/playerhistory.component';
+import { WallComponent } from './wall/wall.component';
 
 const routes: Routes = [
   { path: 'backend' , component: BackendTesterComponent},
   { path: 'mobile' , component: MobileComponent},
   { path: 'mobile-init' , component: MobileInitComponent},
   { path: 'mobile-history' , component: MobileHistoryComponent},
+  { path: 'wall' , component: WallComponent},
+  { path: 'playerhistory' , component: PlayerhistoryComponent},
   { path: 'nightkilling' , component: PlayerschoiceComponent},
   { path: 'smarttv' , component: SmarttvComponent },
   { path: 'smarttable' , component: SmarttableComponent},

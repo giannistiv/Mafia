@@ -1,51 +1,135 @@
-<div *ngIf="init">
-    <ami-fullstack-background-image type="mobile"></ami-fullstack-background-image>
-    
-    <div class="overlay">
-        <table class="table">
-            <tr  class="firstrow">
-                <td>
-                        <p class="header">Mafia game</p>
-                </td>
-            </tr>
-            <tr  class="secondrow">
-                <td>
-    
-                        <p class="explaination">Please scan the QR-Code from the smart table to enter the game</p>           
-                </td>
-            </tr>
-            <tr class="thirdrow">
-                <td class="onethirdWidth registered">
-                    <p>Registered Players:</p>
-                </td>
-                <td class="onethirdWidth count">
+<style>
+    :host {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        font-size: 14px;
+        color: #333;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 8px 0;
+    }
+
+    p {
+        margin: 0;
+    }
+</style>
+
+<div class="overlay">
+    <div class="grid-container">
+        <div class="grid-item1">
+            <div class="grid-container2">
+                <div class="grid-item3">
+                    <img src="/assets/avatars/spongebob.png" alt="spongebob" width="150" height="150" />
+                    <font size="10" color="white">X</font>
+                    <font color="white">2</font>
                     <p>
-                        <span class="count">
-                                {{activePlayers}}
-                        </span> 
-                        <span class="slash">
-                            /
-                        </span>
-                        <span class="count">
-                            7
+                        <span class="note">
+                            <font color="white">Detective</font>
                         </span>
                     </p>
-                </td>
-                <td class="onethirdWidth google">
-                    <p *ngIf="activePlayers < 6" style="color:red">We need {{ 7 - activePlayers}} more players</p>
-                    <p *ngIf="activePlayers > 6" style="color:green">Ok google play game</p>
-                </td>
-            </tr>
-        </table>
+                    <p>
+                        <font color="white">
+                            Τhe Detective can detect whether a player is a mafioso or not once every round
+                        </font>
+                    </p>
+                </div>
+
+                <div class="grid-item4">
+                    <img src="/assets/avatars/spongebob.png" alt="spongebob" width="150" height="150" />
+                    <font size="10" color="white">X</font>
+                    <font color="white">1</font>
+                    <p>
+                        <span class="note">
+                            <font color="white">Doctor</font>
+                        </span>
+                    </p>
+                    <p>
+                        <font color="white">
+                            The Doctor can save a random person during the night, if the mafia killed him
+                        </font>
+                    </p>
+                </div>
+
+                <div class="grid-item5">
+                    <img src="/assets/avatars/spongebob.png" alt="spongebob" width="150" height="150" />
+                    <font size="10" color="white">X</font>
+                    <font color="white">3</font>
+                    <p>
+                        <span class="note">
+                            <font color="white">Masons</font>
+                        </span>
+                    </p>
+                    <p>
+                        <font color="white">
+                            Masons can recognize each other
+                        </font>
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid-container3">
+                <div class="grid-item6">
+                    <img src="/assets/avatars/spongebob.png" alt="spongebob" width="150" height="150" />
+                    <font size="10" color="white">X</font>
+                    <font color="white">1</font>
+                    <p>
+                        <span class="note">
+                            <font color="white">Godfather</font>
+                        </span>
+                    </p>
+                    <p>
+                        <font color="white">
+                            The Godfather will be identified by the detective as innocent
+                        </font>
+                    </p>
+                </div>
+
+                <div class="grid-item7">
+                    <img src="/assets/avatars/spongebob.png" alt="spongebob" width="150" height="150" />
+                    <font size="10" color="white">X</font>
+                    <font color="white">2</font>
+                    <p>
+                        <span class="note">
+                            <font color="white">Barman</font>
+                        </span>
+                    </p>
+                    <p>
+                        <font color="white">
+                            The Barman may anonymously cancel the effect of another role's ability every night
+                        </font>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-item2">
+            <p>
+                <font color="white">Round</font>
+            </p>
+            <p>
+                <span class="note2">
+                    <font color="white">5</font>
+                </span>
+            </p>
+            <p>
+                <font color="white">Day</font>
+            </p>
+            <p>
+                <span class="note3">
+                    <font color="white">Active Players: </font>
+                </span>
+            </p>
+            <span class="note4">
+                <font color="white">9</font>
+            </span>
+        </div>
     </div>
-</div>
-
-
-<div *ngIf="day">
-
-</div>
-
-
-<div *ngIf="night">
-
 </div>

@@ -1,0 +1,143 @@
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1920px;
+    height: 1080px;
+    overflow-x: visible;
+    background-image: url(/assets/background.jpg);
+    background-color: #cccccc;
+    background-size: 1920px 1080px;
+  }
+
+  .header {
+    padding: 30px;
+    width: 1920px;
+    position: absolute;
+    grid-template-columns: auto;
+    font-size: 80px;
+    text-align: center;
+    align-self: center;
+  }
+  
+  input.right {
+      background-image:url(/assets/xbutton.png);
+      background-color: transparent; 
+      background-repeat: no-repeat;  
+      border: none;           
+      cursor: pointer;        
+      height: 100px;           
+      width: 100px;           
+      background-size: 100%;
+      position: absolute;
+      right: 50px;
+  }
+
+  .grid-container {
+    clear:both;
+    width: 1920px;
+    height: 860px;
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    padding-top: 200px;
+}
+
+  .grid-item1 {
+    font-size: 50px;
+    height: 300px;
+    align-self: center;
+    margin-left: 50px;
+  }
+
+  .grid-item1 img {
+    margin-top: 30px;
+  }
+
+  .grid-item3 {
+    font-size: 50px;
+    height: 300px;
+    align-self: center;
+    margin-left: 80px;
+  }
+
+  .grid-item3 img {
+    margin-top: 30px;
+    margin-left: 30px;
+  }
+
+  .grid-container2 {
+    clear:both;
+    width: 1920px;
+    height: 860px;
+    display: grid;
+    grid-template-columns: 12% 12% 36%;
+  }
+
+  .grid-item4 {
+    font-size: 50px;
+    height: 80px;
+    align-self: center;
+    margin-left: 60px;
+  }
+
+  .grid-item4 p {
+    align-self: center;
+  }
+
+  .grid-item5 {
+    font-size: 50px;
+    height: 80px;
+    align-self: center;
+    margin-left: 80px;
+  }
+
+  .grid-item6 {
+    font-size: 50px;
+    height: 80px;
+    align-self: center;
+    margin-left: 80px;
+  }
+
+  .grid-item7 {
+    font-size: 50px;
+    text-align: center;
+  }
+
+  .grid-item7 p {
+    margin-top: 30px;
+  }
+
+  .grid-item8 {
+    font-size: 50px;
+    height: 800px;
+    margin-left: 100px;
+    align-self: center;
+  }
+
+  .grid-item8 img {
+    margin-top: 27px;
+  }
+
+  .grid-item9 {
+    font-size: 50px;
+    height: 800px;
+    align-self: center;
+    margin-left: 80px;
+  }
+
+  .grid-item9 img {
+    margin-top: 27px;
+    margin-right: 15px; 
+  }
+
+  .grid-item10 {
+    font-size: 50px;
+    height: 800px;
+    align-self: center;
+    margin-top: 10px;
+    margin-left: 40px;
+    color: #B80707;
+    font-weight: bold;
+    font-size: 72px;
+    line-height: 84px;
+  }

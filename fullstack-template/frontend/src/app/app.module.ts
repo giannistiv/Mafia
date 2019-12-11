@@ -30,6 +30,7 @@ import { MobileInit2Component } from './mobile-init2/mobile-init2.component';
 import { MobileBioComponent } from './mobile-bio/mobile-bio.component';
 import { MobileAbilityComponent } from './mobile-ability/mobile-ability.component';
 import { MobileHistoryComponent } from './mobile-history/mobile-history.component';
+import { PlayerhistoryComponent } from './playerhistory/playerhistory.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,9 @@ import { MobileHistoryComponent } from './mobile-history/mobile-history.componen
     MobileBioComponent,
     MobileAbilityComponent,
     MobileHistoryComponent,
+    PlayerschoiceComponent,
+    PlayerhistoryComponent,
+    WallComponent
   ],
   imports: [
     BrowserModule,

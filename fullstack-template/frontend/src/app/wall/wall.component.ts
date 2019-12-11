@@ -9,10 +9,6 @@ export class WallComponent implements OnInit {
 
   constructor() { }
 
-  activePlayers = 3   
-  init = true;
-  day = false;
-  night = false;
   ngOnInit() {
   }
 
