@@ -5,8 +5,9 @@
     <div class="header">
 
         <font color="white">{{name}}</font>
-        <input (click)="exit()" type="button" class="right">
-    
+        <button (click)="exit()" type="button" class="right"><img src="/assets/xbutton.png" style="height: 100px;           
+            width: 100px;"></button>
+
     </div>
 
     <div class="grid-container">
@@ -17,20 +18,20 @@
             <button (click)="prevp();"><img src="/assets/left.png" alt="left" width="100" height="100" /></button>
             <img [src]="prev.img" alt="deadpool" width="100" height="100" />
         </div>
-        
+
         <div class="grid-container2">
             <div class="grid-item4">
                 <p>
                     <font color="white">Round</font>
                 </p>
             </div>
-            
+
             <div class="grid-item5">
                 <p>
                     <font color="white">Voted</font>
                 </p>
             </div>
-            
+
             <div class="grid-item6">
                 <p>
                     <font color="white">Voted By</font>
@@ -38,11 +39,21 @@
             </div>
 
             <div class="grid-item7">
-                <p class="rounds"><font color="white">1</font></p>
-                <p class="rounds"><font color="white">2</font></p>
-                <p class="rounds"><font color="white">3</font></p>
-                <p class="rounds"><font color="white">4</font></p>
-                <p class="rounds"><font color="white">5</font></p>
+                <p class="rounds">
+                    <font color="white">1</font>
+                </p>
+                <p class="rounds">
+                    <font color="white">2</font>
+                </p>
+                <p class="rounds">
+                    <font color="white">3</font>
+                </p>
+                <p class="rounds">
+                    <font color="white">4</font>
+                </p>
+                <p class="rounds">
+                    <font color="white">5</font>
+                </p>
             </div>
 
             <div class="grid-item8">
@@ -75,7 +86,7 @@
                     <img src="/assets/avatars/mario.png" alt="mario" width="80" height="80" />
                 </p>
                 <p class="grid-item10">
-                        <font color="red">DEAD</font>
+                    <font color="red">DEAD</font>
                 </p>
             </div>
         </div>

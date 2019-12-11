@@ -20,15 +20,9 @@
     align-self: center;
   }
   
-  input.right {
-      background-image:url(/assets/xbutton.png);
+  .right {
       background-color: transparent; 
-      background-repeat: no-repeat;  
       border: none;           
-      cursor: pointer;        
-      height: 100px;           
-      width: 100px;           
-      background-size: 100%;
       position: absolute;
       right: 50px;
   }

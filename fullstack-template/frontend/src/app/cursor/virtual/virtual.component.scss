@@ -1,0 +1,27 @@
+.vcursor {
+  opacity: 0;
+  z-index: 10000;
+  position: absolute;
+}
+
+.cursor-outer {
+  position: absolute;
+  z-index: 10000;
+}
+
+.loading{
+  position: absolute;
+  overflow: hidden;
+}
+
+.black {
+  position:relative;
+  opacity: 0.8;
+}
+#cursor{
+  background: url("/assets/gun.png");
+  background-size:     cover;
+  background-repeat:   no-repeat;
+  background-position: center center; 
+  border-radius:0;
+}

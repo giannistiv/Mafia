@@ -9,9 +9,11 @@ import { PlayerschoiceComponent } from './playerschoice/playerschoice.component'
 import { SmarttvComponent } from './smarttv/smarttv.component';
 import { BackendTesterComponent } from './backend-tester/backend-tester.component';
 import { PlayerhistoryComponent } from './playerhistory/playerhistory.component';
+import { VirtualComponent } from './cursor/virtual/virtual.component';
 
 const routes: Routes = [
   { path: 'backend' , component: BackendTesterComponent},
+  { path: 'virtual' , component:VirtualComponent},
   { path: 'mobile' , component: MobileComponent},
   { path: 'mobile-init' , component: MobileInitComponent},
   { path: 'mobile-history' , component: MobileHistoryComponent},
