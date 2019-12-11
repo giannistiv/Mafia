@@ -14,8 +14,8 @@
             <p>
                 <font color="white">Previous Player</font>
             </p>
-            <button><img src="/assets/left.png" alt="left" width="100" height="100" /></button>
-            <img src="/assets/avatars/deadpool.png" alt="deadpool" width="100" height="100" />
+            <button (click)="prevp();"><img src="/assets/left.png" alt="left" width="100" height="100" /></button>
+            <img [src]="prev.img" alt="deadpool" width="100" height="100" />
         </div>
         
         <div class="grid-container2">
@@ -84,8 +84,8 @@
             <p>
                 <font color="white">Next Player</font>
             </p>
-            <img src="/assets/avatars/mario.png" alt="mario" width="100" height="100" />
-            <button><img src="/assets/right.png" alt="right" width="100" height="100" /></button>
+            <img [src]="next.img" alt="mario" width="100" height="100" />
+            <button (click)="nextp();"><img src="/assets/right.png" alt="right" width="100" height="100" /></button>
         </div>
     </div>
 

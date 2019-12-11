@@ -147,6 +147,6 @@
 
     </div> -->
     </div>
-    <ami-fullstack-playerhistory [name]="name" [image]="img" (ExitMessage)="messagesfromexit($event)" *ngIf="history"></ami-fullstack-playerhistory>
+    <ami-fullstack-playerhistory [prev]="prev" [next]="next" [name]="name" [image]="img" (ExitMessage)="messagesfromexit($event)" (NextMessage)="messagesfromnext($event)" *ngIf="history"></ami-fullstack-playerhistory>
 
 <router-outlet></router-outlet>
