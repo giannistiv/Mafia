@@ -1,4 +1,4 @@
-import { Component, OnInit,Output,EventEmitter } from '@angular/core';
+import { Component, OnInit,Output,EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'ami-fullstack-mobile-init2',
@@ -8,6 +8,8 @@ import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 export class MobileInit2Component implements OnInit {
 
   @Output() Init2messages= new EventEmitter();
+  @Input() imputImg;
+  @Input() inputName;
 
   constructor() { }
 

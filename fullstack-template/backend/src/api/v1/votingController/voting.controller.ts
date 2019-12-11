@@ -6,10 +6,7 @@ import { resolve } from 'dns';
 
 export class VotingController {
 
-    static votingData = [
-        {"username" : "tsirakos" , "name":"Deadpool" , "img":"assets/avatars/deadpool.png" , "votes":2 , "voted":["Pikachu"] , "votedBy" : ["Pikachu" , "Zelda"]},
-        {"username" : "gazis" , "name" : "Iron Man" , "img":"assets/avatars/ironman.png" , "votes" : 0 , "voted":[] , "votedBy":[]}
-    ]
+    static votingData : any = [];
 
     /**
      * Apply all routes for example
@@ -36,20 +33,35 @@ export class VotingController {
         var body = req.body;
         if(body.name == undefined || body.vote == undefined) res.send(300).send({"message":"Incomplete body"});
 
-        
-        VotingController.votingData.forEach((elem) => {
-            if(elem.name === body.vote){
-                elem.votes = elem.votes + 1;
-                elem.votedBy.push(body.name);
-            }else if(elem.name === body.name){
-                elem.voted.push(body.vote);
+        console.log(body);
+        var voter;
+        var votee;
+        for(var i = 0; i < VotingController.votingData.length; i++){
+            if(VotingController.votingData[i].char.name == body.name){
+                voter = i 
+            }else if(VotingController.votingData[i].char.name == body.vote){
+                votee = i
             }
-        })
+        }
+
+        console.log(VotingController.votingData[voter] , VotingController.votingData[votee]);
+        console.log(voter , votee);
+        VotingController.votingData[votee].votes = VotingController.votingData[votee].votes + 1;
+        VotingController.votingData[votee].votedBy.push(VotingController.votingData[voter].char);
+        
+        VotingController.votingData[voter].voted.push(VotingController.votingData[votee].char);
+        // VotingController.votingData.forEach((elem) => {
+        //     if(elem.char.name === body.vote){
+        //         elem.votes = elem.votes + 1;
+        //         elem.votedBy.push(body.name);
+        //     }else if(elem.name === body.name){
+        //         elem.voted.push(body.vote);
+        //     }
+        // })
 
 
         const socket = DIContainer.get(SocketsService);
         socket.broadcast("voting_on_change" , VotingController.votingData);
-        
         res.status(200).send({"message":"Voting Completed"})
     }
 

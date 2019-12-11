@@ -6,8 +6,8 @@
         <p class="title">Start Game</p>
     </div>
     <button class="back" (click)="back()"> <img src="assets/back.png" style="width: 8vh;"> </button>
-    <p class="avatar">Iron-Man</p>
-    <div class="icon"> <img src="assets/avatars/ironman.png" style="width: 25vh;"> </div>
+    <p class="avatar">{{inputName}}</p>
+    <div class="icon"> <img [src]="imputImg" style="width: 25vh;"> </div>
     <div class="footer">
         <p class="ready">Waiting for other players:</p>
         <button class="check"><img src="assets/green-checked.png" style="width:8vh"></button>
