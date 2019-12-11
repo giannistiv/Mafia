@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'ami-fullstack-playerhistory',
@@ -6,10 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./playerhistory.component.scss']
 })
 export class PlayerhistoryComponent implements OnInit {
-
+  
+  @Output() ExitMessage= new EventEmitter();
+ 
   constructor() { }
 
+  @Input() image : String;
+  @Input() name : String;
+
   ngOnInit() {
+  }
+
+  exit(){
+    this.ExitMessage.emit("exit");
   }
 
 }

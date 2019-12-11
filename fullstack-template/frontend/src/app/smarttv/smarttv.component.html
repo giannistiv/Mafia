@@ -1,87 +1,18 @@
-<style>
-  :host {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 14px;
-    color: #333;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin: 8px 0;
-  }
-
-  p {
-    margin: 0;
-  }
-
-  .spacer {
-    flex: 1;
-  }
-
-  .toolbar {
-    height: 60px;
-    margin: -8px;
-    display: flex;
-    align-items: center;
-    background-color: #1976d2;
-    color: white;
-    font-weight: 600;
-  }
-
-  .toolbar img {
-    margin: 0 16px;
-  }
-
-  svg#rocket {
-    width: 80px;
-    position: absolute;
-    left: -10px;
-    top: -24px;
-  }
-
-  svg#rocket-smoke {
-    height: 100vh;
-    position: absolute;
-    top: 10px;
-    right: 180px;
-    z-index: -10;
-  }
-
-  a,
-  a:visited,
-  a:hover {
-    color: #1976d2;
-    text-decoration: none;
-  }
-
-  a:hover {
-    color: #125699;
-  }
-
-</style>
-
 <div class="overlay">
 
   <!-- Avatars -->
 
-  <div class="grid-container">
+  <div class="grid-container" *ngIf="!history">
     <div class="grid-item"> 
-      <img src="/assets/avatars/batman.png" alt="batman" width="220" height="220" /> 
+      <button (click)="showhistory(); put('/assets/avatars/batman.png','Batman');"><img src="/assets/avatars/batman.png" alt="batman" width="220" height="220" /></button> 
     </div>
 
     <div class="grid-item"> 
-      <img src="/assets/avatars/deadpool.png" alt="deadpool" width="210" height="228" /> 
+      <button (click)="showhistory(); put('/assets/avatars/deadpool.png','Deadpool');"><img src="/assets/avatars/deadpool.png" alt="deadpool" width="210" height="228" /></button> 
     </div>
 
     <div class="grid-item"> 
-      <img src="/assets/avatars/ironman.png" alt="ironman" width="220" height="227" /> 
+      <button (click)="showhistory(); put('/assets/avatars/ironman.png','Ironman');"><img src="/assets/avatars/ironman.png" alt="ironman" width="220" height="227" /></button>
     </div>
 
     <div class="grid-item"> 
@@ -97,15 +28,15 @@
     </div>
 
     <div class="grid-item"> 
-      <img src="/assets/avatars/mario.png" alt="mario" width="220" height="220" /> 
+      <button (click)="showhistory(); put('/assets/avatars/mario.png','Mario');"><img src="/assets/avatars/mario.png" alt="mario" width="220" height="220" /></button> 
     </div>
 
     <div class="grid-item"> 
-      <img src="/assets/avatars/pikachu.png" alt="pikachu" width="262" height="247" /> 
+      <button (click)="showhistory(); put('/assets/avatars/pikachu.png','Pikachu');"><img src="/assets/avatars/pikachu.png" alt="pikachu" width="262" height="247" /></button> 
     </div>
 
     <div class="grid-item"> 
-      <img src="/assets/avatars/sonic.png" alt="sonic" width="250" height="258" /> 
+      <button (click)="showhistory(); put('/assets/avatars/sonic.png','Sonic');"><img src="/assets/avatars/sonic.png" alt="sonic" width="250" height="258" /></button>
     </div>
 
     <div class="grid-item"> 
@@ -121,15 +52,15 @@
     </div>
 
     <div class="grid-item"> 
-      <img src="/assets/avatars/spiderman.png" alt="spiderman" width="220" height="220" /> 
+      <button (click)="showhistory(); put('/assets/avatars/spiderman.png','Spiderman');"><img src="/assets/avatars/spiderman.png" alt="spiderman" width="220" height="220" /></button> 
     </div>
 
     <div class="grid-item"> 
-      <img src="/assets/avatars/spongebob.png" alt="spongebob" width="250" height="250" /> 
+      <button (click)="showhistory(); put('/assets/avatars/spongebob.png','Spongebob');"><img src="/assets/avatars/spongebob.png" alt="spongebob" width="250" height="250" /></button> 
     </div>
 
     <div class="grid-item"> 
-      <img src="/assets/avatars/luigi.png" alt="bear" width="270" height="290" /> 
+      <button (click)="showhistory(); put('/assets/avatars/luigi.png','Luigi');"><img src="/assets/avatars/luigi.png" alt="bear" width="270" height="290" /></button> 
     </div>
 
     <div class="grid-item"> 
@@ -216,5 +147,6 @@
 
     </div> -->
     </div>
+    <ami-fullstack-playerhistory [name]="name" [image]="img" (ExitMessage)="messagesfromexit($event)" *ngIf="history"></ami-fullstack-playerhistory>
 
 <router-outlet></router-outlet>

@@ -40,6 +40,7 @@
     display: grid;
     grid-template-columns: 20% 60% 20%;
     padding-top: 200px;
+    overflow: hidden;
 }
 
   .grid-item1 {
@@ -71,6 +72,7 @@
     height: 860px;
     display: grid;
     grid-template-columns: 12% 12% 36%;
+    overflow: hidden;
   }
 
   .grid-item4 {
@@ -101,6 +103,7 @@
   .grid-item7 {
     font-size: 50px;
     text-align: center;
+    margin-top:-1vh;
   }
 
   .grid-item7 p {
@@ -140,4 +143,23 @@
     font-weight: bold;
     font-size: 72px;
     line-height: 84px;
+    margin-top:2.6vh;
+  }
+
+  .player{
+    position: fixed;
+    bottom:-20vh;
+    right:-8vh;
+    opacity:0.5;
+    overflow: hidden;
+  }
+  .rounds{
+    padding-bottom:1.8vh;
+  }
+  .voted{
+    margin-bottom:1.5vh;
+  }
+  button{
+    border:none;
+    background-color: transparent;
   }

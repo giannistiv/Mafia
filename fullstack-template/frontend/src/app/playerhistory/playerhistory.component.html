@@ -1,35 +1,11 @@
-<style>
-    :host {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-        font-size: 14px;
-        color: #333;
-        box-sizing: border-box;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        margin: 8px 0;
-    }
-
-    p {
-        margin: 0;
-    }
-</style>
-
 <div class="overlay">
 
     <!-- Avatars -->
 
     <div class="header">
 
-        <font color="white">Iron man</font>
-        <input type="button" class="right">
+        <font color="white">{{name}}</font>
+        <input (click)="exit()" type="button" class="right">
     
     </div>
 
@@ -38,7 +14,7 @@
             <p>
                 <font color="white">Previous Player</font>
             </p>
-            <img src="/assets/left.png" alt="left" width="100" height="100" />
+            <button><img src="/assets/left.png" alt="left" width="100" height="100" /></button>
             <img src="/assets/avatars/deadpool.png" alt="deadpool" width="100" height="100" />
         </div>
         
@@ -62,24 +38,24 @@
             </div>
 
             <div class="grid-item7">
-                <p><font color="white">1</font></p>
-                <p><font color="white">2</font></p>
-                <p><font color="white">3</font></p>
-                <p><font color="white">4</font></p>
-                <p><font color="white">5</font></p>
+                <p class="rounds"><font color="white">1</font></p>
+                <p class="rounds"><font color="white">2</font></p>
+                <p class="rounds"><font color="white">3</font></p>
+                <p class="rounds"><font color="white">4</font></p>
+                <p class="rounds"><font color="white">5</font></p>
             </div>
 
             <div class="grid-item8">
-                <img src="/assets/avatars/deadpool.png" alt="deadpool" width="80" height="80" />
-                <img src="/assets/avatars/spiderman.png" alt="spiderman" width="80" height="80" />
-                <img src="/assets/avatars/spiderman.png" alt="spiderman" width="80" height="80" />
-                <img src="/assets/avatars/spongebob.png" alt="spongebob" width="80" height="80" />
+                <img class="voted" src="/assets/avatars/deadpool.png" alt="deadpool" width="80" height="80" />
+                <img class="voted" src="/assets/avatars/spiderman.png" alt="spiderman" width="80" height="80" />
+                <img class="voted" src="/assets/avatars/spiderman.png" alt="spiderman" width="80" height="80" />
+                <img class="voted" src="/assets/avatars/spongebob.png" alt="spongebob" width="80" height="80" />
             </div>
 
             <div class="grid-item9">
                 <p>
                     <img src="/assets/avatars/spongebob.png" alt="spongebob" width="80" height="80" />
-                    <img src="/assets/avatars/bear.png" alt="bear" width="80" height="80" />
+                    <img src="/assets/avatars/luigi.png" alt="bear" width="80" height="80" />
                     <img src="/assets/avatars/deadpool.png" alt="deadpool" width="80" height="80" />
                     <img src="/assets/avatars/pikachu.png" alt="pikachu" width="80" height="80" />
                 </p>
@@ -89,12 +65,12 @@
                     <img src="/assets/avatars/sonic.png" alt="sonic" width="80" height="80" />
                 </p>
                 <p>
-                    <img src="/assets/avatars/bear.png" alt="bear" width="80" height="80" />
+                    <img src="/assets/avatars/luigi.png" alt="bear" width="80" height="80" />
                     <img src="/assets/avatars/deadpool.png" alt="deadpool" width="80" height="80" />
                 </p>
                 <p>
                     <img src="/assets/avatars/spongebob.png" alt="spongebob" width="80" height="80" />
-                    <img src="/assets/avatars/bear.png" alt="bear" width="80" height="80" />
+                    <img src="/assets/avatars/luigi.png" alt="bear" width="80" height="80" />
                     <img src="/assets/avatars/sonic.png" alt="sonic" width="80" height="80" />
                     <img src="/assets/avatars/mario.png" alt="mario" width="80" height="80" />
                 </p>
@@ -109,8 +85,10 @@
                 <font color="white">Next Player</font>
             </p>
             <img src="/assets/avatars/mario.png" alt="mario" width="100" height="100" />
-            <img src="/assets/right.png" alt="right" width="100" height="100" />
+            <button><img src="/assets/right.png" alt="right" width="100" height="100" /></button>
         </div>
     </div>
+
+    <div class="player"><img [src]="image" style="width:50vh"></div>
 
 </div>
