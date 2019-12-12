@@ -72,7 +72,7 @@ export class NameService {
     this.personalData = data;
   }
 
-  public getPersonalData(){
+  public getPersonalData() : any {
     return this.personalData;
   }
 
