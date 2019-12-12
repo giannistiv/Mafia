@@ -3,6 +3,7 @@ import { NotFound, BadRequest } from 'http-errors';
 import { DIContainer, MinioService, SocketsService } from '@app/services';
 import { logger } from '../../../utils/logger';
 import { resolve } from 'dns';
+import { VotingController } from '../votingController/voting.controller';
 
 export class InitController {
 
@@ -71,9 +72,13 @@ export class InitController {
                 InitController.charactersMapping[i].available = false;
             }
         }
+            
+        //TODO add random role to player Added!
+
         console.log("Adding Player" , body);
         InitController.playerChoises.push(body);
 
+        
         //Sending a broadcast message to all clients
         const socketService = DIContainer.get(SocketsService);
         socketService.broadcast("icons_on_change", InitController.charactersMapping);
@@ -84,12 +89,12 @@ export class InitController {
         res.status(200).send(InitController.playerChoises);
     }
 
-
     public startGame(req: Request , res: Response){
         
         const socket = DIContainer.get(SocketsService);
         socket.broadcast("start_game" , "");
-        res.status(200).send();
+        VotingController.setData(InitController.playerChoises)
+        res.status(200).end();
 
     }
 

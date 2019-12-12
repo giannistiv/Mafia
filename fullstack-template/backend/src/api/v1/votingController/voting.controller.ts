@@ -3,6 +3,8 @@ import { NotFound, BadRequest } from 'http-errors';
 import { DIContainer, MinioService, SocketsService } from '@app/services';
 import { logger } from '../../../utils/logger';
 import { resolve } from 'dns';
+import { Socket } from 'dgram';
+import SocketIORedis = require('socket.io-redis');
 
 export class VotingController {
 
@@ -29,6 +31,13 @@ export class VotingController {
     }
 
 
+    static setData(data :any){
+        VotingController.votingData = data;
+        console.log('%c Got voting data from init controller' , 'color:green');
+        const socket = DIContainer.get(SocketsService);
+        socket.broadcast("change_screens" , "");
+    }
+
     public votePlayer(req: Request , res:Response){
         var body = req.body;
         if(body.name == undefined || body.vote == undefined) res.send(300).send({"message":"Incomplete body"});
@@ -50,15 +59,6 @@ export class VotingController {
         VotingController.votingData[votee].votedBy.push(VotingController.votingData[voter].char);
         
         VotingController.votingData[voter].voted.push(VotingController.votingData[votee].char);
-        // VotingController.votingData.forEach((elem) => {
-        //     if(elem.char.name === body.vote){
-        //         elem.votes = elem.votes + 1;
-        //         elem.votedBy.push(body.name);
-        //     }else if(elem.name === body.name){
-        //         elem.voted.push(body.vote);
-        //     }
-        // })
-
 
         const socket = DIContainer.get(SocketsService);
         socket.broadcast("voting_on_change" , VotingController.votingData);
