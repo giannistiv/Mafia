@@ -1,4 +1,4 @@
-import { Component, OnInit,Output,EventEmitter } from '@angular/core';
+import { Component, Input , OnInit,Output,EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'ami-fullstack-mobile-header',
@@ -11,6 +11,9 @@ export class MobileHeaderComponent implements OnInit {
   @Output() DayMessages= new EventEmitter();
   @Output() HistoryMessages= new EventEmitter();
 
+
+  @Input() name;
+  @Input() img;
   constructor() { }
   
   ngOnInit() {

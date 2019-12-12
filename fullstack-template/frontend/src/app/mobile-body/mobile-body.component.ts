@@ -16,7 +16,7 @@ export class MobileBodyComponent implements OnInit {
   }
 
   changeimg(){
-    this.imgMessage.emit(this.image);
+    this.imgMessage.emit({ "img" : this.image , "name" : this.name});
   }
 
 }

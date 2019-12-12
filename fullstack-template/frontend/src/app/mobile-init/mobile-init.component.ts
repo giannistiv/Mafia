@@ -1,6 +1,8 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { SocketsService } from '../global/services';
 import { RequestService } from '../services/request.service';
+import { Router } from '@angular/router';
+import { NameService } from '../services/name.service';
 
 @Component({
   selector: 'ami-fullstack-mobile-init',
@@ -15,7 +17,9 @@ export class MobileInitComponent implements OnInit {
   constructor(
     private socketService : SocketsService,
     private requestService : RequestService,
-    private cdr : ChangeDetectorRef
+    private cdr : ChangeDetectorRef,
+    private router : Router,
+    private nameService : NameService
   ) {}
 
   serverAvatars = [];
@@ -57,9 +61,13 @@ export class MobileInitComponent implements OnInit {
     })
 
 
+  this.socketService.syncMessages("change_screens").subscribe(() => {
+    this.router.navigateByUrl("/mobile");
+  })
 
     this.socketService.syncMessages("start_game").subscribe(() => {
       console.log("adding player" , this.playerInfo);
+      this.nameService.setPersonalData(this.playerInfo);
       this.requestService.addPlayer(this.playerInfo).then((data) => console.log(data)).catch(err => console.error(err));
     })
     
