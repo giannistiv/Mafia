@@ -6,7 +6,7 @@
  *  - add this file in src/app
  */
 import { Injectable } from '@angular/core';
-import Artyom from '../../node_modules/artyom.js/build/artyom';
+import Artyom from './artyom.window.js';
 
 @Injectable({
   providedIn: 'root'
@@ -31,12 +31,11 @@ export class SmartSpeakerService {
         listen: true, // Start recognizing
         debug: false, // Show everything in the console
         speed: 1, // talk normally
-        //name: 'Bot' //set a key phrase to say before each command
+        name: 'Bot' //set a key phrase to say before each command
       }).then(function () {
         console.log('Smart Speaker is ready');
       });
     }, 250);
-
   }
 
   /**********************/
@@ -82,5 +81,4 @@ export class SmartSpeakerService {
   }
 
   /**********************/
-
 }

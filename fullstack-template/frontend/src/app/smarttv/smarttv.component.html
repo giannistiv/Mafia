@@ -1,78 +1,110 @@
+<head>
+    <script src="artyom.window.min.js"></script>
+</head>
+
 <div class="overlay">
 
   <!-- Avatars -->
 
   <div class="grid-container" *ngIf="!history">
-    <div class="grid-item"> 
-      <button (click)="showhistory(); put('/assets/avatars/batman.png','Batman');"><img src="/assets/avatars/batman.png" alt="batman" width="220" height="220" /></button> 
+    <div class="grid-item">
+      <button (click)="showhistory(); put('/assets/avatars/batman.png','Batman');"><img src="/assets/avatars/batman.png"
+          alt="batman" width="220" height="220" /></button>
     </div>
 
-    <div class="grid-item"> 
-      <button (click)="showhistory(); put('/assets/avatars/deadpool.png','Deadpool');"><img src="/assets/avatars/deadpool.png" alt="deadpool" width="210" height="228" /></button> 
+    <div class="grid-item">
+      <button (click)="showhistory(); put('/assets/avatars/deadpool.png','Deadpool');"><img
+          src="/assets/avatars/deadpool.png" alt="deadpool" width="210" height="228" /></button>
     </div>
 
-    <div class="grid-item"> 
-      <button (click)="showhistory(); put('/assets/avatars/ironman.png','Ironman');"><img src="/assets/avatars/ironman.png" alt="ironman" width="220" height="227" /></button>
+    <div class="grid-item">
+      <button (click)="showhistory(); put('/assets/avatars/ironman.png','Ironman');"><img
+          src="/assets/avatars/ironman.png" alt="ironman" width="220" height="227" /></button>
     </div>
 
-    <div class="grid-item"> 
-        <p><font color="white">Batman</font></p>
-    </div>
-    
-    <div class="grid-item"> 
-      <p><font color="white">Deadpool</font></p>
-    </div>
-    
-    <div class="grid-item"> 
-      <p><font color="white">Ironman</font></p>
+    <div class="grid-item">
+      <p>
+        <font color="white">Batman</font>
+      </p>
     </div>
 
-    <div class="grid-item"> 
-      <button (click)="showhistory(); put('/assets/avatars/mario.png','Mario');"><img src="/assets/avatars/mario.png" alt="mario" width="220" height="220" /></button> 
+    <div class="grid-item">
+      <p>
+        <font color="white">Deadpool</font>
+      </p>
     </div>
 
-    <div class="grid-item"> 
-      <button (click)="showhistory(); put('/assets/avatars/pikachu.png','Pikachu');"><img src="/assets/avatars/pikachu.png" alt="pikachu" width="262" height="247" /></button> 
+    <div class="grid-item">
+      <p>
+        <font color="white">Ironman</font>
+      </p>
     </div>
 
-    <div class="grid-item"> 
-      <button (click)="showhistory(); put('/assets/avatars/sonic.png','Sonic');"><img src="/assets/avatars/sonic.png" alt="sonic" width="250" height="258" /></button>
+    <div class="grid-item">
+      <button (click)="showhistory(); put('/assets/avatars/mario.png','Mario');"><img src="/assets/avatars/mario.png"
+          alt="mario" width="220" height="220" /></button>
     </div>
 
-    <div class="grid-item"> 
-      <p><font color="white">Mario</font></p>
-    </div>
-  
-    <div class="grid-item"> 
-      <p><font color="white">Pikachu</font></p>
-    </div>
-  
-    <div class="grid-item"> 
-      <p><font color="white">Sonic</font></p>
+    <div class="grid-item">
+      <button (click)="showhistory(); put('/assets/avatars/pikachu.png','Pikachu');"><img
+          src="/assets/avatars/pikachu.png" alt="pikachu" width="262" height="247" /></button>
     </div>
 
-    <div class="grid-item"> 
-      <button (click)="showhistory(); put('/assets/avatars/spiderman.png','Spiderman');"><img src="/assets/avatars/spiderman.png" alt="spiderman" width="220" height="220" /></button> 
+    <div class="grid-item">
+      <button (click)="showhistory(); put('/assets/avatars/sonic.png','Sonic');"><img src="/assets/avatars/sonic.png"
+          alt="sonic" width="250" height="258" /></button>
     </div>
 
-    <div class="grid-item"> 
-      <button (click)="showhistory(); put('/assets/avatars/spongebob.png','Spongebob');"><img src="/assets/avatars/spongebob.png" alt="spongebob" width="250" height="250" /></button> 
+    <div class="grid-item">
+      <p>
+        <font color="white">Mario</font>
+      </p>
     </div>
 
-    <div class="grid-item"> 
-      <button (click)="showhistory(); put('/assets/avatars/luigi.png','Luigi');"><img src="/assets/avatars/luigi.png" alt="bear" width="270" height="290" /></button> 
+    <div class="grid-item">
+      <p>
+        <font color="white">Pikachu</font>
+      </p>
     </div>
 
-    <div class="grid-item"> 
-        <p><font color="white">Spiderman</font></p>
+    <div class="grid-item">
+      <p>
+        <font color="white">Sonic</font>
+      </p>
     </div>
-  
-    <div class="grid-item"> 
-      <p><font color="white">Spongebob</font></p>
+
+    <div class="grid-item">
+      <button (click)="showhistory(); put('/assets/avatars/spiderman.png','Spiderman');"><img
+          src="/assets/avatars/spiderman.png" alt="spiderman" width="220" height="220" /></button>
     </div>
-  
-    <div class="grid-item"> 
-      <p><font color="white">Luigi</font></p>
+
+    <div class="grid-item">
+      <button (click)="showhistory(); put('/assets/avatars/spongebob.png','Spongebob');"><img
+          src="/assets/avatars/spongebob.png" alt="spongebob" width="250" height="250" /></button>
+    </div>
+
+    <div class="grid-item">
+      <button (click)="showhistory(); put('/assets/avatars/luigi.png','Luigi');"><img src="/assets/avatars/luigi.png"
+          alt="bear" width="270" height="290" />
+      </button>
+    </div>
+
+    <div class="grid-item">
+      <p>
+        <font color="white">Spiderman</font>
+      </p>
+    </div>
+
+    <div class="grid-item">
+      <p>
+        <font color="white">Spongebob</font>
+      </p>
+    </div>
+
+    <div class="grid-item">
+      <p>
+        <font color="white">Luigi</font>
+      </p>
     </div>
 
   </div>
@@ -146,7 +178,9 @@
       </svg>
 
     </div> -->
-    </div>
-    <ami-fullstack-playerhistory [prev]="prev" [next]="next" [name]="name" [image]="img" (ExitMessage)="messagesfromexit($event)" (NextMessage)="messagesfromnext($event)" *ngIf="history"></ami-fullstack-playerhistory>
+</div>
+<ami-fullstack-playerhistory [prev]="prev" [next]="next" [name]="name" [image]="img"
+  (ExitMessage)="messagesfromexit($event)" (NextMessage)="messagesfromnext($event)" *ngIf="history">
+</ami-fullstack-playerhistory>
 
 <router-outlet></router-outlet>
