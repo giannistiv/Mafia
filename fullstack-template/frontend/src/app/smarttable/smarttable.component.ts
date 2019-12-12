@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { THIS_EXPR, IfStmt } from '@angular/compiler/src/output/output_ast';
+import { SocketsService } from '../global/services';
 
 @Component({
   selector: 'ami-fullstack-smarttable',
@@ -8,7 +9,9 @@ import { THIS_EXPR, IfStmt } from '@angular/compiler/src/output/output_ast';
 })
 export class SmarttableComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private socketService : SocketsService
+  ) { }
 
   showUi = false;
   mouseX = 0;
@@ -18,6 +21,7 @@ export class SmarttableComponent implements OnInit {
   showCemetery = false;
   showWasted = false;
   showGraph = true;
+  show = false;
 
   thisRoundDeadPerson = {
     "name" : "Iron Man",
@@ -49,7 +53,11 @@ export class SmarttableComponent implements OnInit {
     this.mouseY = event.pageY;
   }
 
+
   ngOnInit() {
+    this.socketService.syncMessages("change_screens").subscribe(() => {
+      this.show = true;
+    })
   }
 
 

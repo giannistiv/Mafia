@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SocketsService } from '../global/services';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,7 @@ export class SmarttvComponent {
   public name: string;
   public prev;
   public next;
+  show = false;
 
   title = 'smarttv';
 
@@ -27,8 +29,19 @@ export class SmarttvComponent {
     { "name": "Luigi", "img": "/assets/avatars/luigi.png" },
   ]
 
+  constructor(
+    private socketService: SocketsService
+  ){
+
+  }
+
+  
   ngOnInit() {
     this.history = false;
+
+    this.socketService.syncMessages("change_screens").subscribe(()=> {
+      this.show = true;
+    })
   }
 
   booleanValue = true;

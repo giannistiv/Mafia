@@ -1,21 +1,22 @@
 <ami-fullstack-background-image type="table"></ami-fullstack-background-image>
-<ami-fullstack-handui (HandUiMesseger)="messagesFromUI($event)" *ngIf="showUi" [x]="mouseX" [y]="mouseY" class="overlay zindex2"></ami-fullstack-handui>
-<div class="overlay" id="containerDiv" (click)="coordinates($event)">
-    <div *ngIf="showGraph" id="graphDiv">
-        <ami-fullstack-livevoting-header *ngIf="showGraph"></ami-fullstack-livevoting-header>
-        <ami-fullstack-graph-row  
-        *ngFor="let row of players"  
-        [img]="row.img"
-        [inputWidth]="row.width" 
-        [inputColor]="row.color" 
-        [inputName]="row.name"
-        [votes]="row.votes">
-    </ami-fullstack-graph-row>
-</div>
-
-    <ami-fullstack-cemeterypopup  (cemeteryMessager)="messagesFromCemetery($event)" *ngIf="showCemetery zindex3"></ami-fullstack-cemeterypopup>
-    <div *ngIf="showWasted">
-        <ami-fullstack-wasted [deadPerson]="thisRoundDeadPerson" [imgStyle]="wastedImgStyle"></ami-fullstack-wasted>
+    <ami-fullstack-handui (HandUiMesseger)="messagesFromUI($event)" *ngIf="showUi" [x]="mouseX" [y]="mouseY" class="overlay zindex2"></ami-fullstack-handui>
+    <div class="overlay" *ngIf="show" id="containerDiv" (click)="coordinates($event)">
+        <div *ngIf="showGraph" id="graphDiv">
+            <ami-fullstack-livevoting-header *ngIf="showGraph"></ami-fullstack-livevoting-header>
+            <ami-fullstack-graph-row  
+            *ngFor="let row of players"  
+            [img]="row.img"
+            [inputWidth]="row.width" 
+            [inputColor]="row.color" 
+            [inputName]="row.name"
+            [votes]="row.votes">
+        </ami-fullstack-graph-row>
     </div>
-</div>
+    
+        <ami-fullstack-cemeterypopup  (cemeteryMessager)="messagesFromCemetery($event)" *ngIf="showCemetery zindex3"></ami-fullstack-cemeterypopup>
+        <div *ngIf="showWasted">
+            <ami-fullstack-wasted [deadPerson]="thisRoundDeadPerson" [imgStyle]="wastedImgStyle"></ami-fullstack-wasted>
+        </div>
+    </div>
+
 
