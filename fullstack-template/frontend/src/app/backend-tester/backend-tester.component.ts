@@ -11,6 +11,8 @@ import { NameService } from '../services/name.service';
 })
 export class BackendTesterComponent implements OnInit {
 
+
+  playersToBeAdded = [];
   constructor(
               private requestService: RequestService,
               private socketService: SocketsService,
@@ -25,6 +27,13 @@ export class BackendTesterComponent implements OnInit {
 
     this.socketService.syncMessages("icons_on_change").subscribe((data) => console.log(data))
     this.socketService.syncMessages("voting_on_change").subscribe((data) => console.log(data))
+
+
+    this.socketService.syncMessages("start_game").subscribe(() => {
+      this.playersToBeAdded.forEach((elem) => {
+        this.requestService.addPlayer(elem).then((data) => console.log(data)).catch(err => console.error(err));
+      })
+    })
   }
 
 
@@ -42,27 +51,19 @@ export class BackendTesterComponent implements OnInit {
   }
 
 
-  addPlayer(username , charname, img){
+  addPlayer(username , charname, img , color){
 
     var playerInfo = {
       "username" : username,
-      "char" : {"name" : charname , "img" : img , "color" : undefined},
+      "char" : {"name" : charname , "img" : img , "color" : color},
       "votes" : 0,
+      "width" : "0vw",
       "voted" : [],
       "votedBy" : []
     }
 
+    this.playersToBeAdded.push(playerInfo);
     this.requestService.reserve(playerInfo.char.img).then((data) => console.log("reserver" , data)).catch(err => console.error(err));
-
-    // var player = {
-    //   "username" : username,
-    //   "char" : {"name" : charname , "img" : undefined , "color" : undefined},
-    //   "votes" : 0,
-    //   "voted" : [],
-    //   "votedBy" : []
-    // }
-
-    // this.requestService.addPlayer(player).then((data) => console.log(data)).catch(err => console.log(err));
   }
 
 
@@ -70,9 +71,12 @@ export class BackendTesterComponent implements OnInit {
     this.requestService.startGame().then((data) => console.log(data)).catch(err => console.log(err));
   }
 
-  vote(player){
-    this.votingService.votePlayer(player).then((data) => console.log(data)).catch((err) => console.error(err));
-    console.log(player);
+  vote(voter , votee){
+
+    this.requestService.vote(voter , votee).then((data) => console.log(data)).catch(err => console.error(err));
+    console.log(voter , "->" , votee);
+
+    // this.votingService.votePlayer(player).then((data) => console.log(data)).catch((err) => console.error(err));
   }
 
   getVoting(){

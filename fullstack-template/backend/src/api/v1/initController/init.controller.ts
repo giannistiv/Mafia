@@ -79,8 +79,6 @@ export class InitController {
         //TODO add random role to player Added!
 
         
-        
-        
         console.log("Adding Player" , body);
         InitController.playerChoises.push(body);
 
@@ -100,7 +98,7 @@ export class InitController {
 
 
         socket.broadcast("start_game" , "");
-
+        console.log(InitController.currentAddedPlayers , "players");
         var votingInterval = setInterval(() => {
             if(InitController.playerChoises.length == InitController.currentAddedPlayers){
                 VotingController.setData(InitController.playerChoises)

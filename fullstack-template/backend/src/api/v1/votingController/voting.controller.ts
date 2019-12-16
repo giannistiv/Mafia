@@ -5,10 +5,12 @@ import { logger } from '../../../utils/logger';
 import { resolve } from 'dns';
 import { Socket } from 'dgram';
 import SocketIORedis = require('socket.io-redis');
+import { PRECONDITION_FAILED } from 'http-status-codes';
 
 export class VotingController {
 
     static votingData : any = [];
+    static Players : any = 0;
 
     /**
      * Apply all routes for example
@@ -25,26 +27,29 @@ export class VotingController {
         return router;
     }
 
+    
     public getVotingData(req: Request , res:Response){
         console.log("Returning Voting Data");
-        res.status(200).send(VotingController.votingData);
+        var newDataSorted = VotingController.votingData.sort((a :any, b:any) => b.votes - a.votes)
+        console.log(newDataSorted);
+        res.status(200).send(newDataSorted);
     }
 
 
     static setData(data :any){
         VotingController.votingData = data;
-        console.log('%c Got voting data from init controller' , 'color:green');
+        VotingController.Players = data.length;
+        // console.log('%c Got voting data from init controller' , 'color:green');
         const socket = DIContainer.get(SocketsService);
         socket.broadcast("change_screens" , "");
     }
 
     public votePlayer(req: Request , res:Response){
         var body = req.body;
-        if(body.name == undefined || body.vote == undefined) res.send(300).send({"message":"Incomplete body"});
-
-        console.log(body);
+        if(body.name == undefined || body.vote == undefined) res.send(315).send({"message":"Incomplete body"});
         var voter;
         var votee;
+        // console.log(VotingController.votingData)
         for(var i = 0; i < VotingController.votingData.length; i++){
             if(VotingController.votingData[i].char.name == body.name){
                 voter = i 
@@ -53,15 +58,14 @@ export class VotingController {
             }
         }
 
-        console.log(VotingController.votingData[voter] , VotingController.votingData[votee]);
-        console.log(voter , votee);
         VotingController.votingData[votee].votes = VotingController.votingData[votee].votes + 1;
         VotingController.votingData[votee].votedBy.push(VotingController.votingData[voter].char);
-        
+        VotingController.votingData[votee].width = `${(VotingController.votingData[votee].votes / VotingController.Players) * 100}vw`
+
         VotingController.votingData[voter].voted.push(VotingController.votingData[votee].char);
 
         const socket = DIContainer.get(SocketsService);
-        socket.broadcast("voting_on_change" , VotingController.votingData);
+        socket.broadcast("voting_on_change" , VotingController.votingData.sort((a :any, b:any) => b.votes - a.votes));
         res.status(200).send({"message":"Voting Completed"})
     }
 

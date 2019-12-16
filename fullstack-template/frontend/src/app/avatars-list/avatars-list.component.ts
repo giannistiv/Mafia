@@ -15,9 +15,10 @@ export class AvatarsListComponent implements OnInit {
   
   
   ngOnInit() {
-    for(var i = 0; i < this.votes; i++){
+    for(var i = 0; i < this.votes.length; i++){
       console.log("added")
-      this.player.push("assets/avatars/deadpool.png")
+      console.log(this.votes[i])
+      this.player.push(this.votes[i].img)
     }
 
   }

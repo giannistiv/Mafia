@@ -75,6 +75,7 @@ export class MobileInitComponent implements OnInit {
 
   public ready(): void
    {
+     
       this.isViewable = !this.isViewable;
       console.log(this.username);
       console.log(this.selectedObject);
@@ -84,6 +85,7 @@ export class MobileInitComponent implements OnInit {
         "char" : {"name" : this.selectedObject.name , "img" : this.selectedObject.img , "color" : this.selectedObject.color},
         "votes" : 0,
         "voted" : [],
+        "width" : "0vw",
         "votedBy" : []
       }
 

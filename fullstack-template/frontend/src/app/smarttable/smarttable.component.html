@@ -5,11 +5,12 @@
             <ami-fullstack-livevoting-header *ngIf="showGraph"></ami-fullstack-livevoting-header>
             <ami-fullstack-graph-row  
             *ngFor="let row of players"  
-            [img]="row.img"
+            [img]="row.char.img"
             [inputWidth]="row.width" 
-            [inputColor]="row.color" 
-            [inputName]="row.name"
-            [votes]="row.votes">
+            [inputColor]="row.char.color" 
+            [inputName]="row.char.name"
+            [votes]="row.votes"
+            [votedBy]="row.votedBy">
         </ami-fullstack-graph-row>
     </div>
     

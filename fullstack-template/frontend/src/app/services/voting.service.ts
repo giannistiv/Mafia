@@ -6,6 +6,9 @@ import { NameService } from './name.service';
   providedIn: 'root'
 })
 
+
+
+
 /**
  * This service will be responsible for handling and
  * having in the correct form of everything that has to do with voting
@@ -16,6 +19,7 @@ export class VotingService {
   constructor(
     private requestService: RequestService,
     private nameService : NameService) { }
+
 
   votePlayer(voteeName){
     return new Promise((resolve , reject) => {
