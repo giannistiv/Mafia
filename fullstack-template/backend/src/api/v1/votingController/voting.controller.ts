@@ -1,11 +1,7 @@
 import { Request, Response, NextFunction, Router } from 'express';
 import { NotFound, BadRequest } from 'http-errors';
 import { DIContainer, MinioService, SocketsService } from '@app/services';
-import { logger } from '../../../utils/logger';
-import { resolve } from 'dns';
-import { Socket } from 'dgram';
 import SocketIORedis = require('socket.io-redis');
-import { PRECONDITION_FAILED } from 'http-status-codes';
 
 export class VotingController {
 
@@ -27,7 +23,7 @@ export class VotingController {
         return router;
     }
 
-    
+
     public getVotingData(req: Request , res:Response){
         console.log("Returning Voting Data");
         var newDataSorted = VotingController.votingData.sort((a :any, b:any) => b.votes - a.votes)
