@@ -1,6 +1,8 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { SocketsService } from '../global/services';
 import { RequestService } from '../services/request.service';
+import { Router } from '@angular/router';
+import { NameService } from '../services/name.service';
 
 @Component({
   selector: 'ami-fullstack-mobile-init',
@@ -15,7 +17,9 @@ export class MobileInitComponent implements OnInit {
   constructor(
     private socketService : SocketsService,
     private requestService : RequestService,
-    private cdr : ChangeDetectorRef
+    private cdr : ChangeDetectorRef,
+    private router : Router,
+    private nameService : NameService
   ) {}
 
   serverAvatars = [];
@@ -57,9 +61,13 @@ export class MobileInitComponent implements OnInit {
     })
 
 
+  this.socketService.syncMessages("change_screens").subscribe(() => {
+    this.router.navigateByUrl("/mobile");
+  })
 
     this.socketService.syncMessages("start_game").subscribe(() => {
       console.log("adding player" , this.playerInfo);
+      this.nameService.setPersonalData(this.playerInfo);
       this.requestService.addPlayer(this.playerInfo).then((data) => console.log(data)).catch(err => console.error(err));
     })
     
@@ -67,6 +75,7 @@ export class MobileInitComponent implements OnInit {
 
   public ready(): void
    {
+     
       this.isViewable = !this.isViewable;
       console.log(this.username);
       console.log(this.selectedObject);
@@ -76,6 +85,7 @@ export class MobileInitComponent implements OnInit {
         "char" : {"name" : this.selectedObject.name , "img" : this.selectedObject.img , "color" : this.selectedObject.color},
         "votes" : 0,
         "voted" : [],
+        "width" : "0vw",
         "votedBy" : []
       }
 

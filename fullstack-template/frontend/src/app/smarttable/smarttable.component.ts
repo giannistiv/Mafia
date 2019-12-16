@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { THIS_EXPR, IfStmt } from '@angular/compiler/src/output/output_ast';
+import { SocketsService } from '../global/services';
+import { RequestService } from '../services/request.service';
 
 @Component({
   selector: 'ami-fullstack-smarttable',
@@ -8,7 +10,10 @@ import { THIS_EXPR, IfStmt } from '@angular/compiler/src/output/output_ast';
 })
 export class SmarttableComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private socketService : SocketsService,
+    private requestService : RequestService
+  ) { }
 
   showUi = false;
   mouseX = 0;
@@ -18,6 +23,7 @@ export class SmarttableComponent implements OnInit {
   showCemetery = false;
   showWasted = false;
   showGraph = true;
+  show = false;
 
   thisRoundDeadPerson = {
     "name" : "Iron Man",
@@ -29,15 +35,7 @@ export class SmarttableComponent implements OnInit {
     "height":"400px"
   }
 
-  players = [
-    {"width" : "40vw" , "color" : "red" , "name" : "DeadPool" , "img" : "assets/avatars/deadpool.png" , "votes" : 4},
-    {"width" : "30vw" , "color" : "yellow" , "name" : "Pikachu" , "img" : "assets/avatars/pikachu.png" , "votes" : 3},
-    {"width" : "20vw" , "color" : "orange" , "name" : "Iron Man" , "img" : "assets/avatars/ironman.png" , "votes" : 2},
-    {"width" : "10vw" , "color" : "red" , "name" : "Spiderman" , "img" : "assets/avatars/spiderman.png" , "votes" : 1},
-    {"width" : "0vw" , "color" : "brown" , "name" : "Bear" , "img" : "assets/avatars/luigi.png" , "votes" : 0},
-    {"width" : "0vw" , "color" : "blue" , "name" : "Spongebob" , "img" : "assets/avatars/spongbob.png" , "votes" : 0},
-    {"width" : "0vw" , "color" : "brown" , "name" : "Bear" , "img" : "assets/avatars/luigi.png" , "votes" : 0},
-  ]
+  players = [];
 
   coordinates(event){
     if(this.mutexTime == 1 && this.showCemetery == false){
@@ -49,7 +47,17 @@ export class SmarttableComponent implements OnInit {
     this.mouseY = event.pageY;
   }
 
+
   ngOnInit() {
+    this.socketService.syncMessages("change_screens").subscribe(() => {
+      this.show = true;
+      this.requestService.getVotingResults().then((results :any) => { this.players = results , console.log(this.players)}).catch((err) => console.error(err));
+    })
+
+
+    this.socketService.syncMessages("voting_on_change").subscribe((results : any) => {
+      this.players = results.message;
+    })
   }
 
 

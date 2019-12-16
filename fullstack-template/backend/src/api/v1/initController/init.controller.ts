@@ -3,8 +3,10 @@ import { NotFound, BadRequest } from 'http-errors';
 import { DIContainer, MinioService, SocketsService } from '@app/services';
 import { logger } from '../../../utils/logger';
 import { resolve } from 'dns';
+import { VotingController } from '../votingController/voting.controller';
 
 export class InitController {
+
 
 
     static iconAvailability = [
@@ -32,6 +34,8 @@ export class InitController {
         {"name" : "Spongebob" , "img" : "assets/avatars/spongebob.png" , "color" : "yellow", "available":true},
     ]
 
+
+    static currentAddedPlayers = 0;
 
     static playerChoises : JSON[] = []
 
@@ -71,6 +75,10 @@ export class InitController {
                 InitController.charactersMapping[i].available = false;
             }
         }
+            
+        //TODO add random role to player Added!
+
+        
         console.log("Adding Player" , body);
         InitController.playerChoises.push(body);
 
@@ -84,12 +92,20 @@ export class InitController {
         res.status(200).send(InitController.playerChoises);
     }
 
-
     public startGame(req: Request , res: Response){
         
         const socket = DIContainer.get(SocketsService);
+
+
         socket.broadcast("start_game" , "");
-        res.status(200).send();
+        console.log(InitController.currentAddedPlayers , "players");
+        var votingInterval = setInterval(() => {
+            if(InitController.playerChoises.length == InitController.currentAddedPlayers){
+                VotingController.setData(InitController.playerChoises)
+                clearInterval(votingInterval);
+            }
+        } , 500);
+        res.status(200).end();
 
     }
 
@@ -97,7 +113,9 @@ export class InitController {
         InitController.charactersMapping.forEach((icon) => {
             if(icon.img == req.body.img){
                 icon.available = false;
+                InitController.currentAddedPlayers++;
                 const socketService = DIContainer.get(SocketsService);
+                socketService.broadcast("activate_players_on_change" , InitController.currentAddedPlayers);
                 socketService.broadcast("icons_on_change", InitController.charactersMapping);
             }
         })
@@ -110,7 +128,9 @@ export class InitController {
         InitController.charactersMapping.forEach((icon) => {
             if(icon.img == req.body.img){
                 icon.available = true;
+                InitController.currentAddedPlayers--;
                 const socketService = DIContainer.get(SocketsService);
+                socketService.broadcast("activate_players_on_change" , InitController.currentAddedPlayers);
                 socketService.broadcast("icons_on_change", InitController.charactersMapping);
             }
         })

@@ -1,21 +1,28 @@
 
 <div>
-    <button (click)="testRunningServer()">Test running server</button>
-    <button (click)="addPlayer('ktsirakos','Pikachu')">Add Pikachu</button>
-    <button (click)="addPlayer('ktsirakos','Iron Man')">Add Iron Man</button>
-    <button (click)="addPlayer('ktsirakos','Sonic')">Add Sonic</button>
-    <button (click)="addPlayer('ktsirakos','Deadpool')">Add Deadpool</button>
-    <button (click)="getAvailableIcons()">Get Icons</button>
-    <button (click)="getPlayers()">Get Players</button>
+    <div>
+        <button (click)="testRunningServer()">Test running server</button>
+    </div>
+    <div>
+        <button (click)="addPlayer('ktsirakos','Pikachu' , 'assets/avatars/pikachu.png' ,'yellow')">Add Pikachu</button>
+        <button (click)="addPlayer('ktsirakos','Iron Man' ,'assets/avatars/ironman.png' , 'red')">Add Iron Man</button>
+        <button (click)="addPlayer('ktsirakos','Sonic' , 'assets/avatars/sonic.png' ,'blue')">Add Sonic</button>
+        <button (click)="addPlayer('ktsirakos','Deadpool' , 'assets/avatars/deadpool.png' ,'red')">Add Deadpool</button>
+    </div>
+    <div>
+        <button (click)="getAvailableIcons()">Get Icons</button>
+        <button (click)="getPlayers()">Get Players</button>
+    </div>
 </div>
 
 <div>
     <button (click)="startGame()">Start</button>
 </div>
 <div>
-        <button (click)="vote('Deadpool')">Vote deadpool</button>
-        <button (click)="vote('Pikachu')">Vote Pikachu</button>
-        <button (click)="vote('Iron Man')">Vote Iron man</button>
+        <button (click)="vote('Pikachu','Deadpool')">Pikachu votes Deadpool</button>
+        <button (click)="vote('Deadpool','Pikachu')">Deadpool votes Pikachu</button>
+        <button (click)="vote('Sonic','Iron Man')">Sonic Votes Iron Man</button>
+        <button (click)="vote('Iron Man','Pikachu')">Ironman Votes Pikachu</button>
 </div>
 <div>
     <button (click)="getVoting()">Get voting result</button>
