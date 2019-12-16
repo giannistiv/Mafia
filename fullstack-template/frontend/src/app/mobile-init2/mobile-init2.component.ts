@@ -8,7 +8,7 @@ import { Component, OnInit,Output,EventEmitter, Input } from '@angular/core';
 export class MobileInit2Component implements OnInit {
 
   @Output() Init2messages= new EventEmitter();
-  @Input() imputImg;
+  @Input() inputImg;
   @Input() inputName;
 
   constructor() { }
