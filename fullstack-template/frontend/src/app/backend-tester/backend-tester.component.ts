@@ -42,16 +42,27 @@ export class BackendTesterComponent implements OnInit {
   }
 
 
-  addPlayer(username , charname){
-    var player = {
+  addPlayer(username , charname, img){
+
+    var playerInfo = {
       "username" : username,
-      "char" : {"name" : charname , "img" : undefined , "color" : undefined},
+      "char" : {"name" : charname , "img" : img , "color" : undefined},
       "votes" : 0,
       "voted" : [],
       "votedBy" : []
     }
 
-    this.requestService.addPlayer(player).then((data) => console.log(data)).catch(err => console.log(err));
+    this.requestService.reserve(playerInfo.char.img).then((data) => console.log("reserver" , data)).catch(err => console.error(err));
+
+    // var player = {
+    //   "username" : username,
+    //   "char" : {"name" : charname , "img" : undefined , "color" : undefined},
+    //   "votes" : 0,
+    //   "voted" : [],
+    //   "votedBy" : []
+    // }
+
+    // this.requestService.addPlayer(player).then((data) => console.log(data)).catch(err => console.log(err));
   }
 
 
