@@ -15,87 +15,6 @@ html,body{
   background-size: 1920px 1080px;
 }
 
-.ironman {
-  /* ironman */
-  position: absolute;
-  width: 220px;
-  height: 227px;
-  left: 1505px;
-  top: 58px;
-}
-
-.bear {
-  /* bear */
-  position: absolute;
-  width: 270px;
-  height: 290px;
-  left: 1480px;
-  top: 723px;
-}
-
-.sonic {
-  /* sonic */
-  position: absolute;
-  width: 250px;
-  height: 258px;
-  left: 1482px;
-  top: 385px;
-}
-
-.batman {
-  /* batman */
-  position: absolute;
-  width: 220px;
-  height: 220px;
-  left: 254px;
-  top: 65px;
-}
-
-.mario {
-  /* mario */
-  position: absolute;
-  width: 220px;
-  height: 255.81px;
-  left: 254px;
-  top: 380px;
-}
-
-.spiderman {
-  /* spiderman */
-  position: absolute;
-  width: 220px;
-  height: 220px;
-  left: 254px;
-  top: 759px;
-}
-
-.spongebob {
-  /* spongebob */
-  position: absolute;
-  width: 220px;
-  height: 220px;
-  left: 859px;
-  top: 759px;
-  border-radius: 100px;
-}
-
-.pikachu {
-  /* pikachu */
-  position: absolute;
-  width: 262px;
-  height: 247px;
-  left: 829px;
-  top: 385px;
-}
-
-.deadpool {
-  /* deadpool */
-  position: absolute;
-  width: 210px;
-  height: 228px;
-  left: 860px;
-  top: 65px;
-}
 
 .grid-container {
   display: grid;
@@ -104,7 +23,8 @@ html,body{
   padding: 10px;
 }
 .grid-item {
-  padding-top: 10px;
+  padding-top: 30px;
+  padding-bottom: 30px;
   font-size: 30px;
   text-align: center;
   align-self: center;
@@ -113,4 +33,10 @@ html,body{
 button{
   background-color:transparent;
   border:none;
+}
+
+.username{
+  color:white;
+  padding-top:10px;
+  letter-spacing: 2px;
 }
