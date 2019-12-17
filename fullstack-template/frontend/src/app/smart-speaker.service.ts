@@ -31,7 +31,6 @@ export class SmartSpeakerService {
         listen: true, // Start recognizing
         debug: true, // Show everything in the console
         speed: 1, // talk normally
-        name: 'Bot' //set a key phrase to say before each command
       }).then(function () {
         console.log('Smart Speaker is ready');
       });

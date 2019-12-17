@@ -16,6 +16,7 @@ export class SmarttvComponent {
   public name: string;
   public prev;
   public next;
+  public show;
   title = 'smarttv';
 
   players = [
@@ -36,12 +37,12 @@ export class SmarttvComponent {
     private socketService: SocketsService,
     private requestService : RequestService,
     private nameService : NameService,
+    private smartSpeaker : SmartSpeakerService,
   ){
 
   }
 
   
-    private smartSpeaker : SmartSpeakerService
   ngOnInit() {
     this.history = false;
 
