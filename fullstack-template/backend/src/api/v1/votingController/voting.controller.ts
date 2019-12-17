@@ -25,6 +25,7 @@ export class VotingController {
             .post('/setdata' , this.setVotingData)
             .get('/createHistoryData' , this.CreateHistoryData)
             .post('/removevote' , this.removeVote)
+            .get('/die' , this.SomeoneHasToDie)
         return router;
     }
 
@@ -46,8 +47,11 @@ export class VotingController {
         var currentRound = VotingController.round++;
         console.log(currentRound);
 
+
         //By group
         VotingController.votingData.forEach((elem : any) => {
+
+            
             elem.history.ByRound.push({
                 "round" : currentRound,
                 "voted" : elem.voted,
@@ -64,6 +68,7 @@ export class VotingController {
                     )
                 }else{
                     found.rounds.push(currentRound);
+
                 }
 
             })
@@ -72,6 +77,14 @@ export class VotingController {
 
         res.status(200).end();
 
+    }
+
+    public SomeoneHasToDie(req : Request , res : Response){
+        var personToDie = VotingController.votingData.sort((a :any, b:any) => b.votes - a.votes)[0];
+        VotingController.votingData.splice(VotingController.votingData.indexOf(personToDie) , 1)
+
+        const socket = DIContainer.get(SocketsService);
+        socket.broadcast("on_death" , personToDie);
     }
 
 

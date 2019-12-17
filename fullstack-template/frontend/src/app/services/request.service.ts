@@ -21,7 +21,7 @@ export class RequestService {
                 private nameService: NameService
               ) { }
 
-  url = "http://192.168.1.11:8080";
+  url = "http://192.168.1.5:8080";
   testingEndpoint = "/api/initprocedure/availableicons"
   addPlayerEndpoint = "/api/initprocedure/addPlayer"
   getAvailableIconsEndpoint = "/api/initprocedure/availableicons"
@@ -97,8 +97,6 @@ export class RequestService {
   
   
   public setVotingData(){
-    
-    
     return new Promise((resolve , reject) => {
       this.http.get(this.url + this.getPlayersEndpoint).subscribe((data) => {
         console.log("Start game" , data);
