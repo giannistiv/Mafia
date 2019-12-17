@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SmartSpeakerService } from '../smart-speaker.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,6 @@ export class SmarttvComponent {
   public name: string;
   public prev;
   public next;
-
   title = 'smarttv';
 
   players = [
@@ -34,6 +34,7 @@ export class SmarttvComponent {
   booleanValue = true;
 
   showhistory() {
+    var Jarvis = new SmartSpeakerService;
     console.log(this.history);
     this.history = !this.history
     console.log(this.history);
