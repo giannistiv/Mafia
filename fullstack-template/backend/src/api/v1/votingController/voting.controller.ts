@@ -2,12 +2,15 @@ import { Request, Response, NextFunction, Router } from 'express';
 import { NotFound, BadRequest } from 'http-errors';
 import { DIContainer, MinioService, SocketsService } from '@app/services';
 import SocketIORedis = require('socket.io-redis');
+import { emitKeypressEvents } from 'readline';
 
 export class VotingController {
 
     static votingData : any = [];
     static Players : any = 0;
+    static PlayersVoted : any = 0;
 
+    static round = 1;
     /**
      * Apply all routes for example
      *
@@ -20,17 +23,94 @@ export class VotingController {
             .get('/votingresults' , this.getVotingData)
             .post('/vote' , this.votePlayer)
             .post('/setdata' , this.setVotingData)
+            .get('/createHistoryData' , this.CreateHistoryData)
+            .post('/removevote' , this.removeVote)
         return router;
     }
 
 
-    public getVotingData(req: Request , res:Response){
-        console.log("Returning Voting Data");
-        var newDataSorted = VotingController.votingData.sort((a :any, b:any) => b.votes - a.votes)
-        console.log(newDataSorted);
-        res.status(200).send(newDataSorted);
+    public ResetRound(){
+        VotingController.PlayersVoted = 0;
+
+        VotingController.votingData.forEach((elem : any) => {
+            elem.votes = 0;
+            elem.votedBy = [];
+            elem.vote = [];
+        })
     }
 
+    
+    public CreateHistoryData(req : Request , res : Response){
+
+        // var currentRound = InfoController.getRound();
+        var currentRound = VotingController.round++;
+        console.log(currentRound);
+
+        //By group
+        VotingController.votingData.forEach((elem : any) => {
+            elem.history.ByRound.push({
+                "round" : currentRound,
+                "voted" : elem.voted,
+                "votedBy" : elem.votedBy
+            })
+
+            elem.votedBy.forEach((elemVotedBy : any) => {
+
+                var found = elem.history.ByChar.find((chars :any) => chars.name == elemVotedBy.name)
+                if(found === undefined) {
+
+                    elem.history.ByChar.push(
+                        {"name" : elemVotedBy.name , "rounds" : [currentRound]}
+                    )
+                }else{
+                    found.rounds.push(currentRound);
+                }
+
+            })
+        })
+
+
+        res.status(200).end();
+
+    }
+
+
+    public removeVote(req : Request , res : Response){
+
+        var body = req.body;
+        if(body.name == undefined || body.vote == undefined) res.send(315).send({"message":"Incomplete body"});
+
+
+
+        //Delete from vote of the voter
+        console.log(body);
+        VotingController.votingData.find((elem : any) => elem.char.name == body.name).voted = [];
+        
+
+        //Delete from votedBy of the votee
+        var personToDelete = VotingController.votingData.find((elem : any) => elem.char.name == body.vote)
+                                .votedBy.find((elem :any) => elem.name == body.name);
+
+        var index = VotingController.votingData.find((elem: any) => elem.char.name == body.vote).votedBy.indexOf(personToDelete);
+        VotingController.votingData.find((elem: any) => elem.char.name == body.vote).votedBy.splice(index , 1);
+        VotingController.votingData.find((elem: any) => elem.char.name == body.vote).votes--;
+        VotingController.votingData.find((elem: any) => elem.char.name == body.vote).width = 
+                        `${(VotingController.votingData.find((elem: any) => elem.char.name == body.vote).votes / VotingController.Players) * 100}vw`
+
+        VotingController.PlayersVoted--;
+        const socket = DIContainer.get(SocketsService);
+
+        socket.broadcast("voting_on_change" , VotingController.votingData.sort((a :any, b:any) => b.votes - a.votes));
+        res.status(200).send({"message":"Deletetion Completed"})
+    }
+
+
+    public getVotingData(req: Request , res:Response){
+        // console.log("Returning Voting Data");
+        var newDataSorted = VotingController.votingData.sort((a :any, b:any) => b.votes - a.votes)
+        // console.log(newDataSorted);
+        res.status(200).send(newDataSorted);
+    }
 
     static setData(data :any){
         VotingController.votingData = data;
@@ -60,8 +140,16 @@ export class VotingController {
 
         VotingController.votingData[voter].voted.push(VotingController.votingData[votee].char);
 
+
         const socket = DIContainer.get(SocketsService);
+
         socket.broadcast("voting_on_change" , VotingController.votingData.sort((a :any, b:any) => b.votes - a.votes));
+        
+        VotingController.PlayersVoted++;
+        if(VotingController.PlayersVoted == VotingController.Players) {
+            // this.CreateHistoryData();
+            socket.broadcast("end_Round" , "");
+        }
         res.status(200).send({"message":"Voting Completed"})
     }
 

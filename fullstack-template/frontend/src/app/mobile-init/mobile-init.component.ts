@@ -86,7 +86,11 @@ export class MobileInitComponent implements OnInit {
         "votes" : 0,
         "voted" : [],
         "width" : "0vw",
-        "votedBy" : []
+        "votedBy" : [],
+        "history" : {
+          "ByRound" : [],
+          "ByChar" : []
+        }
       }
 
       this.requestService.reserve(this.playerInfo.char.img).then((data) => console.log("reserver" , data)).catch(err => console.error(err));
