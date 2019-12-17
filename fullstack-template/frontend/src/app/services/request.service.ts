@@ -21,7 +21,7 @@ export class RequestService {
                 private nameService: NameService
               ) { }
 
-  url = "http://192.168.1.11:8080";
+  url = "http://localhost:8080";
   testingEndpoint = "/api/initprocedure/availableicons"
   addPlayerEndpoint = "/api/initprocedure/addPlayer"
   getAvailableIconsEndpoint = "/api/initprocedure/availableicons"
@@ -32,6 +32,8 @@ export class RequestService {
   votingPlayerEndpoint = "/api/voting/vote"
   setVotingDataEndpoint = "/api/voting/setdata"
   getVotingResultsEndpoing = "/api/voting/votingresults"
+  deleteVoteEndpoint = "/api/voting/removevote"
+
 
 
   public checkServerRunning(){
@@ -41,9 +43,9 @@ export class RequestService {
       });
     })
   }
-
-
-
+  
+  
+  
   public addPlayer(player : any){
     this.nameService.setPersonalData(player);
     return new Promise((resolve , reject) => {
@@ -52,7 +54,7 @@ export class RequestService {
       });
     })
   }
-
+  
   public getAvailableIcons(){
     return new Promise((resolve , reject) => {
       this.http.get(this.url + this.getAvailableIconsEndpoint).subscribe((data) => {
@@ -60,7 +62,7 @@ export class RequestService {
       });
     })
   }
-
+  
   public getPlayers(){
     return new Promise((resolve , reject) => {
       this.http.get(this.url + this.getPlayersEndpoint).subscribe((data) => {
@@ -68,7 +70,7 @@ export class RequestService {
       })
     })
   }
-
+  
   public vote(user , votedName){
     return new Promise((resolve , reject) => {
       this.http.post(this.url + this.votingPlayerEndpoint , {"name" : user , "vote" : votedName}).subscribe((data) => {
@@ -76,8 +78,15 @@ export class RequestService {
       })
     })
   }
-
-
+  
+  public deleteVote(user , votedName){
+    return new Promise((resolve , reject) => {
+      this.http.post(this.url + this.deleteVoteEndpoint , {"name" : user , "vote" : votedName}).subscribe((data) => {
+        resolve(data);
+      })
+    })
+  }
+  
   public startGame(){
     return new Promise((resolve , reject) => {
       this.http.get(this.url + this.startgameEndpoint).subscribe((data) => {
@@ -85,11 +94,11 @@ export class RequestService {
       });
     })
   }
-
-
+  
+  
   public setVotingData(){
-
-
+    
+    
     return new Promise((resolve , reject) => {
       this.http.get(this.url + this.getPlayersEndpoint).subscribe((data) => {
         console.log("Start game" , data);

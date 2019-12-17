@@ -21,6 +21,13 @@ export class VotingService {
     private nameService : NameService) { }
 
 
+
+  deleteVote(voteeName){
+    return new Promise((resolve , reject) => {
+      this.requestService.deleteVote(this.nameService.getPersonalData().char.name , voteeName).then((data) => resolve(data)).catch(err => reject(err));
+    })
+  }
+
   votePlayer(voteeName){
     return new Promise((resolve , reject) => {
       this.requestService.vote(this.nameService.getPersonalData().char.name , voteeName).then((data) => resolve(data)).catch(err => reject(err));

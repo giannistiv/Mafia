@@ -59,7 +59,11 @@ export class BackendTesterComponent implements OnInit {
       "votes" : 0,
       "width" : "0vw",
       "voted" : [],
-      "votedBy" : []
+      "votedBy" : [],
+      "history" : {
+        "ByRound" : [],
+        "ByChar" : []
+      }
     }
 
     this.playersToBeAdded.push(playerInfo);
