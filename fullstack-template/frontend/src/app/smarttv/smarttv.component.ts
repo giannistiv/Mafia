@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { SocketsService } from '../global/services';
 import { RequestService } from '../services/request.service';
 import { NameService } from '../services/name.service';
+import { SmartSpeakerService } from "../smart-speaker.service";
 
 @Component({
   selector: 'app-root',
@@ -15,8 +16,6 @@ export class SmarttvComponent {
   public name: string;
   public prev;
   public next;
-  show = false;
-
   title = 'smarttv';
 
   players = [
@@ -42,6 +41,7 @@ export class SmarttvComponent {
   }
 
   
+    private smartSpeaker : SmartSpeakerService
   ngOnInit() {
     this.history = false;
 
@@ -55,11 +55,28 @@ export class SmarttvComponent {
       this.players = player;
     })
 
+
+    console.log("Heloo")
+    this.smartSpeaker.speak("I am finally working" , () => {
+      console.log("Done");
+    })
+
+    this.smartSpeaker.addCommand('how are you' , () => {
+      this.smartSpeaker.speak("I am fucking fine" , () => {});
+    })
+
+
+
+    this.smartSpeaker.addCommand('can you tell me the time' , () => {
+      this.smartSpeaker.speak("Look at your watch motherfucker bitch, GUARD" , () => {});
+    })
+
   }
 
   booleanValue = true;
 
   showhistory() {
+    // var Jarvis = new SmartSpeakerService;
     console.log(this.history);
     this.history = !this.history
     console.log(this.history);
