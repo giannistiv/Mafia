@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { SocketsService } from '../global/services';
+import { RequestService } from '../services/request.service';
+import { NameService } from '../services/name.service';
 
 @Component({
   selector: 'app-root',
@@ -18,19 +20,23 @@ export class SmarttvComponent {
   title = 'smarttv';
 
   players = [
-    { "name": "Batman", "img": "/assets/avatars/batman.png" },
-    { "name": "DeadPool", "img": "/assets/avatars/deadpool.png" },
-    { "name": "Iron Man", "img": "/assets/avatars/ironman.png" },
-    { "name": "Mario", "img": "/assets/avatars/mario.png" },
-    { "name": "Pikachu", "img": "/assets/avatars/pikachu.png" },
-    { "name": "Sonic", "img": "/assets/avatars/sonic.png" },
-    { "name": "Spiderman", "img": "/assets/avatars/spiderman.png" },
-    { "name": "Spongebob", "img": "/assets/avatars/spongebob.png" },
-    { "name": "Luigi", "img": "/assets/avatars/luigi.png" },
+    // { "name": "Batman", "img": "/assets/avatars/batman.png" },
+    // { "name": "DeadPool", "img": "/assets/avatars/deadpool.png" },
+    // { "name": "Iron Man", "img": "/assets/avatars/ironman.png" },
+    // { "name": "Mario", "img": "/assets/avatars/mario.png" },
+    // { "name": "Pikachu", "img": "/assets/avatars/pikachu.png" },
+    // { "name": "Sonic", "img": "/assets/avatars/sonic.png" },
+    // { "name": "Spiderman", "img": "/assets/avatars/spiderman.png" },
+    // { "name": "Spongebob", "img": "/assets/avatars/spongebob.png" },
+    // { "name": "Luigi", "img": "/assets/avatars/luigi.png" },
   ]
 
+  personalData :any = {};
+  
   constructor(
-    private socketService: SocketsService
+    private socketService: SocketsService,
+    private requestService : RequestService,
+    private nameService : NameService,
   ){
 
   }
@@ -42,6 +48,13 @@ export class SmarttvComponent {
     this.socketService.syncMessages("change_screens").subscribe(()=> {
       this.show = true;
     })
+    this.personalData  = this.nameService.getPersonalData();
+    console.log(this.personalData);
+    this.requestService.getPlayers().then((player : any[]) => {
+      console.log(player);
+      this.players = player;
+    })
+
   }
 
   booleanValue = true;
