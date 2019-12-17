@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SmartSpeakerService } from '../smart-speaker.service';
+import { SmartSpeakerService } from "../smart-speaker.service";
 
 @Component({
   selector: 'app-root',
@@ -27,14 +27,35 @@ export class SmarttvComponent {
     { "name": "Luigi", "img": "/assets/avatars/luigi.png" },
   ]
 
+  constructor(
+    private smartSpeaker : SmartSpeakerService
+  ){}
+
+
   ngOnInit() {
     this.history = false;
+
+    console.log("Heloo")
+    this.smartSpeaker.speak("I am finally working" , () => {
+      console.log("Done");
+    })
+
+    this.smartSpeaker.addCommand('how are you' , () => {
+      this.smartSpeaker.speak("I am fucking fine" , () => {});
+    })
+
+
+
+    this.smartSpeaker.addCommand('can you tell me the time' , () => {
+      this.smartSpeaker.speak("Look at your watch motherfucker bitch, GUARD" , () => {});
+    })
+
   }
 
   booleanValue = true;
 
   showhistory() {
-    var Jarvis = new SmartSpeakerService;
+    // var Jarvis = new SmartSpeakerService;
     console.log(this.history);
     this.history = !this.history
     console.log(this.history);

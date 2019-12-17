@@ -1,14 +1,22 @@
+/**
+ * An angular service for smart speaker based on artyom.js
+ * 
+ * In order to use it:
+ *  - install artyom.js (npm i artyom.js)
+ *  - add this file in src/app
+ */
 import { Injectable } from '@angular/core';
-import * as Artyom from './artyom.window.min.js';
+import Artyom from '../../node_modules/artyom.js/build/artyom';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SmartSpeakerService {
 
-  //private artyom: any;
-  private artyom = new Artyom();
+  public artyom: any;
+
   constructor() {
+    this.artyom = new Artyom();
   }
 
   /**********************/
@@ -21,13 +29,14 @@ export class SmartSpeakerService {
         lang: 'en-GB',
         continuous: true,// Artyom will listen forever
         listen: true, // Start recognizing
-        debug: false, // Show everything in the console
+        debug: true, // Show everything in the console
         speed: 1, // talk normally
-        //name: 'Bot' //set a key phrase to say before each command
+        name: 'Bot' //set a key phrase to say before each command
       }).then(function () {
         console.log('Smart Speaker is ready');
       });
     }, 250);
+
   }
 
   /**********************/
@@ -39,7 +48,6 @@ export class SmartSpeakerService {
    * @param onSpeakEnded called when the speech ends
    */
   speak(text: string, onSpeakEnded?: () => any) {
-    this.artyom.initializeArtyom();
     this.artyom.say(text, {
       onStart: () => {
         //in case you would like to run code when speak starts
@@ -74,4 +82,5 @@ export class SmartSpeakerService {
   }
 
   /**********************/
+
 }
