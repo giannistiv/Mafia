@@ -31,7 +31,7 @@ export class SmartSpeakerService {
         listen: true, // Start recognizing
         debug: true, // Show everything in the console
         speed: 1, // talk normally
-        name: 'Bot' //set a key phrase to say before each command
+        //name: 'Alfred' //set a key phrase to say before each command
       }).then(function () {
         console.log('Smart Speaker is ready');
       });
@@ -51,6 +51,7 @@ export class SmartSpeakerService {
     this.artyom.say(text, {
       onStart: () => {
         //in case you would like to run code when speak starts
+        
       },
       onEnd: () => {
         if (onSpeakEnded)
@@ -81,6 +82,16 @@ export class SmartSpeakerService {
     this.initializeArtyom();
   }
 
-  /**********************/
+  stopSpeaker() {
+      this.artyom.shutUp();
+      //this.artyom.fatality();
+      console.log("stopped");
+  }
 
+  killSpeaker() {
+    this.artyom.fatality();
+    console.log("killed");
+  }
+
+  /**********************/
 }
