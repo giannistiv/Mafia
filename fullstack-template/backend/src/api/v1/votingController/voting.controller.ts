@@ -33,19 +33,20 @@ export class VotingController {
 
 
     public NextRound(req : Request , res: Response){
-        this.ResetRound();
+        VotingController.ResetRound();
 
         //call to increease round counter
         //function to make all screens again to voting (socket for go to day again!)
     }
 
-    public ResetRound(){
+    static ResetRound(){
         VotingController.PlayersVoted = 0;
 
         VotingController.votingData.forEach((elem : any) => {
             elem.votes = 0;
             elem.votedBy = [];
-            elem.vote = [];
+            elem.voted = [];
+            elem.width = "0vw"
         })
     }
 
@@ -60,7 +61,6 @@ export class VotingController {
         //By group
         VotingController.votingData.forEach((elem : any) => {
 
-            
             elem.history.ByRound.push({
                 "round" : currentRound,
                 "voted" : elem.voted,
@@ -82,6 +82,8 @@ export class VotingController {
             })
         })
 
+
+        VotingController.ResetRound();
 
         res.status(200).end();
 

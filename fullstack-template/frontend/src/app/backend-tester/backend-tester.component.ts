@@ -60,6 +60,11 @@ export class BackendTesterComponent implements OnInit {
       "width" : "0vw",
       "voted" : [],
       "votedBy" : [],
+      "role" : {
+        "name" : "Doctor",
+        "img" : "assets/roles/doctor.png",
+        "descrition" : "Allied with the Innocents, the Doctor role protects others at night."
+      },
       "history" : {
         "ByRound" : [],
         "ByChar" : []

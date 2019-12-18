@@ -7,9 +7,9 @@
     <div class="secondoverlay" id="secondoverlay">
         <div id="gridContainer" class="grid-container">
             <div class="grid-item" *ngFor="let player of dead">
-                <ami-fullstack-avatar-icon [imgStyle]="cemeteryImagesStyle" [img]="player.img"></ami-fullstack-avatar-icon>
+                <ami-fullstack-avatar-icon [imgStyle]="cemeteryImagesStyle" [img]="player.char.img"></ami-fullstack-avatar-icon>
                 <div class="roleDiv">
-                    <img class="role" [src]="player.role"/>
+                    <img class="role" [src]="player.role.img"/>
                 </div>
             </div>
         </div>

@@ -56,7 +56,9 @@ export class SmarttvComponent {
       this.players = player;
     })
       
-    this.smartSpeaker.addCommand(['Phase 1'], () => {
+    this.smartSpeaker.speak("Welcome to the Mafia game" , () => {})
+
+    this.smartSpeaker.addCommand(['Phase 1' , 'Start Game'], () => {
       this.smartSpeaker.speak("Welcome to Mafia, my name is Alfred and I will be your host for today", () => { });
       this.smartSpeaker.speak("Say Alfred help, for a list of commands that I can assist you with", () => { });
       this.smartSpeaker.speak("But first, choose your name and avatar in your mobile device", () => { });
@@ -66,7 +68,7 @@ export class SmarttvComponent {
       this.smartSpeaker.speak("Help instructions follow", () => { });  //have to add some help commands, like how many are alive, and who died in the last round
     })
 
-    this.smartSpeaker.addCommand(['Phase 2'], () => {
+    this.smartSpeaker.addCommand(['Phase 2' , 'We are ready'], () => {
       this.smartSpeaker.speak("The game is ready to start", () => { });
       this.smartSpeaker.speak("A role has been assigned to you", () => { });
       this.smartSpeaker.speak("You can see that role by pressing the button in the top left corner of your phone", () => { });
