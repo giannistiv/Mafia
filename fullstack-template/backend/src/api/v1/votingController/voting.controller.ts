@@ -100,7 +100,6 @@ export class VotingController {
         var personToDie = VotingController.votingData.sort((a :any, b:any) => b.votes - a.votes)[0];
         VotingController.votingData.splice(VotingController.votingData.indexOf(personToDie) , 1)
 
-        
 
         const socket = DIContainer.get(SocketsService);
         socket.broadcast("on_death" , personToDie);

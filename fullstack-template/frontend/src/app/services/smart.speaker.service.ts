@@ -45,14 +45,14 @@ export class MafiaSmartSpeakerService {
         })
 
 
-        // this.smartSpeaker.addCommand([] , () => {
-            
-        // })
+        this.smartSpeaker.addCommand(['We are ready to play' , 'Lets play' , 'Start game'] , () => {
+            this.readyPlayersScript();
+        })
 
 
-        // this.smartSpeaker.addCommand([] , () => {
-            
-        // })
+        this.smartSpeaker.addCommand(['I want to play Mafia'] , () => {
+            this.initScript();
+        })
 
     }
 
@@ -85,6 +85,8 @@ export class MafiaSmartSpeakerService {
             this.smartSpeaker.speak("A role has been assigned to you", () => { });
             this.smartSpeaker.speak("You can see that role by pressing the button in the top left corner of your phone", () => { });
         //   })      
+
+             //this.gameStartsSrcipt()
     }
 
 

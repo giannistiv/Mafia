@@ -48,12 +48,13 @@ export class SmarttvComponent {
   ngOnInit() {
     this.history = false;
 
+    this.mafiaspeaker.initRandomQuestions();
 
     this.socketService.syncMessages("end_Round").subscribe((data) => {
         this.mafiaspeaker.endofroundScript();
     })
 
-
+  
     this.socketService.syncMessages("change_screens").subscribe(()=> {
       this.show = true;
     })

@@ -28,13 +28,13 @@ export class BackendTesterComponent implements OnInit {
 
     
     this.socketService.syncMessages("end_Round").subscribe((data) => {
-      this.mafiaspeaker.endofroundScript();
+      // this.mafiaspeaker.endofroundScript();
   })
 
     this.socketService.syncMessages("icons_on_change").subscribe((data) => console.log(data))
     this.socketService.syncMessages("voting_on_change").subscribe((data) => console.log(data))
 
-    this.mafiaspeaker.initRandomQuestions();
+    // this.mafiaspeaker.initRandomQuestions();
 
 
     this.socketService.syncMessages("start_game").subscribe(() => {
