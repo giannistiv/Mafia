@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output,EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'ami-fullstack-mobile-ability',
@@ -8,12 +8,15 @@ import { Component, OnInit } from '@angular/core';
 export class MobileAbilityComponent implements OnInit {
 
   public bio: boolean;
-
+  
+  @Output() Abilitymessages= new EventEmitter();
   constructor() { }
 
   ngOnInit() {
   }
 
-  
+  ability(){
+    this.Abilitymessages.emit("ability");
+  }
 
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit,Output,EventEmitter } from '@angular/core';
+import { SocketsService } from '../global/services';
+import { RequestService } from '../services/request.service';
 
 @Component({
   selector: 'ami-fullstack-mobile-history',
@@ -7,23 +9,39 @@ import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 })
 export class MobileHistoryComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private socketService : SocketsService,
+    private requestService : RequestService
+  ) { }
+
+  show = false;
 
   @Output() ExitMessage= new EventEmitter();
 
   players = [
-    {"name": "DeadPool", "img": "assets/avatars/deadpool.png" },
-    {"name": "Pikachu", "img": "assets/avatars/pikachu.png" },
-    {"name": "Iron Man", "img": "assets/avatars/ironman.png" },
-    {"name": "Spiderman", "img": "assets/avatars/spiderman.png" },
-    {"name": "Mario", "img": "assets/avatars/mario.png" },
-    {"name": "Luigi", "img": "assets/avatars/luigi.png" },
-    {"name": "Batman", "img": "assets/avatars/batman.png" },
-    {"name": "Sonic", "img": "assets/avatars/sonic.png" },
-    {"name": "Spongebob", "img": "assets/avatars/spongebob.png" },
+    // {"name": "DeadPool", "img": "assets/avatars/deadpool.png" },
+    // {"name": "Pikachu", "img": "assets/avatars/pikachu.png" },
+    // {"name": "Iron Man", "img": "assets/avatars/ironman.png" },
+    // {"name": "Spiderman", "img": "assets/avatars/spiderman.png" },
+    // {"name": "Mario", "img": "assets/avatars/mario.png" },
+    // {"name": "Luigi", "img": "assets/avatars/luigi.png" },
+    // {"name": "Batman", "img": "assets/avatars/batman.png" },
+    // {"name": "Sonic", "img": "assets/avatars/sonic.png" },
+    // {"name": "Spongebob", "img": "assets/avatars/spongebob.png" },
   ]
 
   ngOnInit() {
+
+    this.socketService.syncMessages("change_screens").subscribe(() => {
+      this.show = true;
+      this.requestService.getVotingResults().then((results :any) => { this.players = results , console.log(this.players)}).catch((err) => console.error(err));
+    })
+
+
+    this.socketService.syncMessages("voting_on_change").subscribe((results : any) => {
+      this.players = results.message;
+    })
+
   }
   
   exit(){

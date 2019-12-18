@@ -1,3 +1,4 @@
 <div class="phase">
-    <p>Vote</p>
+    <p *ngIf="!ability">Vote</p>
+    <p *ngIf="ability">Protect</p>
 </div>

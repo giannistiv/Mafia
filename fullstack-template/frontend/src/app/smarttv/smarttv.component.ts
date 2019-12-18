@@ -2,8 +2,12 @@ import { Component } from '@angular/core';
 import { SocketsService } from '../global/services';
 import { RequestService } from '../services/request.service';
 import { NameService } from '../services/name.service';
+<<<<<<< HEAD
 import { SmartSpeakerService } from '../smart-speaker.service';
 import { MafiaSmartSpeakerService } from '../services/smart.speaker.service';
+=======
+import { SmartSpeakerService } from "../smart-speaker.service";
+>>>>>>> GazisNew
 
 @Component({
   selector: 'app-root',
@@ -13,12 +17,12 @@ import { MafiaSmartSpeakerService } from '../services/smart.speaker.service';
 export class SmarttvComponent {
 
   public history: boolean;
+  public qrcode: boolean;
   public img: string;
   public name: string;
   public prev;
   public next;
-  show = false;
-
+  public show;
   title = 'smarttv';
 
   players = [
@@ -39,14 +43,19 @@ export class SmarttvComponent {
     private socketService: SocketsService,
     private requestService : RequestService,
     private nameService : NameService,
+<<<<<<< HEAD
     private smartSpeaker: SmartSpeakerService,
     private mafiaspeaker : MafiaSmartSpeakerService
+=======
+    private smartSpeaker : SmartSpeakerService,
+>>>>>>> GazisNew
   ){
   }
 
   
   ngOnInit() {
     this.history = false;
+    this.qrcode=false;
 
     this.mafiaspeaker.initRandomQuestions();
 
@@ -114,6 +123,32 @@ export class SmarttvComponent {
     // })
 }
 
+<<<<<<< HEAD
+=======
+
+    console.log("Mafia start")
+    this.smartSpeaker.speak("Do you want to play a game?" , () => {
+      console.log("Done");
+    })
+
+    this.smartSpeaker.addCommand('Start Mafia' , () => {
+      this.qrcode=!this.qrcode;
+      this.smartSpeaker.speak("Please scan the QR code to enter the game!" , () => {});
+    })
+
+    this.smartSpeaker.addCommand("Okay let's play" , () => {
+      this.qrcode=!this.qrcode;
+      this.smartSpeaker.speak("Thank you, Have fun" , () => {});
+    })
+
+
+
+    this.smartSpeaker.addCommand('can you tell me the time' , () => {
+      this.smartSpeaker.speak("Look at your watch motherfucker bitch, GUARD" , () => {});
+    })
+
+  }
+>>>>>>> GazisNew
 
   booleanValue = true;
 
@@ -126,6 +161,7 @@ export class SmarttvComponent {
   }
 
   showhistory() {
+    // var Jarvis = new SmartSpeakerService;
     console.log(this.history);
     this.history = !this.history
     console.log(this.history);

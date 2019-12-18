@@ -54,6 +54,23 @@ export class MafiaSmartSpeakerService {
             this.initScript();
         })
 
+    
+        // this.smartSpeaker.addCommand('Start Mafia' , () => {
+        //   this.qrcode=!this.qrcode;
+        //   this.smartSpeaker.speak("Please scan the QR code to enter the game!" , () => {});
+        // })
+    
+        // this.smartSpeaker.addCommand("Okay let's play" , () => {
+        //   this.qrcode=!this.qrcode;
+        //   this.smartSpeaker.speak("Thank you, Have fun" , () => {});
+        // })
+    
+    
+    
+        this.smartSpeaker.addCommand('can you tell me the time' , () => {
+          this.smartSpeaker.speak("Look at your watch motherfucker bitch, GUARD" , () => {});
+        })
+
     }
 
     public initScript(){
