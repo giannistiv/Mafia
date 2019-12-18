@@ -32,6 +32,7 @@ import { MobileAbilityComponent } from './mobile-ability/mobile-ability.componen
 import { MobileHistoryComponent } from './mobile-history/mobile-history.component';
 import { PlayerhistoryComponent } from './playerhistory/playerhistory.component';
 import { VirtualComponent } from './cursor/virtual/virtual.component';
+import { WallInitComponent } from './wall-init/wall-init.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { VirtualComponent } from './cursor/virtual/virtual.component';
     PlayerhistoryComponent,
     WallComponent,
     VirtualComponent,
+    WallInitComponent,
   ],
   imports: [
     BrowserModule,

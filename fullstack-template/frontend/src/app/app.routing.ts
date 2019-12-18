@@ -5,6 +5,7 @@ import { MobileComponent } from 'src/app/mobile/mobile.component';
 import { MobileInitComponent } from 'src/app/mobile-init/mobile-init.component';
 import { MobileHistoryComponent } from 'src/app/mobile-history/mobile-history.component';
 import { WallComponent } from './wall/wall.component';
+import { WallInitComponent } from './wall-init/wall-init.component';
 import { PlayerschoiceComponent } from './playerschoice/playerschoice.component';
 import { SmarttvComponent } from './smarttv/smarttv.component';
 import { BackendTesterComponent } from './backend-tester/backend-tester.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'mobile-init' , component: MobileInitComponent},
   { path: 'mobile-history' , component: MobileHistoryComponent},
   { path: 'wall' , component: WallComponent},
+  { path: 'wall-init' , component: WallInitComponent},
   { path: 'playerhistory' , component: PlayerhistoryComponent},
   { path: 'nightkilling' , component: PlayerschoiceComponent},
   { path: 'smarttv' , component: SmarttvComponent },
