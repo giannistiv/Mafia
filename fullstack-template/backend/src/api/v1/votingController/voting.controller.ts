@@ -23,7 +23,7 @@ export class VotingController {
             .get('/votingresults' , this.getVotingData)
             .post('/vote' , this.votePlayer)
             .post('/setdata' , this.setVotingData)
-            .get('/createHistoryData' , this.CreateHistoryData)
+            .get('/createHistoryData' , VotingController.CreateHistoryData)
             .post('/removevote' , this.removeVote)
             .get('/die' , this.SomeoneHasToDie)
             .get('/nextRound' , this.NextRound)
@@ -51,7 +51,7 @@ export class VotingController {
     }
 
     
-    public CreateHistoryData(req : Request , res : Response){
+    static  CreateHistoryData(req : Request , res : Response){
 
         // var currentRound = InfoController.getRound();
         var currentRound = VotingController.round++;
@@ -85,7 +85,10 @@ export class VotingController {
 
         VotingController.ResetRound();
 
-        res.status(200).end();
+        if(res){
+            res.status(200).end();
+        }
+
 
     }
 
@@ -170,7 +173,7 @@ export class VotingController {
         
         VotingController.PlayersVoted++;
         if(VotingController.PlayersVoted == VotingController.Players) {
-            // this.CreateHistoryData();
+            VotingController.CreateHistoryData(undefined , undefined);
             socket.broadcast("end_Round" , "");
         }
         res.status(200).send({"message":"Voting Completed"})

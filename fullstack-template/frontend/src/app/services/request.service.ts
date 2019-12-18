@@ -33,6 +33,7 @@ export class RequestService {
   setVotingDataEndpoint = "/api/voting/setdata"
   getVotingResultsEndpoing = "/api/voting/votingresults"
   deleteVoteEndpoint = "/api/voting/removevote"
+  dieEndpoint = "/api/voting/die"
 
 
 
@@ -45,6 +46,13 @@ export class RequestService {
   }
   
   
+  public die(){
+    return new Promise((resolve , reject) => {
+      this.http.get(this.url + this.dieEndpoint).subscribe((data) => {
+        resolve(data);
+      })
+    })
+  }
   
   public addPlayer(player : any){
     this.nameService.setPersonalData(player);
