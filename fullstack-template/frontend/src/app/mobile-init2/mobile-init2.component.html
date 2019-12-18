@@ -1,11 +1,22 @@
 <link href='https://fonts.googleapis.com/css?family=Redressed' rel='stylesheet'>
 
-<ami-fullstack-background-image type="mobile"></ami-fullstack-background-image>
-<div class="overlay">
-    <div class="top">
+<ami-fullstack-background-image type="mobile" *ngIf="!vote"></ami-fullstack-background-image>
+<div class="overlay" *ngIf="!vote">
+    <div class="top" *ngIf="!vote">
         <p class="title">Start Game</p>
     </div>
-    <button class="back" (click)="back()"> <img src="assets/back.png" style="width: 8vh;"> </button>
+    <button class="back" *ngIf="!vote" (click)="back()"> <img src="assets/back.png" style="width: 8vh;"> </button>
+    <button class="back2" *ngIf="vote" (click)="back()"> <img src="assets/back.png" style="width: 8vh;"> </button>
+    <p class="avatar">{{inputName}}</p>
+    <div class="icon"> <img [src]="inputImg" style="width: 25vh;"> </div>
+    <div class="footer">
+        <p class="ready">Waiting for other players:</p>
+        <button class="check"><img src="assets/green-checked.png" style="width:8vh"></button>
+    </div>
+</div>
+
+<div class="overlay2" *ngIf="vote">
+    <button class="back2" *ngIf="vote" (click)="back()"> <img src="assets/back.png" style="width: 8vh;"> </button>
     <p class="avatar">{{inputName}}</p>
     <div class="icon"> <img [src]="inputImg" style="width: 25vh;"> </div>
     <div class="footer">

@@ -5,6 +5,13 @@
     width:100%;
     overflow-x: auto;
   }
+  .overlay2 {
+    position: absolute;
+    top: 9vh;
+    left: 0;
+    width:100%;
+    overflow-x: auto;
+  }
 .top {
   background-color: transparent;
   border-bottom: solid white;
@@ -17,6 +24,15 @@
     font-family: 'Redressed';
 }
 .back{
+    height:auto;
+    width:auto;
+    vertical-align: center;
+    padding-left:1vh;
+    padding-bottom:3vh;
+    background-color:transparent;
+    border:none;
+}
+.back2{
     height:auto;
     width:auto;
     vertical-align: center;

@@ -12,6 +12,7 @@ import { SmartSpeakerService } from "../smart-speaker.service";
 export class SmarttvComponent {
 
   public history: boolean;
+  public qrcode: boolean;
   public img: string;
   public name: string;
   public prev;
@@ -45,6 +46,7 @@ export class SmarttvComponent {
   
   ngOnInit() {
     this.history = false;
+    this.qrcode=false;
 
     this.socketService.syncMessages("change_screens").subscribe(()=> {
       this.show = true;
@@ -57,13 +59,19 @@ export class SmarttvComponent {
     })
 
 
-    console.log("Heloo")
-    this.smartSpeaker.speak("I am finally working" , () => {
+    console.log("Mafia start")
+    this.smartSpeaker.speak("Do you want to play a game?" , () => {
       console.log("Done");
     })
 
-    this.smartSpeaker.addCommand('how are you' , () => {
-      this.smartSpeaker.speak("I am fucking fine" , () => {});
+    this.smartSpeaker.addCommand('Start Mafia' , () => {
+      this.qrcode=!this.qrcode;
+      this.smartSpeaker.speak("Please scan the QR code to enter the game!" , () => {});
+    })
+
+    this.smartSpeaker.addCommand("Okay let's play" , () => {
+      this.qrcode=!this.qrcode;
+      this.smartSpeaker.speak("Thank you, Have fun" , () => {});
     })
 
 

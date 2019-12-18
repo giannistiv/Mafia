@@ -2,16 +2,17 @@
 <div class="overlay">
     <ami-fullstack-mobile-header [name]="personalData.char.name" [img]="personalData.char.img" (DayMessages)="messagesfromday($event)"  (HeaderMessages)="messagesfrombio($event)" (HistoryMessages)="messagesfromhistory($event)" ></ami-fullstack-mobile-header>
 </div>
-<div class="overlay1" *ngIf="(!bio && day) && !history">
-<ami-fullstack-mobile-phase></ami-fullstack-mobile-phase>
+<div class="overlay1" *ngIf="!bio && day && !history &&!vote">
+<ami-fullstack-mobile-phase [ability]="ability"></ami-fullstack-mobile-phase>
 </div>
-<div class="overlay2" *ngIf="(!bio && day && !history)">
+<div class="overlay2" *ngIf="(!bio && day && !history &&!vote)">
     <ami-fullstack-mobile-body [image]="row.char.img" [name]="row.char.name" *ngFor="let row of players"  (imgMessage)="messagesfrombody($event)">
     </ami-fullstack-mobile-body>
 </div>
-<div class="overlay3" *ngIf="(!bio && day && !history)">
+<div class="overlay3" *ngIf="(!bio && day && !history && !vote)">
     <ami-fullstack-mobile-bottom (votingMessager)="messagesfrombottom($event)" [name]="name" [image]="img" ></ami-fullstack-mobile-bottom>
 </div>
 <ami-fullstack-mobile-bio (ExitMessage)="messagesfromexit($event)" *ngIf="bio"></ami-fullstack-mobile-bio>
-<ami-fullstack-mobile-history (ExitMessage)="messagesfromexit($event)" *ngIf="history"></ami-fullstack-mobile-history>
-<ami-fullstack-mobile-ability *ngIf="(!bio && !day)"></ami-fullstack-mobile-ability>
+<ami-fullstack-mobile-history (ExitMessage)="messagesfromexit($event)" *ngIf="!bio && day && history"></ami-fullstack-mobile-history>
+<ami-fullstack-mobile-init2 *ngIf="vote && !bio && day && !history" (votingMessager)="messagesfrombottom($event)" (Init2messages)="messagesfrominit2($event)" [inputName]="name" [inputImg]="img" [vote]="true" ></ami-fullstack-mobile-init2>
+<ami-fullstack-mobile-ability *ngIf="(!bio && !day)" (Abilitymessages)="messagesfromability($event);" ></ami-fullstack-mobile-ability>

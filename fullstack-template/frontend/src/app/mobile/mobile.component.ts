@@ -13,6 +13,8 @@ export class MobileComponent implements OnInit {
   public bio: boolean;
   public day: boolean;
   public history: boolean;
+  public vote: boolean;
+  public ability: boolean;
   public img: string;
   public name:string
   constructor(
@@ -40,6 +42,8 @@ export class MobileComponent implements OnInit {
     this.bio = false;
     this.day = true;
     this.history = false;
+    this.vote=false;
+    this.ability= false;
 
     this.personalData  = this.nameService.getPersonalData();
     console.log(this.personalData);
@@ -68,7 +72,7 @@ export class MobileComponent implements OnInit {
 
   messagesfrombody(event) {
     this.img = event.img;
-    this.name = event.name
+    this.name = event.name;
     console.log(event);
   }
 
@@ -76,7 +80,17 @@ export class MobileComponent implements OnInit {
     if(event.event == "votePressed"){
       console.log("Player" , this.nameService.getPersonalData().char.name , "votes" , event.name);
       this.votingService.votePlayer(event.name)
+      this.vote=true;
     }
+  }
+
+  messagesfrominit2(event){
+    this.vote = false;
+  }
+
+  messagesfromability($event){
+    this.ability=true;
+    this.day=!this.day;
   }
 
 

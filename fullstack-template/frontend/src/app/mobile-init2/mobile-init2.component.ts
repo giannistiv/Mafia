@@ -10,6 +10,7 @@ export class MobileInit2Component implements OnInit {
   @Output() Init2messages= new EventEmitter();
   @Input() inputImg;
   @Input() inputName;
+  @Input() vote: boolean;
 
   constructor() { }
 
@@ -19,5 +20,6 @@ export class MobileInit2Component implements OnInit {
   back(){
     this.Init2messages.emit("back");
   }
+
 
 }

@@ -6,13 +6,13 @@
     <div class="title">Votes</div>
     <div class="table">
         <div class="player" *ngFor="let row of players">
-            <div class="position">1</div>
-            <div class="avatar"><img [src]="row.img" style="width: 6vh;"></div>
+            <div class="position">{{row.char}}</div>
+            <div class="avatar"><img [src]="row.char.img" style="width: 6vh;"></div>
             <div class="username">
-                <p>{{row.name}}</p>
+                <p>{{row.char.name}}</p>
             </div>
-            <div class="votes">1</div>
-            <button class="drop_button" (click)="drop(row)"><img src="assets/expand.png" style="width: 3.2vh;"></button>
+            <div class="votes">{{row.votes}}</div>
+            <button class="drop_button" (click)="drop(row.char)"><img src="assets/expand.png" style="width: 3.2vh;"></button>
             <div class="rounds" id={{row.name}}>
                 <p>Rounds</p>
                 <p>1 2 3 5 6 </p>

@@ -1,8 +1,9 @@
 <div class="overlay">
+  <div class="qrcode" *ngIf="qrcode"><img src="assets/qrcode.png" style="width:60vh; margin-top:180px;"></div>
   <div class="grid-container" *ngIf="!history">
     <div class="grid-item" *ngFor="let row of players">
-      <button (click)="showhistory(); put(row.img,row.name);"><img [src]="row.img" alt="batman" width="220"
-          height="220" /></button>
+      <button (click)="showhistory(); put(row.img,row.name);"><img [src]="row.img" width="220"
+          height="220" *ngIf="row.img!=null"/></button>
       <p class="username">{{row.name}}</p>
     </div>
   </div>
