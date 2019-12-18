@@ -28,6 +28,7 @@ export class VotingController {
             .get('/die' , this.SomeoneHasToDie)
             .get('/nextRound' , this.NextRound)
         return router;
+
     }
 
 
@@ -135,6 +136,7 @@ export class VotingController {
 
         socket.broadcast("voting_on_change" , VotingController.votingData.sort((a :any, b:any) => b.votes - a.votes));
         res.status(200).send({"message":"Deletetion Completed"})
+        
     }
 
 

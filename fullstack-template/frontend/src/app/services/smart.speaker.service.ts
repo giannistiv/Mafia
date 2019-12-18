@@ -53,6 +53,7 @@ export class MafiaSmartSpeakerService {
         this.smartSpeaker.addCommand(['I want to play Mafia'] , () => {
             this.initScript();
         })
+        
 
     
         // this.smartSpeaker.addCommand('Start Mafia' , () => {

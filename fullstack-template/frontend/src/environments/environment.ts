@@ -4,12 +4,8 @@
 
 export const environment = {
   production: false,
-<<<<<<< HEAD
-  host: 'http://localhost:8080',
-  // host:'http://localhost:8080',
-=======
   host: 'http://192.168.1.11:8080',
->>>>>>> GazisNew
+  // host:'http://localhost:8080',
 };
 
 

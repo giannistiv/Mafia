@@ -2,12 +2,8 @@ import { Component } from '@angular/core';
 import { SocketsService } from '../global/services';
 import { RequestService } from '../services/request.service';
 import { NameService } from '../services/name.service';
-<<<<<<< HEAD
 import { SmartSpeakerService } from '../smart-speaker.service';
 import { MafiaSmartSpeakerService } from '../services/smart.speaker.service';
-=======
-import { SmartSpeakerService } from "../smart-speaker.service";
->>>>>>> GazisNew
 
 @Component({
   selector: 'app-root',
@@ -43,12 +39,8 @@ export class SmarttvComponent {
     private socketService: SocketsService,
     private requestService : RequestService,
     private nameService : NameService,
-<<<<<<< HEAD
     private smartSpeaker: SmartSpeakerService,
     private mafiaspeaker : MafiaSmartSpeakerService
-=======
-    private smartSpeaker : SmartSpeakerService,
->>>>>>> GazisNew
   ){
   }
 
@@ -59,13 +51,14 @@ export class SmarttvComponent {
 
     this.mafiaspeaker.initRandomQuestions();
 
+
     this.socketService.syncMessages("end_Round").subscribe((data) => {
         this.mafiaspeaker.endofroundScript();
     })
 
   
     this.socketService.syncMessages("change_screens").subscribe(()=> {
-      this.show = true;
+      this.requestService.getVotingResults().then((results :any) => { this.players = results , console.log(this.players)}).catch((err) => console.error(err));
     })
     
     this.personalData  = this.nameService.getPersonalData();
@@ -121,34 +114,11 @@ export class SmarttvComponent {
     //   setTimeout(()=>{this.smartSpeaker.speak("Everyone close your eyes", () => { });}, 49000);
     //   setTimeout(()=>{this.smartSpeaker.speak("A new day begins", () => { });}, 55000);
     // })
+    
+
 }
 
-<<<<<<< HEAD
-=======
 
-    console.log("Mafia start")
-    this.smartSpeaker.speak("Do you want to play a game?" , () => {
-      console.log("Done");
-    })
-
-    this.smartSpeaker.addCommand('Start Mafia' , () => {
-      this.qrcode=!this.qrcode;
-      this.smartSpeaker.speak("Please scan the QR code to enter the game!" , () => {});
-    })
-
-    this.smartSpeaker.addCommand("Okay let's play" , () => {
-      this.qrcode=!this.qrcode;
-      this.smartSpeaker.speak("Thank you, Have fun" , () => {});
-    })
-
-
-
-    this.smartSpeaker.addCommand('can you tell me the time' , () => {
-      this.smartSpeaker.speak("Look at your watch motherfucker bitch, GUARD" , () => {});
-    })
-
-  }
->>>>>>> GazisNew
 
   booleanValue = true;
 

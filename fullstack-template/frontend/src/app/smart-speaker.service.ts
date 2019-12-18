@@ -11,11 +11,8 @@ import Artyom from '../../node_modules/artyom.js/build/artyom';
 @Injectable({
   providedIn: 'root'
 })
-<<<<<<< HEAD
 
 
-=======
->>>>>>> GazisNew
 export class SmartSpeakerService {
 
   public artyom: any;
@@ -36,10 +33,7 @@ export class SmartSpeakerService {
         listen: true, // Start recognizing
         debug: true, // Show everything in the console
         speed: 1, // talk normally
-<<<<<<< HEAD
         name: 'Alfred' //set a key phrase to say before each command
-=======
->>>>>>> GazisNew
       }).then(function () {
         console.log('Smart Speaker is ready');
       });
@@ -59,10 +53,7 @@ export class SmartSpeakerService {
     this.artyom.say(text, {
       onStart: () => {
         //in case you would like to run code when speak starts
-<<<<<<< HEAD
         
-=======
->>>>>>> GazisNew
       },
       onEnd: () => {
         if (onSpeakEnded)
@@ -93,7 +84,6 @@ export class SmartSpeakerService {
     this.initializeArtyom();
   }
 
-<<<<<<< HEAD
   stopSpeaker() {
       this.artyom.shutUp();
       //this.artyom.fatality();
@@ -106,8 +96,4 @@ export class SmartSpeakerService {
   }
 
   /**********************/
-=======
-  /**********************/
-
->>>>>>> GazisNew
 }
