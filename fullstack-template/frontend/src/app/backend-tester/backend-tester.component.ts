@@ -24,7 +24,6 @@ export class BackendTesterComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log(this.socketService.isConnected());
     this.socketService.initAndConnect();
 
     
@@ -34,6 +33,8 @@ export class BackendTesterComponent implements OnInit {
 
     this.socketService.syncMessages("icons_on_change").subscribe((data) => console.log(data))
     this.socketService.syncMessages("voting_on_change").subscribe((data) => console.log(data))
+
+    this.mafiaspeaker.initRandomQuestions();
 
 
     this.socketService.syncMessages("start_game").subscribe(() => {

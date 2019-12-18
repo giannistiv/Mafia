@@ -34,6 +34,7 @@ export class RequestService {
   getVotingResultsEndpoing = "/api/voting/votingresults"
   deleteVoteEndpoint = "/api/voting/removevote"
   dieEndpoint = "/api/voting/die"
+  nextRoundEndpoint = "/api/voting/nextRound"
 
 
 
@@ -49,6 +50,14 @@ export class RequestService {
   public die(){
     return new Promise((resolve , reject) => {
       this.http.get(this.url + this.dieEndpoint).subscribe((data) => {
+        resolve(data);
+      })
+    })
+  }
+
+  public nextRound(){
+    return new Promise((resolve , reject) => {
+      this.http.get(this.url + this.nextRoundEndpoint).subscribe((data) => {
         resolve(data);
       })
     })

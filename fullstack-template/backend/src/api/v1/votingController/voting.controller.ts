@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction, Router } from 'express';
 import { NotFound, BadRequest } from 'http-errors';
-import { DIContainer, MinioService, SocketsService } from '@app/services';
+import { DIContainer, MinioService, SocketsService, SocketServer } from '@app/services';
 import SocketIORedis = require('socket.io-redis');
 import { emitKeypressEvents } from 'readline';
 
@@ -34,10 +34,13 @@ export class VotingController {
 
     public NextRound(req : Request , res: Response){
         VotingController.ResetRound();
+        const socket = DIContainer.get(SocketsService);
+        socket.broadcast("next_round" , VotingController.votingData.sort((a :any, b:any) => b.votes - a.votes));
 
         //call to increease round counter
         //function to make all screens again to voting (socket for go to day again!)
     }
+
 
     static ResetRound(){
         VotingController.PlayersVoted = 0;
@@ -75,6 +78,7 @@ export class VotingController {
                     elem.history.ByChar.push(
                         {"name" : elemVotedBy.name , "img" : elemVotedBy.img , "totalVotes": 1 , "rounds" : [currentRound]}
                     )
+
                 }else{
                     found.rounds.push(currentRound);
                     found.totalVotes = found.rounds.length;
@@ -96,8 +100,12 @@ export class VotingController {
         var personToDie = VotingController.votingData.sort((a :any, b:any) => b.votes - a.votes)[0];
         VotingController.votingData.splice(VotingController.votingData.indexOf(personToDie) , 1)
 
+        
+
         const socket = DIContainer.get(SocketsService);
         socket.broadcast("on_death" , personToDie);
+        socket.broadcast("deletion_made" , VotingController.votingData.sort((a :any, b:any) => b.votes - a.votes));
+        res.status(200).end();
     }
 
 
@@ -172,7 +180,7 @@ export class VotingController {
         socket.broadcast("voting_on_change" , VotingController.votingData.sort((a :any, b:any) => b.votes - a.votes));
         
         VotingController.PlayersVoted++;
-        if(VotingController.PlayersVoted == VotingController.Players) {
+        if(VotingController.PlayersVoted == VotingController.votingData.length) {
             VotingController.CreateHistoryData(undefined , undefined);
             socket.broadcast("end_Round" , "");
         }

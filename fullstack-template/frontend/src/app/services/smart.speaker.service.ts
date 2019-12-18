@@ -33,24 +33,26 @@ export class MafiaSmartSpeakerService {
                                       'Last round dead person',
                                       'Last round loss'] , () => {
 
-                
+                var who = "Pikachu"
+                var numberofvotes = 10
                 this.smartSpeaker.speak(`In the last round ${who} died with ${numberofvotes} votes`)
         })
 
 
-        this.smartSpeaker.addCommand([] , () => {
-            
+        this.smartSpeaker.addCommand(['Tell me the round' , "Which round are we playing"] , () => {
+            var round = 10
+            this.smartSpeaker.speak(`We are in the ${round}th round`)
         })
 
 
-        this.smartSpeaker.addCommand([] , () => {
+        // this.smartSpeaker.addCommand([] , () => {
             
-        })
+        // })
 
 
-        this.smartSpeaker.addCommand([] , () => {
+        // this.smartSpeaker.addCommand([] , () => {
             
-        })
+        // })
 
     }
 
@@ -114,13 +116,18 @@ export class MafiaSmartSpeakerService {
          });
         this.smartSpeaker.speak("It's time for the Mafiosi to try to claim a victim", () => { });
         this.smartSpeaker.speak("Please, everyone close your eyes", () => { });
-            setTimeout(()=>{this.smartSpeaker.speak("Mafiosi open your eyes and decide who do you want to kill", () => { });}, 10000);
-            setTimeout(()=>{this.smartSpeaker.speak("The Mafia striked", () => { });}, 24000);  //this will be in a different event
-            setTimeout(()=>{this.smartSpeaker.speak("Mafiosi close your eyes", () => { });}, 25000);
-            setTimeout(()=>{this.smartSpeaker.speak("Doctor if you want to use your ability to save someone, you can do so now", () => { });}, 30000);
-            setTimeout(()=>{this.smartSpeaker.speak("The doctor has decided", () => { });}, 48000);
-            setTimeout(()=>{this.smartSpeaker.speak("Everyone close your eyes", () => { });}, 49000);
-            setTimeout(()=>{this.smartSpeaker.speak("A new day begins", () => { });}, 55000);
+            // setTimeout(()=>{this.smartSpeaker.speak("Mafiosi open your eyes and decide who do you want to kill", () => { });}, 10000);
+            // setTimeout(()=>{this.smartSpeaker.speak("The Mafia striked", () => { });}, 24000);  //this will be in a different event
+            // setTimeout(()=>{this.smartSpeaker.speak("Mafiosi close your eyes", () => { });}, 25000);
+            // setTimeout(()=>{this.smartSpeaker.speak("Doctor if you want to use your ability to save someone, you can do so now", () => { });}, 30000);
+            // setTimeout(()=>{this.smartSpeaker.speak("The doctor has decided", () => { });}, 48000);
+            // setTimeout(()=>{this.smartSpeaker.speak("Everyone close your eyes", () => { });}, 49000);
+            setTimeout(()=>{this.smartSpeaker.speak("A new day begins", () => {
+                this.requestService.die().then((data) => {
+                    console.log(data)
+                    setTimeout(() => this.requestService.nextRound() , 5000);
+                }).catch((err) => console.log(err));
+             });}, 2000);
         // })
     }
 }
