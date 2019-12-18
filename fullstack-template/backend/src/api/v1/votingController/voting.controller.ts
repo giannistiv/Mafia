@@ -26,9 +26,18 @@ export class VotingController {
             .get('/createHistoryData' , this.CreateHistoryData)
             .post('/removevote' , this.removeVote)
             .get('/die' , this.SomeoneHasToDie)
+            .get('/nextRound' , this.NextRound)
         return router;
     }
 
+
+
+    public NextRound(req : Request , res: Response){
+        this.ResetRound();
+
+        //call to increease round counter
+        //function to make all screens again to voting (socket for go to day again!)
+    }
 
     public ResetRound(){
         VotingController.PlayersVoted = 0;
@@ -64,13 +73,12 @@ export class VotingController {
                 if(found === undefined) {
 
                     elem.history.ByChar.push(
-                        {"name" : elemVotedBy.name , "rounds" : [currentRound]}
+                        {"name" : elemVotedBy.name , "img" : elemVotedBy.img , "totalVotes": 1 , "rounds" : [currentRound]}
                     )
                 }else{
                     found.rounds.push(currentRound);
-
+                    found.totalVotes = found.rounds.length;
                 }
-
             })
         })
 
@@ -108,7 +116,7 @@ export class VotingController {
         VotingController.votingData.find((elem: any) => elem.char.name == body.vote).votedBy.splice(index , 1);
         VotingController.votingData.find((elem: any) => elem.char.name == body.vote).votes--;
         VotingController.votingData.find((elem: any) => elem.char.name == body.vote).width = 
-                        `${(VotingController.votingData.find((elem: any) => elem.char.name == body.vote).votes / VotingController.Players) * 100}vw`
+                `${(VotingController.votingData.find((elem: any) => elem.char.name == body.vote).votes / VotingController.Players) * 100}vw`
 
         VotingController.PlayersVoted--;
         const socket = DIContainer.get(SocketsService);
