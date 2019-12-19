@@ -1,10 +1,10 @@
 <div class="overlay">
-  <div class="qrcode" *ngIf="qrcode"><img src="assets/qrcode.png" style="width:60vh; margin-top:180px;"></div>
+  <!-- <div class="qrcode" *ngIf="qrcode"><img src="assets/qrcode.png" style="width:60vh; margin-top:180px;"></div> -->
   <div class="grid-container" *ngIf="!history">
     <div class="grid-item" *ngFor="let row of players">
-      <button (click)="showhistory(); put(row.img,row.name);"><img [src]="row.img" width="220"
-          height="220" *ngIf="row.img!=null"/></button>
-      <p class="username">{{row.name}}</p>
+      <button (click)="showhistory(); put(row.char.img,row.username);"><img [src]="row.char.img" width="220"
+          height="220" *ngIf="row.char.img!=null"/></button>
+      <p class="username">{{row.username}}</p>
     </div>
   </div>
   <ami-fullstack-playerhistory [prev]="prev" [next]="next" [name]="name" [image]="img"
