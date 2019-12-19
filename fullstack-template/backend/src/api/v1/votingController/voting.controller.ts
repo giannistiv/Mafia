@@ -10,33 +10,6 @@ export class VotingController {
     static PlayersVoted : any = 0;
     static round = 1;
 
-
-    // static stockRoles = [
-    //     {
-    //             "name" : "Detective",
-    //             "img" : "assets/roles/detective.png",
-    //             "info" : "SomethingInfo",
-    //             "abillity" : "SomethingAbillity",
-    //             "assign_counter" : 1,
-    //             "counter" : 0
-    //     },
-    //     {
-    //         "counter" : 0,
-    //         "assign_counter" : 1
-    //     },
-    //     "Mason" : {
-    //         "counter" : 0,
-    //         "assign_counter" : 3
-    //     },
-    //     "GodFather" : {
-    //         "counter" : 0,
-    //         "assign_counter" : 1
-    //     },
-    //     "Barman" : {
-    //         "counter" : 0
-    //         "assign_counter" : 2
-    //     }
-    // ]
     /**
      * Apply all routes for example
      *
@@ -63,7 +36,7 @@ export class VotingController {
         InfoController.round++;
         const socket = DIContainer.get(SocketsService);
         socket.broadcast("next_round" , VotingController.votingData.sort((a :any, b:any) => b.votes - a.votes));
-
+        InfoController.toggleGameState("Day");
         //call to increease round counter
         //function to make all screens again to voting (socket for go to day again!)
     }
@@ -115,6 +88,7 @@ export class VotingController {
 
 
         VotingController.ResetRound();
+        InfoController.toggleGameState("Night");
 
         if(res){
             res.status(200).end();

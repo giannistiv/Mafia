@@ -14,6 +14,7 @@ export class InfoController {
     static round : any = 1;
     static activePlayers = 0;
     static activeRoles : any = [];
+    static getGameState = "day";
 
     /**
      * Apply all routes for example
@@ -37,6 +38,12 @@ export class InfoController {
         return router;
     }
 
+
+    static toggleGameState(where : any){
+        const socket = DIContainer.get(SocketsService);
+        InfoController.getGameState = where;
+        socket.broadcast(InfoController.getGameState , "");
+    }
 
 
     public getActiveRoles(req: Request , res : Response){

@@ -126,7 +126,7 @@ export class MafiaSmartSpeakerService {
             // setTimeout(()=>{this.smartSpeaker.speak("Doctor if you want to use your ability to save someone, you can do so now", () => { });}, 30000);
             // setTimeout(()=>{this.smartSpeaker.speak("The doctor has decided", () => { });}, 48000);
             // setTimeout(()=>{this.smartSpeaker.speak("Everyone close your eyes", () => { });}, 49000);
-            setTimeout(()=>{this.smartSpeaker.speak("A new day begins", () => {
+            setTimeout(()=>{this.smartSpeaker.speak("A new day begins in 5 seconds", () => {
                 this.requestService.die().then((data) => {
                     console.log(data)
                     setTimeout(() => this.requestService.nextRound() , 5000);
