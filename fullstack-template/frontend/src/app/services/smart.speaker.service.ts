@@ -28,20 +28,22 @@ export class MafiaSmartSpeakerService {
 
     public initRandomQuestions(){
 
+        debugger;
         this.smartSpeaker.addCommand(['Who died last round' , 
                                       'Who died in the last round' ,
                                       'Last round dead person',
                                       'Last round loss'] , () => {
 
-                var who = "Pikachu"
-                var numberofvotes = 10
-                this.smartSpeaker.speak(`In the last round ${who} died with ${numberofvotes} votes`)
+            this.requestService.getLastDead().then((data :any) => {
+                    this.smartSpeaker.speak(`In the last round ${data.char.name} died with ${data.votes} votes`)
+            })
         })
 
 
         this.smartSpeaker.addCommand(['Tell me the round' , "Which round are we playing"] , () => {
-            var round = 10
-            this.smartSpeaker.speak(`We are in the ${round}th round`)
+            this.requestService.getRound().then((round : any) => {
+                this.smartSpeaker.speak(`We are in the ${round}th round`)
+            })
         })
 
 

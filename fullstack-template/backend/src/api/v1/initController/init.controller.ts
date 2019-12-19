@@ -4,6 +4,7 @@ import { DIContainer, MinioService, SocketsService } from '@app/services';
 import { logger } from '../../../utils/logger';
 import { resolve } from 'dns';
 import { VotingController } from '../votingController/voting.controller';
+import { InfoController } from '../infoController/info.controller';
 
 export class InitController {
 
@@ -35,6 +36,42 @@ export class InitController {
     ]
 
 
+
+    
+
+    static initRoles = [
+        {"name" : "Detective" ,  "counter" : 0 , "toBeAssigned" : 2 , "role" : {
+            "name" : "Detective",
+            "img" : "assets/roles/detective.png",
+            "info" : "SomeInfo",
+            "ability" : "Someability"
+        }},
+        {"name" : "Doctor" ,  "counter" : 0 , "toBeAssigned" : 1 , "role" : {
+            "name" : "Doctor",
+            "img" : "assets/roles/doctor.png",
+            "info" : "SomeInfo",
+            "ability" : "Someability"
+        }},
+        {"name" : "Masones" ,  "counter" : 0 , "toBeAssigned" : 3 , "role" : {
+            "name" : "Masones",
+            "img" : "assets/roles/Masones.png",
+            "info" : "SomeInfo",
+            "ability" : "Someability"
+        }},
+        {"name" : "Barman" ,  "counter" : 0 , "toBeAssigned" : 2 , "role" : {
+            "name" : "Barman",
+            "img" : "assets/roles/barman.png",
+            "info" : "SomeInfo",
+            "ability" : "Someability"
+        }},
+        {"name" : "Godfather" ,  "counter" : 0 , "toBeAssigned" : 1, "role" : {
+            "name" : "Godfather",
+            "img" : "assets/roles/godfather.png",
+            "info" : "SomeInfo",
+            "ability" : "Someability"
+        }},
+    ]
+
     static currentAddedPlayers = 0;
 
     static playerChoises : JSON[] = []
@@ -54,6 +91,7 @@ export class InitController {
             .get('/startgame' , this.startGame)
             .post("/reserveicon" , this.reserveIcon)
             .post("/unreserveicon" , this.unreserveIcon)
+            .get("/randomrole" , this.getRandomRole)
 
         return router;
     }
@@ -102,10 +140,33 @@ export class InitController {
         var votingInterval = setInterval(() => {
             if(InitController.playerChoises.length == InitController.currentAddedPlayers){
                 VotingController.setData(InitController.playerChoises)
+                InfoController.setActiveRoles(InitController.initRoles)
                 clearInterval(votingInterval);
             }
         } , 500);
         res.status(200).end();
+
+    }
+
+
+    public getRandomRole(req : Request , res : Response){
+
+        var availableRoles = InitController.initRoles.filter((elem) => elem.toBeAssigned > 0)
+        console.log(availableRoles);
+        var roleToBeAssigned = availableRoles[Math.floor(Math.random()*availableRoles.length)]
+        roleToBeAssigned.toBeAssigned--;
+        roleToBeAssigned.counter++;
+        res.status(200).send(roleToBeAssigned);
+
+        
+    }
+
+
+    static removeRandomRole(rolename : any){
+
+        var role = InitController.initRoles.filter((elem) => elem.name == rolename)
+        role.toBeAssigned++;
+        role.counter++;
 
     }
 
@@ -128,6 +189,7 @@ export class InitController {
         InitController.charactersMapping.forEach((icon) => {
             if(icon.img == req.body.img){
                 icon.available = true;
+                InitController.removeRandomRole(req.body.role);
                 InitController.currentAddedPlayers--;
                 const socketService = DIContainer.get(SocketsService);
                 socketService.broadcast("activate_players_on_change" , InitController.currentAddedPlayers);

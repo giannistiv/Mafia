@@ -80,31 +80,30 @@ export class MobileInitComponent implements OnInit {
       console.log(this.username);
       console.log(this.selectedObject);
 
-      this.playerInfo = {
-        "username" : this.username,
-        "char" : {"name" : this.selectedObject.name , "img" : this.selectedObject.img , "color" : this.selectedObject.color},
-        "votes" : 0,
-        "voted" : [],
-        "width" : "0vw",
-        "votedBy" : [],
-        "role" : {
-          "name" : "Doctor",
-          "img" : "assets/roles/doctor.png",
-          "descrition" : "Allied with the Innocents, the Doctor role protects others at night."
-        },
-        "history" : {
-          "ByRound" : [],
-          "ByChar" : []
+      this.requestService.getRandomRole().then((role) => {
+        this.playerInfo = {
+          "username" : this.username,
+          "char" : {"name" : this.selectedObject.name , "img" : this.selectedObject.img , "color" : this.selectedObject.color},
+          "votes" : 0,
+          "voted" : [],
+          "width" : "0vw",
+          "votedBy" : [],
+          "role" : role,
+          "history" : {
+            "ByRound" : [],
+            "ByChar" : []
+          }
         }
-      }
 
-      this.requestService.reserve(this.playerInfo.char.img).then((data) => console.log("reserver" , data)).catch(err => console.error(err));
+        this.requestService.reserve(this.playerInfo.char.img).then((data) => console.log("reserver" , data)).catch(err => console.error(err));
+      })
+
 
    }
 
    messagesfrominit2(event){
     this.isViewable = !this.isViewable;
-    this.requestService.unreserve(this.playerInfo.char.img).then((data) => {
+    this.requestService.unreserve(this.playerInfo.char.img , this.playerInfo.role.name).then((data) => {
       console.log("Came from unreserve" , data);
 
       this.selected = undefined;

@@ -27,6 +27,7 @@ export class RequestService {
   getAvailableIconsEndpoint = "/api/initprocedure/availableicons"
   getPlayersEndpoint = "/api/initprocedure/players"
   startgameEndpoint = "/api/initprocedure/startgame"
+  getrandomrole = "/api/initprocedure/randomrole"
   reserveIcon = "/api/initprocedure/reserveicon"
   unreserveIcon = "/api/initprocedure/unreserveicon"
   votingPlayerEndpoint = "/api/voting/vote"
@@ -35,7 +36,6 @@ export class RequestService {
   deleteVoteEndpoint = "/api/voting/removevote"
   dieEndpoint = "/api/voting/die"
   nextRoundEndpoint = "/api/voting/nextRound"
-
   setAliveDataEndpoint = "/api/info/initactiveplayers"
   getAliveDataEndpoint = "/api/info/activeplayers"
   setLastDeadEndpoint = "/api/info/addlastdead"
@@ -44,6 +44,8 @@ export class RequestService {
   getDeadDataEndpoint = "/api/info/deadplayers"
   addRoundEndpoint = "/api/info/addround"
   getRoundEndpoint = "/api/info/round"
+  getrolesinfo = "/api/info/getrolesinfo"
+  
   public checkServerRunning(){
     return new Promise((resolve , reject) => {
       this.http.get(this.url + this.testingEndpoint).subscribe((data) => {
@@ -147,9 +149,9 @@ export class RequestService {
     })
   }
 
-  public unreserve(icon){
+  public unreserve(icon , role){
     return new Promise((resolve , reject) => {
-      this.http.post(this.url + this.unreserveIcon , { "img" : icon}).subscribe((data) => {
+      this.http.post(this.url + this.unreserveIcon , { "img" : icon , "role" : role}).subscribe((data) => {
         resolve(data);
       })
     })
@@ -218,5 +220,22 @@ export class RequestService {
       });
     })
   }
+
+  public getRandomRole(){
+    return new Promise((resolve , reject) => {
+      this.http.get(this.url + this.getrandomrole).subscribe((data :any) => {
+        resolve(data.role);
+      })
+    })
+  }
+
+  public getRolesInfo(){
+    return new Promise((resolve , reject) => {
+      this.http.get(this.http + this.getrolesinfo).subscribe((data) => {
+        resolve(data);
+      })
+    })
+  }
+  
 
 }

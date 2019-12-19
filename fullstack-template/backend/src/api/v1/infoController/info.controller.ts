@@ -3,6 +3,7 @@ import { NotFound, BadRequest } from 'http-errors';
 import { DIContainer, MinioService, SocketsService } from '@app/services';
 import { logger } from '../../../utils/logger';
 import { resolve } from 'dns';
+import { InitController } from '../initController/init.controller';
 
 export class InfoController {
 
@@ -11,6 +12,8 @@ export class InfoController {
     static dead : any = [];
     static died_last : any;
     static round : any = 1;
+    static activePlayers = 0;
+    static activeRoles : any = [];
 
     /**
      * Apply all routes for example
@@ -29,8 +32,37 @@ export class InfoController {
             .get('/deadplayers' , this.getDeadData)
             .post('/addround' , this.addRound)
             .get('/round' , this.getRound)
+            .get('/getactiveplayerscounter' , this.getActivePlayersCounter)
+            .get('/getrolesinfo' , this.getActiveRoles)
         return router;
     }
+
+
+
+    public getActiveRoles(req: Request , res : Response){
+        res.status(200).send(InfoController.activeRoles)
+    }
+
+    static descreaseRoleCounter(rolename : any){
+        InfoController.activeRoles.filter((elem : any)=> elem.name == rolename).counter--;
+        const socket = DIContainer.get(SocketsService);
+        socket.broadcast("on_roles_change" , InfoController.activeRoles);
+    }
+
+
+    static setActiveRoles(rolesObject :any){
+        InfoController.activeRoles = rolesObject;
+        const socket = DIContainer.get(SocketsService);
+        socket.broadcast("on_roles_change" , InfoController.activeRoles);
+
+    }
+
+
+    public getActivePlayersCounter(req : Request, res:Response){
+        res.status(200).send(InfoController.activePlayers);
+    }
+
+
 
     public addRound(req: Request , res:Response){
         InfoController.round++;
@@ -90,14 +122,22 @@ export class InfoController {
     }
 
     public getLastDead(req: Request, res:Response){
-
         console.log("Returning Player that died last");
-        res.status(200).send(InfoController.players);
+        res.status(200).send(InfoController.died_last);
+    }
+
+    static pushDeadPerson(person : any){
+        InfoController.dead.push(person);
+        InfoController.setLastDeadPerson(person);
+    }
+
+
+    static setLastDeadPerson(person : any){
+        InfoController.died_last = person;
     }
 
     public setLastDead(req: Request, res:Response){
-        InfoController.died_last = [];
-        InfoController.died_last.push(req.body);
+        InfoController.died_last = req.body
         res.status(200).send(InfoController.died_last);
     }
 }

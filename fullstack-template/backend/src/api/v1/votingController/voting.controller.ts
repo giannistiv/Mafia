@@ -1,16 +1,42 @@
 import { Request, Response, NextFunction, Router } from 'express';
 import { NotFound, BadRequest } from 'http-errors';
 import { DIContainer, MinioService, SocketsService, SocketServer } from '@app/services';
-import SocketIORedis = require('socket.io-redis');
-import { emitKeypressEvents } from 'readline';
+import { InfoController } from '../infoController/info.controller';
 
 export class VotingController {
 
     static votingData : any = [];
     static Players : any = 0;
     static PlayersVoted : any = 0;
-
     static round = 1;
+
+
+    // static stockRoles = [
+    //     {
+    //             "name" : "Detective",
+    //             "img" : "assets/roles/detective.png",
+    //             "info" : "SomethingInfo",
+    //             "abillity" : "SomethingAbillity",
+    //             "assign_counter" : 1,
+    //             "counter" : 0
+    //     },
+    //     {
+    //         "counter" : 0,
+    //         "assign_counter" : 1
+    //     },
+    //     "Mason" : {
+    //         "counter" : 0,
+    //         "assign_counter" : 3
+    //     },
+    //     "GodFather" : {
+    //         "counter" : 0,
+    //         "assign_counter" : 1
+    //     },
+    //     "Barman" : {
+    //         "counter" : 0
+    //         "assign_counter" : 2
+    //     }
+    // ]
     /**
      * Apply all routes for example
      *
@@ -34,6 +60,7 @@ export class VotingController {
 
     public NextRound(req : Request , res: Response){
         VotingController.ResetRound();
+        InfoController.round++;
         const socket = DIContainer.get(SocketsService);
         socket.broadcast("next_round" , VotingController.votingData.sort((a :any, b:any) => b.votes - a.votes));
 
@@ -102,6 +129,7 @@ export class VotingController {
 
 
         const socket = DIContainer.get(SocketsService);
+        InfoController.pushDeadPerson(personToDie);
         socket.broadcast("on_death" , personToDie);
         socket.broadcast("deletion_made" , VotingController.votingData.sort((a :any, b:any) => b.votes - a.votes));
         res.status(200).end();

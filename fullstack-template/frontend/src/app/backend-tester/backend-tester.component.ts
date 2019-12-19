@@ -66,27 +66,25 @@ export class BackendTesterComponent implements OnInit {
 
   addPlayer(username , charname, img , color){
 
-    var playerInfo = {
-      "username" : username,
-      "char" : {"name" : charname , "img" : img , "color" : color},
-      "votes" : 0,
-      "width" : "0vw",
-      "voted" : [],
-      "votedBy" : [],
-      "role" : {
-        "name" : "Doctor",
-        "img" : "assets/roles/doctor.png",
-        "descrition" : "Allied with the Innocents, the Doctor role protects others at night."
-      },
-      "history" : {
-        "ByRound" : [],
-        "ByChar" : []
-      },
-      "alive" : true
-    }
-
-    this.playersToBeAdded.push(playerInfo);
-    this.requestService.reserve(playerInfo.char.img).then((data) => console.log("reserver" , data)).catch(err => console.error(err));
+    this.requestService.getRandomRole().then((role) => {
+      var playerInfo = {
+        "username" : username,
+        "char" : {"name" : charname , "img" : img , "color" : color},
+        "votes" : 0,
+        "width" : "0vw",
+        "voted" : [],
+        "votedBy" : [],
+        "role" : role,
+        "history" : {
+          "ByRound" : [],
+          "ByChar" : []
+        },
+        "alive" : true
+      }
+  
+      this.playersToBeAdded.push(playerInfo);
+      this.requestService.reserve(playerInfo.char.img).then((data) => console.log("reserver" , data)).catch(err => console.error(err));
+    })
   }
 
 
