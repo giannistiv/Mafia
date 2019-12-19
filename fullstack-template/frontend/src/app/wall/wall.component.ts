@@ -12,8 +12,9 @@ export class WallComponent implements OnInit {
   public night: boolean;
   public roles : any
   public round : any = 1
+  private once = true;
   public activePlayers : any = 0;
-  
+
   constructor(
     private requestservice: RequestService,
     private socketService : SocketsService
@@ -69,9 +70,15 @@ export class WallComponent implements OnInit {
       this.round = data;
     })
 
+    
+
 
     this.socketService.syncMessages("next_round").subscribe(() => {
-      this.round++;
+      if(this.once){
+        this.once = false;
+      }else{
+        this.round++;
+      }
     })
 
     this.socketService.syncMessages("on_roles_change").subscribe((data) => {

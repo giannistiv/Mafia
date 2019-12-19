@@ -11,7 +11,7 @@ export class InfoController {
     static alive : any = [];
     static dead : any = [];
     static died_last : any;
-    static round : any = 0;
+    static round : any = 1;
     static activePlayers = 0;
     static activeRoles : any = [];
     static getGameState = "Day";
@@ -21,6 +21,7 @@ export class InfoController {
      *
      * @returns {Router}
      */
+
     public applyRoutes(): Router {
         const router = Router();
 
@@ -90,7 +91,6 @@ export class InfoController {
     }
 
     public getRound(req: Request , res:Response){
-        console.log("done")
         res.send(InfoController.round + "").end();
     }
 
