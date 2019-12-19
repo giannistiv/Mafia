@@ -39,8 +39,11 @@ export class MobileHistoryComponent implements OnInit {
 
 
     this.socketService.syncMessages("voting_on_change").subscribe((results : any) => {
+      console.log(results.message);
       this.players = results.message;
     })
+
+
 
   }
   

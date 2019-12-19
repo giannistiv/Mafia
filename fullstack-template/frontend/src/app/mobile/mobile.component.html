@@ -5,7 +5,7 @@
 <div class="overlay1" *ngIf="!bio && day && !history &&!vote">
 <ami-fullstack-mobile-phase [ability]="ability"></ami-fullstack-mobile-phase>
 </div>
-<div class="overlay2" *ngIf="(!bio && day && !history &&!vote)">
+<div class="overlay2" *ngIf="(!bio && day && !history &&!vote && showVoteList)">
     <ami-fullstack-mobile-body [image]="row.char.img" [name]="row.char.name" *ngFor="let row of players"  (imgMessage)="messagesfrombody($event)">
     </ami-fullstack-mobile-body>
 </div>

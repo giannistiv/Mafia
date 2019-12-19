@@ -39,17 +39,21 @@ export class SmarttvComponent {
     private socketService: SocketsService,
     private requestService : RequestService,
     private nameService : NameService,
-    private smartSpeaker: SmartSpeakerService,
+    private smartSpeaker : SmartSpeakerService,
     private mafiaspeaker : MafiaSmartSpeakerService
   ){
+
   }
 
   
   ngOnInit() {
+
+
+    this.mafiaspeaker.initRandomQuestions();
+
     this.history = false;
     this.qrcode=true;
 
-    this.mafiaspeaker.initRandomQuestions();
 
 
     this.socketService.syncMessages("end_Round").subscribe((data) => {
@@ -58,6 +62,7 @@ export class SmarttvComponent {
 
   
     this.socketService.syncMessages("change_screens").subscribe(()=> {
+      this.qrcode = false;
       this.requestService.getVotingResults().then((results :any) => { this.players = results , console.log(this.players)}).catch((err) => console.error(err));
     })
     
@@ -122,14 +127,6 @@ export class SmarttvComponent {
 
 
   booleanValue = true;
-
-  shutUp() {
-    this.smartSpeaker.stopSpeaker();
-  }
-
-  kill() {
-    this.smartSpeaker.killSpeaker();
-  }
 
   showhistory() {
     console.log(this.history);

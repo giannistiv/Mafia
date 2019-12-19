@@ -21,7 +21,6 @@ export class MafiaSmartSpeakerService {
 
   constructor(
                 public http: HttpClient,
-                private nameService: NameService,
                 private smartSpeaker : SmartSpeakerService,
                 private requestService : RequestService,
               ) {
@@ -31,7 +30,6 @@ export class MafiaSmartSpeakerService {
 
     public initRandomQuestions(){
         
-        this.smartSpeaker.speak("Hello" , () => {})
         this.smartSpeaker.addCommand(['Who died last round' , 
                                       'Who died in the last round' ,
                                       'Last round dead person',
@@ -60,8 +58,8 @@ export class MafiaSmartSpeakerService {
             this.initScript();
             // SmarttvComponent.qrcode = true;
         })
-
-        this.smartSpeaker.speak("Let's have some fucking fun" , () => {})
+        
+        this.smartSpeaker.speak("Let's have some fucking fun" , () => { console.log("This")})
         
 
     
@@ -83,12 +81,21 @@ export class MafiaSmartSpeakerService {
 
     }
 
+    
+        /**
+         * 
+         * 
+         * 1.Welcome
+         * 2.readyPlayersScript
+         * 
+         * 
+         */
     public initScript(){
 
         // this.smartSpeaker.addCommand(['Phase 1' , 'Start Game'], () => {
           this.smartSpeaker.speak("Welcome to Mafia, my name is Alfred and I will be your host for today", () => { });
           this.smartSpeaker.speak("Say Alfred help, for a list of commands that I can assist you with", () => { });
-          this.smartSpeaker.speak("But first, choose your name and avatar in your mobile device", () => { });
+          this.smartSpeaker.speak("But first, scan the QR-code and then choose your name and avatar in your mobile device", () => { });
 
         // })
 
@@ -105,15 +112,16 @@ export class MafiaSmartSpeakerService {
 
 
     public readyPlayersScript(){
-        // this.smartSpeaker.addCommand(['Phase 2' , 'We are ready' , 'Start game' , 'Lets play' , 'Start'], () => {
+        this.smartSpeaker.addCommand(['Phase 2' , 'We are ready' , 'Start game' , 'Lets play' , 'Start'], () => {
             this.smartSpeaker.speak("The game is ready to start", () => {
                 this.requestService.startGame().then((data) => console.log(data)).catch((err) => console.error(err));
              });
             this.smartSpeaker.speak("A role has been assigned to you", () => { });
-            this.smartSpeaker.speak("You can see that role by pressing the button in the top left corner of your phone", () => { });
-        //   })      
+            this.smartSpeaker.speak("You can see that role by pressing the button in the top right corner of your phone", () => { });
+          })      
 
-             //this.gameStartsSrcipt()
+
+        this.gameStartScript();
     }
 
 
@@ -131,9 +139,11 @@ export class MafiaSmartSpeakerService {
             setTimeout(()=>{this.smartSpeaker.speak("Mafiosi open your eyes so that you know each other", () => { });}, 35000);
             setTimeout(()=>{this.smartSpeaker.speak("Mafiosi close your eyes", () => { });}, 55000);
             setTimeout(()=>{this.smartSpeaker.speak("All Mafiosi except the Godfather raise your hand", () => { });}, 60000);
-            setTimeout(()=>{this.smartSpeaker.speak("Merlin open your eyes and see the mafia goons", () => { });}, 68000);
-            setTimeout(()=>{this.smartSpeaker.speak("Merlin close your eyes", () => { });}, 78000);
-            setTimeout(()=>{this.smartSpeaker.speak("A new day begins", () => { });}, 85000);
+            setTimeout(()=>{this.smartSpeaker.speak("Detective open your eyes and see the mafia goons", () => { });}, 68000);
+            setTimeout(()=>{this.smartSpeaker.speak("Detective close your eyes", () => { });}, 78000);
+            setTimeout(()=>{this.smartSpeaker.speak("A new day begins", () => {
+                this.requestService.nextRound();
+             });}, 85000);
         //   })
     }
 

@@ -43,32 +43,32 @@ export class InitController {
         {"name" : "Detective" ,  "counter" : 0 , "toBeAssigned" : 2 , "role" : {
             "name" : "Detective",
             "img" : "assets/roles/detective.png",
-            "info" : "SomeInfo",
-            "ability" : "Someability"
+            "info" : "someinfo",
+            "ability" : "Τhe Detective can detect whether a player is a mafioso or not once every round"
         }},
         {"name" : "Doctor" ,  "counter" : 0 , "toBeAssigned" : 1 , "role" : {
             "name" : "Doctor",
             "img" : "assets/roles/doctor.png",
-            "info" : "SomeInfo",
-            "ability" : "Someability"
+            "info" : "someinfo",
+            "ability" : "The Doctor can save a random person during the night, if the mafia killed him"
         }},
         {"name" : "Masons" ,  "counter" : 0 , "toBeAssigned" : 3 , "role" : {
             "name" : "Masones",
-            "img" : "assets/roles/Masones.png",
-            "info" : "SomeInfo",
-            "ability" : "Someability"
+            "img" : "assets/roles/masons.png",
+            "info" : "Masons can recognize each other.",
+            "ability" : "Masons can recognize each other."
         }},
         {"name" : "Barman" ,  "counter" : 0 , "toBeAssigned" : 2 , "role" : {
             "name" : "Barman",
             "img" : "assets/roles/barman.png",
-            "info" : "SomeInfo",
-            "ability" : "Someability"
+            "info" : "some info",
+            "ability" : "The Barman may anonymously cancel the effect of another role's ability every night"
         }},
         {"name" : "Godfather" ,  "counter" : 0 , "toBeAssigned" : 1, "role" : {
             "name" : "Godfather",
             "img" : "assets/roles/godfather.png",
             "info" : "SomeInfo",
-            "ability" : "Someability"
+            "ability" : "The Godfather will be identified by the detective as innocent"
         }},
     ]
 

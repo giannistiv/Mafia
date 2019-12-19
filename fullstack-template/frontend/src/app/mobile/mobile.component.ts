@@ -39,7 +39,7 @@ export class MobileComponent implements OnInit {
   ]
 
   personalData :any = {};
-
+  showVoteList = false;
   ngOnInit() {
     this.bio = false;
     this.day = true;
@@ -52,6 +52,7 @@ export class MobileComponent implements OnInit {
     this.requestService.getPlayers().then((player : any[]) => {
       console.log(player);
       this.players = player.filter(elem => elem.username != this.personalData.username);
+      // this.showVoteList = false;
     })
 
 
@@ -64,6 +65,11 @@ export class MobileComponent implements OnInit {
     this.socketService.syncMessages("deletion_made").subscribe((data) => {
       this.players = data.message.filter(elem => elem.username != this.personalData.username);
     })
+
+    this.socketService.syncMessages("next_round").subscribe((data) => {
+      this.showVoteList = true;
+    })
+
   }
 
   messagesfrombio(event) {

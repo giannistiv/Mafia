@@ -33,9 +33,11 @@ export class SmartSpeakerService {
         listen: true, // Start recognizing
         debug: true, // Show everything in the console
         speed: 1, // talk normally
-        name: 'Alfred' //set a key phrase to say before each command
-      }).then(function () {
+      }).then(() => {
         console.log('Smart Speaker is ready');
+        this.speak("Hello" , () => {
+          console.log("hi")
+        })
       });
     }, 250);
 

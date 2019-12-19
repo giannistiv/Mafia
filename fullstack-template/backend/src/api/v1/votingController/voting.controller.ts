@@ -9,7 +9,7 @@ export class VotingController {
     static votingData : any = [];
     static Players : any = 0;
     static PlayersVoted : any = 0;
-    static round = 1;
+    static round = 0;
 
     /**
      * Apply all routes for example

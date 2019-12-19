@@ -79,8 +79,6 @@ import { SmartSpeakerService } from './smart-speaker.service';
     FormsModule,
   ],
   providers: [
-    SmartSpeakerService,
-    MafiaSmartSpeakerService
   ],
   bootstrap: [AppComponent]
 })
