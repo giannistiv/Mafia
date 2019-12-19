@@ -1,16 +1,15 @@
 import { Request, Response, NextFunction, Router } from 'express';
 import { NotFound, BadRequest } from 'http-errors';
 import { DIContainer, MinioService, SocketsService, SocketServer } from '@app/services';
-import SocketIORedis = require('socket.io-redis');
-import { emitKeypressEvents } from 'readline';
+import { InfoController } from '../infoController/info.controller';
 
 export class VotingController {
 
     static votingData : any = [];
     static Players : any = 0;
     static PlayersVoted : any = 0;
-
     static round = 1;
+
     /**
      * Apply all routes for example
      *
@@ -35,9 +34,10 @@ export class VotingController {
 
     public NextRound(req : Request , res: Response){
         VotingController.ResetRound();
+        InfoController.round++;
         const socket = DIContainer.get(SocketsService);
         socket.broadcast("next_round" , VotingController.votingData.sort((a :any, b:any) => b.votes - a.votes));
-
+        InfoController.toggleGameState("Day");
         //call to increease round counter
         //function to make all screens again to voting (socket for go to day again!)
     }
@@ -89,6 +89,7 @@ export class VotingController {
 
 
         VotingController.ResetRound();
+        InfoController.toggleGameState("Night");
 
         if(res){
             res.status(200).end();
@@ -103,6 +104,7 @@ export class VotingController {
 
 
         const socket = DIContainer.get(SocketsService);
+        InfoController.pushDeadPerson(personToDie);
         socket.broadcast("on_death" , personToDie);
         socket.broadcast("deletion_made" , VotingController.votingData.sort((a :any, b:any) => b.votes - a.votes));
         res.status(200).end();
@@ -183,6 +185,7 @@ export class VotingController {
         VotingController.PlayersVoted++;
         if(VotingController.PlayersVoted == VotingController.votingData.length) {
             VotingController.CreateHistoryData(undefined , undefined);
+            VotingController.PlayersVoted = 0;
             socket.broadcast("end_Round" , "");
         }
         res.status(200).send({"message":"Voting Completed"})

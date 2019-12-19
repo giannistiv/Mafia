@@ -6,6 +6,7 @@ import { SocketEventsController } from './socket-events/socket-events.controller
 import { ExampleController } from './example/example.controller';
 import { InitController } from './initController/init.controller'
 import { VotingController } from './votingController/voting.controller'
+import { InfoController } from './infoController/info.controller'
 
 const apiV1Router = express.Router();
 
@@ -44,6 +45,11 @@ apiV1Router
   .use(
     '/voting',
     new VotingController().applyRoutes()
+  )
+
+  .use(
+    '/info',
+    new InfoController().applyRoutes()
   )
 
 
