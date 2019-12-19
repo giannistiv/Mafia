@@ -10,7 +10,7 @@
     </ami-fullstack-mobile-body>
 </div>
 <div class="overlay3" *ngIf="(!bio && day && !history && !vote)">
-    <ami-fullstack-mobile-bottom (votingMessager)="messagesfrombottom($event)" [name]="name" [image]="img" ></ami-fullstack-mobile-bottom>
+    <ami-fullstack-mobile-bottom (votingMessager)="messagesfrombottom($event)" (abilityMessager)="messagesfrombottom($event)" [ability]="ability" [name]="name" [image]="img" ></ami-fullstack-mobile-bottom>
 </div>
 <ami-fullstack-mobile-bio (ExitMessage)="messagesfromexit($event)" *ngIf="bio"></ami-fullstack-mobile-bio>
 <ami-fullstack-mobile-history (ExitMessage)="messagesfromexit($event)" *ngIf="!bio && day && history"></ami-fullstack-mobile-history>

@@ -1,4 +1,5 @@
 <div class="bottom">
-    <button class="button" (click)="onVotePressed()">VOTE</button>
+    <button class="button" (click)="onVotePressed()" *ngIf="!ability">VOTE</button>
+    <button class="button" (click)="onAbilityPressed()" *ngIf="ability">Use ability</button>
     <img class="avatar" [src]="image">
 </div>

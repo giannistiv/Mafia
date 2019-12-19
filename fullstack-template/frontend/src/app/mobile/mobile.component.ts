@@ -89,15 +89,31 @@ export class MobileComponent implements OnInit {
       this.votingService.votePlayer(event.name)
       this.vote=true;
     }
+    if(event.event == "abilityPressed"){
+      console.log("Player" , this.nameService.getPersonalData().char.name , "used ability to" , event.name);
+      this.votingService.votePlayer(event.name)
+      this.ability=false;
+      this.day!=this.day;
+    }
   }
 
   messagesfrominit2(event){
     this.vote = false;
+
   }
 
   messagesfromability($event){
     this.ability=true;
     this.day=!this.day;
+
+    this.personalData  = this.nameService.getPersonalData();
+    console.log(this.personalData);
+    this.requestService.getPlayers().then((player : any[]) => {
+      console.log(player);
+      this.players = player
+    })
+
+
   }
 
 

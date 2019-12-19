@@ -11,6 +11,8 @@ export class MobileBottomComponent implements OnInit {
   @Input() image : String;
   @Input() name : String;
   @Output() votingMessager = new EventEmitter();
+  @Output() abilityMessager = new EventEmitter();
+  @Input() ability:boolean;
   ngOnInit() {
   }
 
@@ -18,6 +20,11 @@ export class MobileBottomComponent implements OnInit {
   onVotePressed(){
     console.log("Voted")
     this.votingMessager.emit({"img" : this.image , "event" : "votePressed" , "name": this.name});
+  }
+
+  onAbilityPressed(){
+    console.log("Used Ability")
+    this.abilityMessager.emit({"img" : this.image , "event" : "abilityPressed" , "name": this.name});
   }
 
 }
