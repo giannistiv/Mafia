@@ -183,6 +183,7 @@ export class VotingController {
         VotingController.PlayersVoted++;
         if(VotingController.PlayersVoted == VotingController.votingData.length) {
             VotingController.CreateHistoryData(undefined , undefined);
+            VotingController.PlayersVoted = 0;
             socket.broadcast("end_Round" , "");
         }
         res.status(200).send({"message":"Voting Completed"})

@@ -164,7 +164,7 @@ export class InitController {
 
     static removeRandomRole(rolename : any){
 
-        var role = InitController.initRoles.filter((elem) => elem.name == rolename)
+        var role :any = InitController.initRoles.filter((elem) => elem.name == rolename)
         role.toBeAssigned++;
         role.counter++;
 

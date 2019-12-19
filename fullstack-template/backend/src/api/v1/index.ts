@@ -48,7 +48,7 @@ apiV1Router
   )
 
   .use(
-    '/playersinfo',
+    '/info',
     new InfoController().applyRoutes()
   )
 

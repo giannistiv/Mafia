@@ -134,8 +134,10 @@ export class InfoController {
     }
 
     static pushDeadPerson(person : any){
-        InfoController.dead.push(person);
-        InfoController.setLastDeadPerson(person);
+        var newPerson = person;
+        newPerson.state = InfoController.getGameState;
+        InfoController.dead.push(newPerson);
+        InfoController.setLastDeadPerson(newPerson);
     }
 
 
