@@ -19,6 +19,7 @@ export class SmartSpeakerService {
 
   constructor() {
     this.artyom = new Artyom();
+    this.artyom.ArtyomVoicesIdentifiers["en-GB"] = ["Google UK English Female", "Google UK English Male", "en-GB", "en-GB"];
   }
 
   /**********************/
@@ -28,16 +29,15 @@ export class SmartSpeakerService {
 
     setTimeout(() => {
       this.artyom.initialize({
-        lang: 'en-GB',
+        lang: "en-GB",
+        //voiceURI: "Google UK English Female",
         continuous: true,// Artyom will listen forever
         listen: true, // Start recognizing
         debug: true, // Show everything in the console
         speed: 1, // talk normally
       }).then(() => {
         console.log('Smart Speaker is ready');
-        this.speak("Hello" , () => {
-          console.log("hi")
-        })
+        console.log(this.artyom.getVoices());
       });
     }, 250);
 
@@ -53,6 +53,7 @@ export class SmartSpeakerService {
    */
   speak(text: string, onSpeakEnded?: () => any) {
     this.artyom.say(text, {
+      lang:"es-GB",
       onStart: () => {
         //in case you would like to run code when speak starts
         
