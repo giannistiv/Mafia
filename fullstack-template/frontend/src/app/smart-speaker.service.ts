@@ -37,8 +37,7 @@ export class SmartSpeakerService {
         speed: 1, // talk normally
       }).then(() => {
         console.log('Smart Speaker is ready');
-        console.log(this.artyom.getVoices());
-      });
+      }); 
     }, 250);
 
   }

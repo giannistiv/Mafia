@@ -94,7 +94,6 @@ export class MafiaSmartSpeakerService {
 
         // this.smartSpeaker.addCommand(['Phase 1' , 'Start Game'], () => {
           this.smartSpeaker.speak("Welcome to Mafia, my name is Jessica and I will be your host for today", () => { });
-          //this.smartSpeaker.speak("eiss eiss eiss eiss", () => { });
           this.smartSpeaker.speak("Say Jessica help, for a list of commands that I can assist you with", () => { });
           this.smartSpeaker.speak("But first, scan the QR-code and then choose your name and avatar in your mobile device", () => { });
 
