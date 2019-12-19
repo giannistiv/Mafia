@@ -33,6 +33,8 @@ import { MobileHistoryComponent } from './mobile-history/mobile-history.componen
 import { PlayerhistoryComponent } from './playerhistory/playerhistory.component';
 import { VirtualComponent } from './cursor/virtual/virtual.component';
 import { WallInitComponent } from './wall-init/wall-init.component';
+import { MafiaSmartSpeakerService } from './services/smart.speaker.service';
+import { SmartSpeakerService } from './smart-speaker.service';
 
 @NgModule({
   declarations: [
@@ -74,9 +76,12 @@ import { WallInitComponent } from './wall-init/wall-init.component';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
   ],
-  providers: [],
+  providers: [
+    SmartSpeakerService,
+    MafiaSmartSpeakerService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

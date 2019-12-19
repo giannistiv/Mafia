@@ -55,6 +55,12 @@ export class MobileComponent implements OnInit {
     })
 
 
+    this.socketService.syncMessages("open_doctor").subscribe((data) => {
+      if(this.personalData.role.name == "Doctor"){
+        this.ability = true;
+      }
+    })
+
     this.socketService.syncMessages("deletion_made").subscribe((data) => {
       this.players = data.message.filter(elem => elem.username != this.personalData.username);
     })

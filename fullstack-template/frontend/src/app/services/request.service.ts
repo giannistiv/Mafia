@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { NameService } from './name.service';
-
+import { environment } from '../../environments/environment'
 @Injectable({
   providedIn: 'root'
 })
@@ -21,7 +21,7 @@ export class RequestService {
                 private nameService: NameService
               ) { }
 
-  url = "http://192.168.1.15:8080";
+  url = environment.host;
   testingEndpoint = "/api/initprocedure/availableicons"
   addPlayerEndpoint = "/api/initprocedure/addPlayer"
   getAvailableIconsEndpoint = "/api/initprocedure/availableicons"
@@ -61,6 +61,15 @@ export class RequestService {
         resolve(data);
       })
     })
+  }
+
+  public openDoctorPhone(){
+    return new Promise((resolve , reject) => {
+      this.http.get(this.url + "/api/voting/opendoctor").subscribe((data) => {
+        resolve(data);
+      })
+    })
+
   }
 
   public nextRound(){
@@ -231,9 +240,17 @@ export class RequestService {
 
   public getRolesInfo(){
     return new Promise((resolve , reject) => {
-      this.http.get(this.http + this.getrolesinfo).subscribe((data) => {
+      this.http.get(this.url + this.getrolesinfo).subscribe((data) => {
         resolve(data);
       })
+    })
+  }
+
+  public killingVote(rolename , person){
+    return new Promise((resolve , reject) => {
+      this.http.post(this.url + "/api/voting/killing" , {"role" : rolename , "person" : person}).subscribe((data) => {
+        resolve(data);
+      }
     })
   }
   

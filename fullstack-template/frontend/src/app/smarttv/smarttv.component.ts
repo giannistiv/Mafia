@@ -47,7 +47,7 @@ export class SmarttvComponent {
   
   ngOnInit() {
     this.history = false;
-    this.qrcode=false;
+    this.qrcode=true;
 
     this.mafiaspeaker.initRandomQuestions();
 

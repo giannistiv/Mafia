@@ -2,6 +2,7 @@ import { Request, Response, NextFunction, Router } from 'express';
 import { NotFound, BadRequest } from 'http-errors';
 import { DIContainer, MinioService, SocketsService, SocketServer } from '@app/services';
 import { InfoController } from '../infoController/info.controller';
+import { RESET_CONTENT } from 'http-status-codes';
 
 export class VotingController {
 
@@ -26,8 +27,32 @@ export class VotingController {
             .post('/removevote' , this.removeVote)
             .get('/die' , this.SomeoneHasToDie)
             .get('/nextRound' , this.NextRound)
+            .get('/opendoctor' , this.openDoctorPhone)
+            .post('/api/voting/killing' , this.killingVoting)
         return router;
 
+    }
+
+
+    public killingVoting(req : Request , res : Response){
+        var data = req.body;
+
+        const socket = DIContainer.get(SocketsService);
+        if(data.rolename == "Barman"){
+            socket.broadcast("open_don_barman_1_kill_voteoctor" , data.person);
+        }else if(data.rolename == "Barman 1"){
+            socket.broadcast("on_barman_2_kill_vote" , data.person);
+        }else if(data.rolename == "Godfather"){
+            socket.broadcast("on_godfather_kill_vote" , data.person);
+        }
+        
+        res.status(200).end();
+    }
+
+    public openDoctorPhone(req : Request , res : Response){
+        const socket = DIContainer.get(SocketsService);
+        socket.broadcast("open_doctor" , "");
+        res.status(200).end();
     }
 
 
@@ -102,11 +127,12 @@ export class VotingController {
         var personToDie = VotingController.votingData.sort((a :any, b:any) => b.votes - a.votes)[0];
         VotingController.votingData.splice(VotingController.votingData.indexOf(personToDie) , 1)
 
-
+        InfoController.activePlayers--;
         const socket = DIContainer.get(SocketsService);
         InfoController.pushDeadPerson(personToDie);
         socket.broadcast("on_death" , personToDie);
         socket.broadcast("deletion_made" , VotingController.votingData.sort((a :any, b:any) => b.votes - a.votes));
+        socket.broadcast("on_active_players_change" , InfoController.activePlayers);
         res.status(200).end();
     }
 
@@ -135,6 +161,7 @@ export class VotingController {
 
         VotingController.PlayersVoted--;
         const socket = DIContainer.get(SocketsService);
+        
 
         socket.broadcast("voting_on_change" , VotingController.votingData.sort((a :any, b:any) => b.votes - a.votes));
         res.status(200).send({"message":"Deletetion Completed"})
@@ -152,9 +179,13 @@ export class VotingController {
     static setData(data :any){
         VotingController.votingData = data;
         VotingController.Players = data.length;
+        InfoController.activePlayers = data.length
         // console.log('%c Got voting data from init controller' , 'color:green');
         const socket = DIContainer.get(SocketsService);
         socket.broadcast("change_screens" , "");
+        setTimeout(() => {
+            socket.broadcast("on_active_players_change" , InfoController.activePlayers);
+        } , 500);
     }
 
     public votePlayer(req: Request , res:Response){
@@ -183,12 +214,13 @@ export class VotingController {
         socket.broadcast("voting_on_change" , VotingController.votingData.sort((a :any, b:any) => b.votes - a.votes));
         
         VotingController.PlayersVoted++;
+
         if(VotingController.PlayersVoted == VotingController.votingData.length) {
             VotingController.CreateHistoryData(undefined , undefined);
             VotingController.PlayersVoted = 0;
             socket.broadcast("end_Round" , "");
         }
-        res.status(200).send({"message":"Voting Completed"})
+        res.status(200).send({"message":"Voting Completed" , "debug" : VotingController.PlayersVoted})
     }
 
 

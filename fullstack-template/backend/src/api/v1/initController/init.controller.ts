@@ -52,7 +52,7 @@ export class InitController {
             "info" : "SomeInfo",
             "ability" : "Someability"
         }},
-        {"name" : "Masones" ,  "counter" : 0 , "toBeAssigned" : 3 , "role" : {
+        {"name" : "Masons" ,  "counter" : 0 , "toBeAssigned" : 3 , "role" : {
             "name" : "Masones",
             "img" : "assets/roles/Masones.png",
             "info" : "SomeInfo",
@@ -157,6 +157,9 @@ export class InitController {
         roleToBeAssigned.toBeAssigned--;
         roleToBeAssigned.counter++;
         res.status(200).send(roleToBeAssigned);
+        if(roleToBeAssigned.name == "Barman"){
+            roleToBeAssigned.role.name = "Barman 1"
+        }
 
         
     }

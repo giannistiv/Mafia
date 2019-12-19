@@ -1,4 +1,4 @@
-import { Component, OnInit,Output,EventEmitter } from '@angular/core';
+import { Component, OnInit,Output,EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'ami-fullstack-mobile-bio',
@@ -8,8 +8,11 @@ import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 export class MobileBioComponent implements OnInit {
 
   @Output() ExitMessage= new EventEmitter();
+  @Input() player;
+  
+  constructor() {
 
-  constructor() { }
+  }
 
   ngOnInit() {
   }

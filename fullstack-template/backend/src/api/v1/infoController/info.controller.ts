@@ -49,6 +49,7 @@ export class InfoController {
     public getActiveRoles(req: Request , res : Response){
         res.status(200).send(InfoController.activeRoles)
     }
+    
 
     static descreaseRoleCounter(rolename : any){
         InfoController.activeRoles.filter((elem : any)=> elem.name == rolename).counter--;

@@ -19,7 +19,7 @@ export class BackendTesterComponent implements OnInit {
               private socketService: SocketsService,
               private votingService: VotingService,
               private nameService: NameService,
-              private mafiaspeaker : MafiaSmartSpeakerService
+              // private mafiaspeaker : MafiaSmartSpeakerService
               ) { }
 
   ngOnInit() {
@@ -29,6 +29,17 @@ export class BackendTesterComponent implements OnInit {
     
     this.socketService.syncMessages("end_Round").subscribe((data) => {
       // this.mafiaspeaker.endofroundScript();
+
+      this.requestService.die().then((data) => {
+        console.log(data)
+        setTimeout(() => {
+          this.requestService.die().then((data) => {
+            console.log(data)
+            setTimeout(() => this.requestService.nextRound() , 5000);
+        })
+       } , 5000)
+      }).catch((err) => console.error(err));
+
   })
 
     this.socketService.syncMessages("icons_on_change").subscribe((data) => console.log(data))
@@ -60,7 +71,7 @@ export class BackendTesterComponent implements OnInit {
 
 
   startInit(){
-    this.mafiaspeaker.initScript();
+    // this.mafiaspeaker.initScript();
   }
 
 
@@ -89,8 +100,8 @@ export class BackendTesterComponent implements OnInit {
 
 
   startGameScript(){
-    // this.requestService.startGame().then((data) => console.log(data)).catch(err => console.log(err));
-    this.mafiaspeaker.readyPlayersScript();
+    this.requestService.startGame().then((data) => console.log(data)).catch(err => console.log(err));
+    // this.mafiaspeaker.readyPlayersScript();
   }
 
   vote(voter , votee){
