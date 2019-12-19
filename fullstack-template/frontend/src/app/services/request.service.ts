@@ -31,13 +31,19 @@ export class RequestService {
   unreserveIcon = "/api/initprocedure/unreserveicon"
   votingPlayerEndpoint = "/api/voting/vote"
   setVotingDataEndpoint = "/api/voting/setdata"
-  getVotingResultsEndpoing = "/api/voting/votingresults"
+  getVotingResultsEndpoint = "/api/voting/votingresults"
   deleteVoteEndpoint = "/api/voting/removevote"
   dieEndpoint = "/api/voting/die"
   nextRoundEndpoint = "/api/voting/nextRound"
 
-
-
+  setAliveDataEndpoint = "/api/info/initactiveplayers"
+  getAliveDataEndpoint = "/api/info/activeplayers"
+  setLastDeadEndpoint = "/api/info/addlastdead"
+  getLastDeadEndpoint = "/api/info/lastdead"
+  setDeadDataEndpoint = "/api/info/initdeadplayers"
+  getDeadDataEndpoint = "/api/info/deadplayers"
+  addRoundEndpoint = "/api/info/addround"
+  getRoundEndpoint = "/api/info/round"
   public checkServerRunning(){
     return new Promise((resolve , reject) => {
       this.http.get(this.url + this.testingEndpoint).subscribe((data) => {
@@ -135,7 +141,7 @@ export class RequestService {
 
   public getVotingResults(){
     return new Promise((resolve , reject) => {
-      this.http.get(this.url + this.getVotingResultsEndpoing).subscribe((data) => {
+      this.http.get(this.url + this.getVotingResultsEndpoint).subscribe((data) => {
         resolve(data);
       })
     })
@@ -146,6 +152,70 @@ export class RequestService {
       this.http.post(this.url + this.unreserveIcon , { "img" : icon}).subscribe((data) => {
         resolve(data);
       })
+    })
+  }
+
+  public setAliveData(players: any[]){
+    return new Promise((resolve , reject) => {
+      this.http.post(this.url + this.setAliveDataEndpoint , players).subscribe((data) => {
+        resolve(data);
+      });
+    })
+  }
+
+  public getAliveData(){
+    return new Promise((resolve , reject) => {
+      this.http.get(this.url + this.getAliveDataEndpoint).subscribe((data) => {
+        resolve(data);
+      });
+    })
+  }
+
+  public setLastDead(player: any){
+    return new Promise((resolve , reject) => {
+      this.http.post(this.url + this.setLastDeadEndpoint , player).subscribe((data) => {
+        resolve(data);
+      });
+    })
+  }
+
+  public getLastDead(){
+    return new Promise((resolve , reject) => {
+      this.http.get(this.url + this.getLastDeadEndpoint).subscribe((data) => {
+        resolve(data);
+      });
+    })
+  }
+
+  public setDeadData(players: any[]){
+    return new Promise((resolve , reject) => {
+      this.http.post(this.url + this.setDeadDataEndpoint , players).subscribe((data) => {
+        resolve(data);
+      });
+    })
+  }
+
+  public getDeadData(){
+    return new Promise((resolve , reject) => {
+      this.http.get(this.url + this.getDeadDataEndpoint).subscribe((data) => {
+        resolve(data);
+      });
+    })
+  }
+
+  public addRound(){
+    return new Promise((resolve , reject) => {
+      this.http.get(this.url + this.addRoundEndpoint).subscribe((data) => {
+        resolve(data);
+      });
+    })
+  }
+
+  public getRound(){
+    return new Promise((resolve , reject) => {
+      this.http.get(this.url + this.getRoundEndpoint).subscribe((data) => {
+        resolve(data);
+      });
     })
   }
 

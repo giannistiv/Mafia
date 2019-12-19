@@ -81,7 +81,8 @@ export class BackendTesterComponent implements OnInit {
       "history" : {
         "ByRound" : [],
         "ByChar" : []
-      }
+      },
+      "alive" : true
     }
 
     this.playersToBeAdded.push(playerInfo);
