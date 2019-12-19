@@ -1,5 +1,5 @@
 <div class="box">
-    <button class="button" (click)="close()">X</button>
+    <button class="button" (click)="close()"><img src="assets/x-button.png" style="width: 8vh"></button>
     <div>
         <img class="background" src="assets/cemetery.png"/>
     </div>
@@ -9,7 +9,9 @@
             <div class="grid-item" *ngFor="let player of dead">
                 <ami-fullstack-avatar-icon [imgStyle]="cemeteryImagesStyle" [img]="player.char.img"></ami-fullstack-avatar-icon>
                 <div class="roleDiv">
-                    <img class="role" [src]="player.role.img"/>
+                    <img class="role" [src]="player.role.img" *ngIf="!night"/><br>
+                    <img src="assets/moon.png" style="width:7vh;" *ngIf="night"/>
+                    <img src="assets/sun.png" style="width:6vh;" *ngIf="!night"/>
                 </div>
             </div>
         </div>

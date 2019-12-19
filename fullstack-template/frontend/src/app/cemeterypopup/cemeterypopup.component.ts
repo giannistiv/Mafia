@@ -11,6 +11,7 @@ export class CemeterypopupComponent implements OnInit {
   constructor() { }
 
   @Output() cemeteryMessager = new EventEmitter();
+  public night: boolean;
 
   cemeteryImagesStyle = {
     "width" : "150px",
@@ -64,6 +65,7 @@ export class CemeterypopupComponent implements OnInit {
   ]
 
   ngOnInit() {
+    this.night=false;
     const container = document.getElementById('gridContainer');
     var arraysize = this.dead.length;
 
