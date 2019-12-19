@@ -59,7 +59,7 @@ export class MafiaSmartSpeakerService {
             // SmarttvComponent.qrcode = true;
         })
         
-        this.smartSpeaker.speak("Let's have some fucking fun" , () => { console.log("This")})
+        this.smartSpeaker.speak("Let's have some fun" , () => { console.log("This")})
         
 
     
