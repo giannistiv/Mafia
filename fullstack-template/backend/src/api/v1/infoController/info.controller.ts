@@ -11,10 +11,10 @@ export class InfoController {
     static alive : any = [];
     static dead : any = [];
     static died_last : any;
-    static round : any = 1;
+    static round : any = 0;
     static activePlayers = 0;
     static activeRoles : any = [];
-    static getGameState = "day";
+    static getGameState = "Day";
 
     /**
      * Apply all routes for example
@@ -46,13 +46,25 @@ export class InfoController {
     }
 
 
+
+    // static deleteRole(role : any){
+    //     InfoController.activeRoles.filter((elem : any) => elem.name == role).counter--;
+    //     const socket = DIContainer.get(SocketsService);
+    //     socket.broadcast("on_roles_change" , InfoController.activeRoles);
+    // }
+
+
+
     public getActiveRoles(req: Request , res : Response){
         res.status(200).send(InfoController.activeRoles)
     }
     
 
     static descreaseRoleCounter(rolename : any){
-        InfoController.activeRoles.filter((elem : any)=> elem.name == rolename).counter--;
+        console.log("Killing: " , rolename);
+        var elem = InfoController.activeRoles.filter((elem : any)=> elem.name == rolename);
+        console.log(elem);
+        elem[0].counter--;
         const socket = DIContainer.get(SocketsService);
         socket.broadcast("on_roles_change" , InfoController.activeRoles);
     }
@@ -67,7 +79,7 @@ export class InfoController {
 
 
     public getActivePlayersCounter(req : Request, res:Response){
-        res.status(200).send(InfoController.activePlayers);
+        res.status(200).send(InfoController.activePlayers + "");
     }
 
     public addRound(req: Request , res:Response){
@@ -78,7 +90,8 @@ export class InfoController {
     }
 
     public getRound(req: Request , res:Response){
-        res.status(200).send(InfoController.round);
+        console.log("done")
+        res.send(InfoController.round + "").end();
     }
 
     public setAliveData(req: Request , res:Response){

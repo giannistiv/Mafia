@@ -12,6 +12,7 @@ export class MobileBodyComponent implements OnInit {
   constructor() { }
   @Input() image : String;
   @Input() name : String;
+  @Input() username : String
   ngOnInit() {
   }
 

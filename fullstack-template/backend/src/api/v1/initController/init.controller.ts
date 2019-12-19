@@ -53,7 +53,7 @@ export class InitController {
             "ability" : "The Doctor can save a random person during the night, if the mafia killed him"
         }},
         {"name" : "Masons" ,  "counter" : 0 , "toBeAssigned" : 3 , "role" : {
-            "name" : "Masones",
+            "name" : "Masons",
             "img" : "assets/roles/masons.png",
             "info" : "Masons can recognize each other.",
             "ability" : "Masons can recognize each other."
@@ -91,7 +91,7 @@ export class InitController {
             .get('/startgame' , this.startGame)
             .post("/reserveicon" , this.reserveIcon)
             .post("/unreserveicon" , this.unreserveIcon)
-            .get("/randomrole" , this.getRandomRole)
+            .post("/randomrole" , this.getRandomRole)
 
         return router;
     }
@@ -151,14 +151,43 @@ export class InitController {
 
     public getRandomRole(req : Request , res : Response){
 
-        var availableRoles = InitController.initRoles.filter((elem) => elem.toBeAssigned > 0)
-        console.log(availableRoles);
-        var roleToBeAssigned = availableRoles[Math.floor(Math.random()*availableRoles.length)]
-        roleToBeAssigned.toBeAssigned--;
-        roleToBeAssigned.counter++;
-        res.status(200).send(roleToBeAssigned);
-        if(roleToBeAssigned.name == "Barman"){
+        console.log(req.body.name)
+
+        if(req.body.name == "Batman"){
+            var availableRoles = InitController.initRoles.filter((elem) => elem.name === "Doctor")
+            console.log(availableRoles);
+            var roleToBeAssigned = availableRoles[Math.floor(Math.random()*availableRoles.length)]
+            roleToBeAssigned.toBeAssigned--;
+            roleToBeAssigned.counter++;
+            res.status(200).send(roleToBeAssigned);
+            
+        }else if(req.body.name == "Mario"){
+            var availableRoles = InitController.initRoles.filter((elem) => elem.name === "Barman")
+            console.log(availableRoles);
+            var roleToBeAssigned = availableRoles[Math.floor(Math.random()*availableRoles.length)]
+            roleToBeAssigned.toBeAssigned--;
+            roleToBeAssigned.counter++;
+            res.status(200).send(roleToBeAssigned);
+            
+        }else if(req.body.name == "Luigi"){
+            var availableRoles = InitController.initRoles.filter((elem) => elem.name === "Barman")
+            console.log(availableRoles);
+            var roleToBeAssigned = availableRoles[Math.floor(Math.random()*availableRoles.length)]
+            roleToBeAssigned.toBeAssigned--;
+            roleToBeAssigned.counter++;
             roleToBeAssigned.role.name = "Barman 1"
+            res.status(200).send(roleToBeAssigned);
+            
+        }else{
+            var availableRoles = InitController.initRoles.filter((elem) => elem.toBeAssigned > 0)
+            console.log(availableRoles);
+            var roleToBeAssigned = availableRoles[Math.floor(Math.random()*availableRoles.length)]
+            roleToBeAssigned.toBeAssigned--;
+            roleToBeAssigned.counter++;
+            res.status(200).send(roleToBeAssigned);
+            if(roleToBeAssigned.name == "Barman"){
+                roleToBeAssigned.role.name = "Barman 1"
+            }
         }
 
         

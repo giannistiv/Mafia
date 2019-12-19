@@ -78,7 +78,7 @@ export class MobileComponent implements OnInit {
 
   messagesfromhistory(event) {
     this.history = true;
-  }
+  } 
 
   messagesfromexit(event) {
     this.bio = false;
@@ -111,7 +111,7 @@ export class MobileComponent implements OnInit {
 
   messagesfrominit2(event){
     this.vote = false;
-
+    this.requestService.removeVote(this.personalData.char.name , this.name)
   }
 
   messagesfromability($event){

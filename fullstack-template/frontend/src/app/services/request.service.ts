@@ -230,9 +230,9 @@ export class RequestService {
     })
   }
 
-  public getRandomRole(){
+  public getRandomRole(name){
     return new Promise((resolve , reject) => {
-      this.http.get(this.url + this.getrandomrole).subscribe((data :any) => {
+      this.http.post(this.url + this.getrandomrole, {"name" : name}).subscribe((data :any) => {
         resolve(data.role);
       })
     })
@@ -255,4 +255,20 @@ export class RequestService {
   }
   
 
+
+  public removeVote(voter , votee){
+    return new Promise((resolve , reject) => {
+      this.http.post(this.url + "/api/voting/removevote" , {"name" : voter , "vote" : votee}).subscribe(data => {
+        resolve(data);
+      })
+    })
+  }
+
+  public showKillingScreen(){
+    return new Promise((resolve , reject) => {
+      this.http.get(this.url + "/api/voting/killing").subscribe((data) => {
+        resolve(data);
+      })
+    })
+  }
 }

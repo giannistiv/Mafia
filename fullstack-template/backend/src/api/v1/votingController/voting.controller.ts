@@ -28,9 +28,17 @@ export class VotingController {
             .get('/die' , this.SomeoneHasToDie)
             .get('/nextRound' , this.NextRound)
             .get('/opendoctor' , this.openDoctorPhone)
-            .post('/api/voting/killing' , this.killingVoting)
+            .post('/killing' , this.killingVoting)
+            .get('/killing' , this.killingScreen)
         return router;
 
+    }
+
+
+    public killingScreen(req : Request , res : Response){
+        const socket = DIContainer.get(SocketsService);
+        socket.broadcast("open_killing_screen" , "");
+        res.status(200).end();
     }
 
 
@@ -113,8 +121,10 @@ export class VotingController {
         })
 
 
-        VotingController.ResetRound();
-        InfoController.toggleGameState("Night");
+        setTimeout(() => {
+            VotingController.ResetRound();
+            InfoController.toggleGameState("Night");
+        } , 3000);
 
         if(res){
             res.status(200).end();
@@ -128,7 +138,14 @@ export class VotingController {
         VotingController.votingData.splice(VotingController.votingData.indexOf(personToDie) , 1)
 
         InfoController.activePlayers--;
+
         const socket = DIContainer.get(SocketsService);
+        
+        if(InfoController.getGameState == "Day"){
+            InfoController.descreaseRoleCounter(personToDie.role.name)
+        }
+
+        personToDie.deathState = InfoController.getGameState;
         InfoController.pushDeadPerson(personToDie);
         socket.broadcast("on_death" , personToDie);
         socket.broadcast("deletion_made" , VotingController.votingData.sort((a :any, b:any) => b.votes - a.votes));

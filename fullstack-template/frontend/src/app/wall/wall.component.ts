@@ -11,6 +11,9 @@ export class WallComponent implements OnInit {
 
   public night: boolean;
   public roles : any
+  public round : any = 1
+  public activePlayers : any = 0;
+  
   constructor(
     private requestservice: RequestService,
     private socketService : SocketsService
@@ -31,9 +34,60 @@ export class WallComponent implements OnInit {
     })
 
 
+    this.socketService.syncMessages("Night").subscribe(data => {
+      this.night = true;
+      this.requestservice.getRolesInfo().then((data) => {
+
+        this.roles = data;
+        console.log(this.roles);
+        
+  
+        this.roles.forEach(elem => {
+          const element = document.getElementById(elem.name);
+          element.innerHTML = elem.counter;
+        })
+      })
+    })
+
+
+    this.socketService.syncMessages("Day").subscribe(data => {
+      this.night = false;
+      this.requestservice.getRolesInfo().then((data) => {
+
+        this.roles = data;
+        console.log(this.roles);
+        
+  
+        this.roles.forEach(elem => {
+          const element = document.getElementById(elem.name);
+          element.innerHTML = elem.counter;
+        })
+      })
+    })
+
+    this.requestservice.getRound().then(data => {
+      this.round = data;
+    })
+
+
+    this.socketService.syncMessages("next_round").subscribe(() => {
+      this.round++;
+    })
+
+    this.socketService.syncMessages("on_roles_change").subscribe((data) => {
+      this.roles = data.message;
+      console.log(this.roles);
+      
+
+      this.roles.forEach(elem => {
+        const element = document.getElementById(elem.name);
+        element.innerHTML = elem.counter;
+      })
+    })
+
+
     this.socketService.syncMessages("on_active_players_change").subscribe(data => {
-      const elem = document.getElementById("activeplayers");
-      elem.innerHTML = data.message;
+      this.activePlayers = data.message;
     })
   }
   
