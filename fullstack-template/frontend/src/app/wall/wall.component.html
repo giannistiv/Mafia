@@ -1,33 +1,118 @@
-<style>
-    :host {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-        font-size: 14px;
-        color: #333;
-        box-sizing: border-box;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        margin: 8px 0;
-    }
-
-    p {
-        margin: 0;
-    }
-</style>
-
-<div class="overlay">
+<div class="overlay" *ngIf="!night">
     <div class="grid-container">
-        <div class="grid-item1">
+        <div class="grid-item1" style="max-height:800px; max-width: 1780px;">
             <div class="grid-container2">
                 <div class="grid-item3">
-                    <img src="/assets/avatars/spongebob.png" alt="spongebob" width="150" height="150" />
+                    <img src="/assets/roles/detective.png" width="150" height="150" />
+                    <font size="10" color="black">X</font>
+                    <font color="black">2</font>
+                    <p>
+                        <span class="note">
+                            <font color="black">Detective</font>
+                        </span>
+                    </p>
+                    <p>
+                        <font color="black">
+                            Τhe Detective can detect whether a player is a mafioso or not once every round
+                        </font>
+                    </p>
+                </div>
+
+                <div class="grid-item4">
+                    <img src="/assets/roles/doctor.png" width="150" height="150" />
+                    <font size="10" color="black">X</font>
+                    <font color="black">1</font>
+                    <p>
+                        <span class="note">
+                            <font color="black">Doctor</font>
+                        </span>
+                    </p>
+                    <p>
+                        <font color="black">
+                            The Doctor can save a random person during the night, if the mafia killed him
+                        </font>
+                    </p>
+                </div>
+
+                <div class="grid-item5">
+                    <img src="/assets/roles/masons.png" width="150" height="150" />
+                    <font size="10" color="black">X</font>
+                    <font color="black">3</font>
+                    <p>
+                        <span class="note">
+                            <font color="black">Masons</font>
+                        </span>
+                    </p>
+                    <p>
+                        <font color="black">
+                            Masons can recognize each other
+                        </font>
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid-container3">
+                <div class="grid-item6">
+                    <img src="/assets/roles/godfather.png" width="150" height="150" />
+                    <font size="10" color="black">X</font>
+                    <font color="black">1</font>
+                    <p>
+                        <span class="note">
+                            <font color="black">Godfather</font>
+                        </span>
+                    </p>
+                    <p>
+                        <font color="black">
+                            The Godfather will be identified by the detective as innocent
+                        </font>
+                    </p>
+                </div>
+
+                <div class="grid-item7">
+                    <img src="/assets/roles/barman.png" width="150" height="150" />
+                    <font size="10" color="black">X</font>
+                    <font color="black">2</font>
+                    <p>
+                        <span class="note">
+                            <font color="black">Barman</font>
+                        </span>
+                    </p>
+                    <p>
+                        <font color="black">
+                            The Barman may anonymously cancel the effect of another role's ability every night
+                        </font>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-item2" style="max-height:800px; max-width: 1780px;">
+            <p style="margin-top: 80px; margin-bottom: -80px;">
+                <font style="padding-top: 100px;" color="black">Round</font>
+            </p>
+            <p>
+                <span class="note2">
+                    <font color="black">5</font>
+                </span>
+            </p>
+            <p style="margin-bottom: 80px; margin-top: -80px;">
+                <button (click)="chnight();" color="black">Day</button>
+            </p>
+            <p class="note3">Active Players:
+                <!-- <font color="black">Active Players: </font> -->
+            </p>
+            <p class="note4">9
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="overlay2" *ngIf="night">
+    <div class="grid-container">
+        <div class="grid-item1" style="max-height:800px; max-width: 1780px;">
+            <div class="grid-container2">
+                <div class="grid-item3">
+                    <img src="/assets/roles/detective.png" width="150" height="150" />
                     <font size="10" color="white">X</font>
                     <font color="white">2</font>
                     <p>
@@ -43,7 +128,7 @@
                 </div>
 
                 <div class="grid-item4">
-                    <img src="/assets/avatars/spongebob.png" alt="spongebob" width="150" height="150" />
+                    <img src="/assets/roles/doctor.png" width="150" height="150" />
                     <font size="10" color="white">X</font>
                     <font color="white">1</font>
                     <p>
@@ -59,7 +144,7 @@
                 </div>
 
                 <div class="grid-item5">
-                    <img src="/assets/avatars/spongebob.png" alt="spongebob" width="150" height="150" />
+                    <img src="/assets/roles/masons.png" width="150" height="150" />
                     <font size="10" color="white">X</font>
                     <font color="white">3</font>
                     <p>
@@ -77,7 +162,7 @@
 
             <div class="grid-container3">
                 <div class="grid-item6">
-                    <img src="/assets/avatars/spongebob.png" alt="spongebob" width="150" height="150" />
+                    <img src="/assets/roles/godfather.png" width="150" height="150" />
                     <font size="10" color="white">X</font>
                     <font color="white">1</font>
                     <p>
@@ -93,7 +178,7 @@
                 </div>
 
                 <div class="grid-item7">
-                    <img src="/assets/avatars/spongebob.png" alt="spongebob" width="150" height="150" />
+                    <img src="/assets/roles/barman.png" width="150" height="150" />
                     <font size="10" color="white">X</font>
                     <font color="white">2</font>
                     <p>
@@ -110,8 +195,8 @@
             </div>
         </div>
 
-        <div class="grid-item2">
-            <p>
+        <div class="grid-item2" style="max-height:800px; max-width: 1780px;">
+            <p style="margin-top: 80px; margin-bottom: -80px;">
                 <font style="padding-top: 100px;" color="white">Round</font>
             </p>
             <p>
@@ -119,17 +204,14 @@
                     <font color="white">5</font>
                 </span>
             </p>
-            <p>
-                <font color="white">Day</font>
+            <p style="margin-bottom: 80px; margin-top: -80px;">
+                <button (click)="chnight();" style="color:white">Night</button>
             </p>
-            <p>
-                <span class="note3">
-                    <font color="white">Active Players: </font>
-                </span>
+            <p class="note3" style="color: white;">Active Players:
+                <!-- <font color="black">Active Players: </font> -->
             </p>
-            <span class="note4">
-                <font color="white">9</font>
-            </span>
+            <p class="note4" style="color:white;">9
+            </p>
         </div>
     </div>
 </div>

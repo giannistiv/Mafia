@@ -78,6 +78,7 @@ h2{
     font-size: 288px;
     line-height: 338px;
     text-align: center;
+    overflow: hidden;
 
     color: #FFFFFF;
 }
@@ -91,13 +92,14 @@ h2{
     left: 920px;
     top: 500px;
     color:white;
+    overflow: hidden;
 
 }
 
 #rpnumber2{
     position: absolute;
     width: 394px;
-    height: 296px;
+    height: 200px;
     left: 810px;
     top: 596px;
 
@@ -107,6 +109,7 @@ h2{
     font-size: 144px;
     line-height: 169px;
     text-align: center;
+    margin:0;
 
     color: #FFFFFF;
 }
