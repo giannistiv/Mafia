@@ -2,6 +2,7 @@
 <div>
     <div>
         <button (click)="testRunningServer()">Test running server</button>
+        <button (click)="startInit()" style="background:yellow">Start initialize text</button>
     </div>
     <div>
         <button (click)="addPlayer('ktsirakos','Pikachu' , 'assets/avatars/pikachu.png' ,'yellow')">Add Pikachu</button>
@@ -9,14 +10,10 @@
         <button (click)="addPlayer('ktsirakos','Sonic' , 'assets/avatars/sonic.png' ,'blue')">Add Sonic</button>
         <button (click)="addPlayer('ktsirakos','Deadpool' , 'assets/avatars/deadpool.png' ,'red')">Add Deadpool</button>
     </div>
-    <div>
-        <button (click)="getAvailableIcons()">Get Icons</button>
-        <button (click)="getPlayers()">Get Players</button>
-    </div>
 </div>
 
 <div>
-    <button (click)="startGame()">Start</button>
+    <button (click)="startGameScript()" style="background:green">Players Ready</button>
 </div>
 <div>
         <button (click)="vote('Pikachu','Deadpool')">Pikachu votes Deadpool</button>
@@ -26,4 +23,7 @@
 </div>
 <div>
     <button (click)="getVoting()">Get voting result</button>
+    <button (click)="mafiaspeaker.nightScript()" style="background:blue; color:white">Let night fall</button>
+    <button (click)="mafiaspeaker.endofroundScript()" style="background:red">End of round</button>
+
 </div>

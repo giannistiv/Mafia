@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RequestService } from '../services/request.service';
 import { NameService } from '../services/name.service';
 import { VotingService } from '../services/voting.service';
+import { SocketsService } from '../global/services';
 
 @Component({
   selector: 'ami-fullstack-mobile',
@@ -20,7 +21,8 @@ export class MobileComponent implements OnInit {
   constructor(
     private requestService : RequestService,
     private nameService : NameService,
-    private votingService : VotingService
+    private votingService : VotingService,
+    private socketService : SocketsService
   ) {
    }
 
@@ -50,6 +52,11 @@ export class MobileComponent implements OnInit {
     this.requestService.getPlayers().then((player : any[]) => {
       console.log(player);
       this.players = player.filter(elem => elem.username != this.personalData.username);
+    })
+
+
+    this.socketService.syncMessages("deletion_made").subscribe((data) => {
+      this.players = data.message.filter(elem => elem.username != this.personalData.username);
     })
   }
 

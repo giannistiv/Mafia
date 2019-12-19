@@ -3,6 +3,7 @@ import { RequestService } from '../services/request.service'
 import { SocketsService } from 'src/app/global/services';
 import { VotingService } from '../services/voting.service';
 import { NameService } from '../services/name.service';
+import { MafiaSmartSpeakerService } from '../services/smart.speaker.service';
 
 @Component({
   selector: 'ami-fullstack-backend-tester',
@@ -17,16 +18,23 @@ export class BackendTesterComponent implements OnInit {
               private requestService: RequestService,
               private socketService: SocketsService,
               private votingService: VotingService,
-              private nameService: NameService
+              private nameService: NameService,
+              private mafiaspeaker : MafiaSmartSpeakerService
               ) { }
 
   ngOnInit() {
 
-    console.log(this.socketService.isConnected());
     this.socketService.initAndConnect();
+
+    
+    this.socketService.syncMessages("end_Round").subscribe((data) => {
+      // this.mafiaspeaker.endofroundScript();
+  })
 
     this.socketService.syncMessages("icons_on_change").subscribe((data) => console.log(data))
     this.socketService.syncMessages("voting_on_change").subscribe((data) => console.log(data))
+
+    // this.mafiaspeaker.initRandomQuestions();
 
 
     this.socketService.syncMessages("start_game").subscribe(() => {
@@ -51,6 +59,11 @@ export class BackendTesterComponent implements OnInit {
   }
 
 
+  startInit(){
+    this.mafiaspeaker.initScript();
+  }
+
+
   addPlayer(username , charname, img , color){
 
     var playerInfo = {
@@ -60,6 +73,11 @@ export class BackendTesterComponent implements OnInit {
       "width" : "0vw",
       "voted" : [],
       "votedBy" : [],
+      "role" : {
+        "name" : "Doctor",
+        "img" : "assets/roles/doctor.png",
+        "descrition" : "Allied with the Innocents, the Doctor role protects others at night."
+      },
       "history" : {
         "ByRound" : [],
         "ByChar" : []
@@ -71,8 +89,9 @@ export class BackendTesterComponent implements OnInit {
   }
 
 
-  startGame(){
-    this.requestService.startGame().then((data) => console.log(data)).catch(err => console.log(err));
+  startGameScript(){
+    // this.requestService.startGame().then((data) => console.log(data)).catch(err => console.log(err));
+    this.mafiaspeaker.readyPlayersScript();
   }
 
   vote(voter , votee){

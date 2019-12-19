@@ -16,6 +16,7 @@ import { NameService } from './name.service';
  */
 export class VotingService {
 
+  
   constructor(
     private requestService: RequestService,
     private nameService : NameService) { }

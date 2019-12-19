@@ -58,6 +58,20 @@ export class SmarttableComponent implements OnInit {
     this.socketService.syncMessages("voting_on_change").subscribe((results : any) => {
       this.players = results.message;
     })
+
+    this.socketService.syncMessages("next_round").subscribe((data) => {
+      this.players = data.message;
+      this.showGraph = true;
+      this.showWasted = false;
+    })
+
+    this.socketService.syncMessages("on_death").subscribe((rip : any) => {
+      console.log("RIP" , rip.message);
+      this.thisRoundDeadPerson = rip.message;
+      this.showWasted = true;
+      this.showGraph = false;
+      
+    })
   }
 
 
