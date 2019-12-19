@@ -31,6 +31,7 @@ export class MafiaSmartSpeakerService {
 
     public initRandomQuestions(){
         
+        this.smartSpeaker.speak("Hello" , () => {})
         this.smartSpeaker.addCommand(['Who died last round' , 
                                       'Who died in the last round' ,
                                       'Last round dead person',

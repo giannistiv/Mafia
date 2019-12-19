@@ -250,7 +250,7 @@ export class RequestService {
     return new Promise((resolve , reject) => {
       this.http.post(this.url + "/api/voting/killing" , {"role" : rolename , "person" : person}).subscribe((data) => {
         resolve(data);
-      }
+      })
     })
   }
   

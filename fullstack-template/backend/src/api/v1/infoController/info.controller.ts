@@ -70,8 +70,6 @@ export class InfoController {
         res.status(200).send(InfoController.activePlayers);
     }
 
-
-
     public addRound(req: Request , res:Response){
         InfoController.round++;
         const socket = DIContainer.get(SocketsService);

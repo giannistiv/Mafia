@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { SocketsService } from '../global/services';
-import { timingSafeEqual } from 'crypto';
 
 @Component({
   selector: 'ami-fullstack-playerschoice',

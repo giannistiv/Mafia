@@ -120,6 +120,7 @@ export class SmarttvComponent {
 
 
 
+
   booleanValue = true;
 
   shutUp() {
@@ -131,7 +132,6 @@ export class SmarttvComponent {
   }
 
   showhistory() {
-    // var Jarvis = new SmartSpeakerService;
     console.log(this.history);
     this.history = !this.history
     console.log(this.history);
