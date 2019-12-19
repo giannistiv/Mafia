@@ -58,7 +58,9 @@ export class MobileComponent implements OnInit {
 
     this.socketService.syncMessages("open_doctor").subscribe((data) => {
       if(this.personalData.role.name == "Doctor"){
-        this.ability = true;
+        // this.ability = true;
+        this.day = false;
+        console.log("I am the doctor");
       }
     })
 
