@@ -38,12 +38,14 @@ export class VotingController {
     public killingScreen(req : Request , res : Response){
         const socket = DIContainer.get(SocketsService);
         socket.broadcast("open_killing_screen" , "");
+        
         res.status(200).end();
     }
 
 
     public killingVoting(req : Request , res : Response){
         var data = req.body;
+
 
         const socket = DIContainer.get(SocketsService);
         if(data.rolename == "Barman"){

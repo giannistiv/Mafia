@@ -112,16 +112,17 @@ export class MafiaSmartSpeakerService {
 
 
     public readyPlayersScript(){
-        this.smartSpeaker.addCommand(['Phase 2' , 'We are ready' , 'Start game' , 'Lets play' , 'Start'], () => {
+        // this.smartSpeaker.addCommand(['Phase 2' , 'We are ready' , 'Start game' , 'Lets play' , 'Start'], () => {
             this.smartSpeaker.speak("The game is ready to start", () => {
                 this.requestService.startGame().then((data) => console.log(data)).catch((err) => console.error(err));
              });
             this.smartSpeaker.speak("A role has been assigned to you", () => { });
-            this.smartSpeaker.speak("You can see that role by pressing the button in the top right corner of your phone", () => { });
-          })      
+            this.smartSpeaker.speak("You can see that role by pressing the button in the top right corner of your phone", () => { 
+                setTimeout(() => { this.gameStartScript() } , 10000);
+            });
+        //   })      
 
 
-        this.gameStartScript();
     }
 
 

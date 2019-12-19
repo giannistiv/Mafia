@@ -59,8 +59,8 @@ export class SmarttvComponent {
 
 
     this.socketService.syncMessages("end_Round").subscribe((data) => {
-        // this.mafiaspeaker.endofroundScript();
-        this.requestService.die().then((data) => console.log(data));
+        this.mafiaspeaker.endofroundScript();
+        // this.requestService.die().then((data) => console.log(data));
     })
 
   
