@@ -5,7 +5,19 @@
     width: 1780px;
     height: 800px;
     overflow-x: visible;
-    background-image: url(/assets/night.jpg);
+    background-image: url(/assets/day.png);
+    background-color: #cccccc;
+    background-size: 1780px 800px;
+  }
+
+  .overlay2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1780px;
+    height: 800px;
+    overflow-x: visible;
+    background-image: url(/assets/night.png);
     background-color: #cccccc;
     background-size: 1780px 800px;
   }
@@ -134,11 +146,21 @@
     font-size: 250px;
   }
 
-  span.note3 {
-    font-size: 35px;
+.note3 {
+    font-size: 40px;
+    margin-bottom: -5px;
   }
 
-  span.note4 {
+.note4 {
     font-size: 70px;
     font-weight: bold;
+    color:black;
+    clear: both;
+    margin-top:-5px;
+    margin-bottom:0;
+  }
+
+  button{
+    background-color: transparent;
+    border: none;
   }

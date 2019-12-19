@@ -141,10 +141,11 @@ export class SmarttvComponent {
     this.img = img;
     this.name = name;
     for (var i = 0; i < Object.keys(this.players).length; i++) {
-      if (this.players[i].img === this.img) {
+      if (this.players[i].char.img === this.img) {
         if (i == 0) {
           this.prev = this.players[Object.keys(this.players).length - 1];
           this.next = this.players[i + 1];
+          console.log(this.players[i + 1]);
           break;
         }
         if (i == Object.keys(this.players).length - 1) {
@@ -160,7 +161,7 @@ export class SmarttvComponent {
 
   messagesfromnext(event) {
     console.log(event);
-    this.put(event.img, event.name);
+    this.put(event.char.img, event.char.name);
   }
 
   messagesfromexit(event) {
