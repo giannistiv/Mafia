@@ -3,6 +3,7 @@ import { RequestService } from '../services/request.service';
 import { NameService } from '../services/name.service';
 import { VotingService } from '../services/voting.service';
 import { SocketsService } from '../global/services';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'ami-fullstack-mobile',
@@ -125,6 +126,17 @@ export class MobileComponent implements OnInit {
 
     this.socketService.syncMessages("doctor_voted").subscribe((data) => {
       this.showVoteList = false;
+    })
+
+    this.socketService.syncMessages("next_round").subscribe(() => {
+        this.vote=false;
+        this.requestService.getPlayers().then((player : any[]) => {
+          console.log(player);
+          this.players = player.filter(elem => elem.username != this.personalData.username);
+          this.img = "assets/none.png";
+          // this.showVoteList = false;
+        })
+        
     })
 
   }

@@ -280,4 +280,12 @@ export class RequestService {
       })
     })
   }
+
+  public killingDone(name){
+    return new Promise((resolve , reject) => {
+      this.http.post(this.url + "/api/voting/killingdone" , { "name" : name}).subscribe(() => {
+
+      })
+    })
+  }
 }

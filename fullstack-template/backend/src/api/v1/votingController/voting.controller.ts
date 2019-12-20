@@ -10,6 +10,7 @@ export class VotingController {
     static Players : any = 0;
     static PlayersVoted : any = 0;
     static round = 1;
+    static tobediednext :any = undefined;
 
     /**
      * Apply all routes for example
@@ -31,15 +32,24 @@ export class VotingController {
             .post('/killing' , this.killingVoting)
             .get('/killing' , this.killingScreen)
             .post('/protected' , this.protected)
+            .post('/killingdone' , this.donekilling)
         return router;
 
+    }
+
+
+    public donekilling(req : Request , res : Response){
+        VotingController.tobediednext = req.body;
+        const socket = DIContainer.get(SocketsService);
+        socket.broadcast("proceed" , "");
+        res.status(200).end();
     }
 
 
     public protected(red : Request , res : Response){
         const socket = DIContainer.get(SocketsService);
         socket.broadcast("doctor_voted" , "");
-
+        res.status(200).end();
     }
 
     public killingScreen(req : Request , res : Response){
@@ -80,7 +90,8 @@ export class VotingController {
         const socket = DIContainer.get(SocketsService);
         socket.broadcast("next_round" , VotingController.votingData.sort((a :any, b:any) => b.votes - a.votes));
         InfoController.toggleGameState("Day");
-        socket.broadcast("next_Round_change_screens" , "");
+        // socket.broadcast("next_Round_change_screens" , "");
+        res.status(200).end();
         //function to make all screens again to voting (socket for go to day again!)
     }
 
