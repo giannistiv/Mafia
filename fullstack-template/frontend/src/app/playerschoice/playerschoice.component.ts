@@ -50,7 +50,7 @@ export class PlayerschoiceComponent implements OnInit {
 
 
     this.socketService.syncMessages("next_round").subscribe(() => {
-      this.router.navigateByUrl('/smarttv')
+      this.router.navigate(['/smarttv'])
     })
 
     this.socketService.syncMessages("on_barman_1_kill_vote").subscribe((person : any) => {
