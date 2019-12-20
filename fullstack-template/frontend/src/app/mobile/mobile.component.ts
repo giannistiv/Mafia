@@ -123,6 +123,10 @@ export class MobileComponent implements OnInit {
       console.log(this.players);
     })
 
+    this.socketService.syncMessages("doctor_voted").subscribe((data) => {
+      this.showVoteList = false;
+    })
+
   }
 
   messagesfrombio(event) {
@@ -156,7 +160,7 @@ export class MobileComponent implements OnInit {
     }
     if(event.event == "abilityPressed"){
       console.log("Player" , this.nameService.getPersonalData().char.name , "used ability to" , event.name);
-      this.votingService.votePlayer(event.name)
+      this.requestService.protected(event.name)
       this.ability=false;
       this.day!=this.day;
     }
@@ -170,7 +174,7 @@ export class MobileComponent implements OnInit {
   messagesfromability($event){
     this.ability=true;
     this.day=!this.day;
-
+    this.vote = false;
     this.personalData  = this.nameService.getPersonalData();
     console.log(this.personalData);
     this.requestService.getPlayers().then((player : any[]) => {

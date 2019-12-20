@@ -69,11 +69,13 @@ export class CemeterypopupComponent implements OnInit {
   ]
 
   ngOnInit() {
+
+
     this.night=false;
     const container = document.getElementById('gridContainer');
     
     this.requestService.getDeadData().then((data :any[]) => {
-      
+  
       this.dead = data;
       var arraysize = this.dead.length;
 

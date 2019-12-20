@@ -7,7 +7,7 @@
         <div class="name">
             {{deadPerson.username}}
         </div>
-        <div *ngIf="deadPerson.state == 'Day'" class="role">
+        <div *ngIf="deadPerson.deathState == 'Day'" class="role">
             <ami-fullstack-avatar-icon [img]="deadPerson.role.img" [imgStyle]="roleStyle" *ngIf="[deadPerson.role.img]!=null"></ami-fullstack-avatar-icon>
         </div>
 </div>

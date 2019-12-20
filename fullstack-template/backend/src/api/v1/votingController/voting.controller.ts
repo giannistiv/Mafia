@@ -30,10 +30,17 @@ export class VotingController {
             .get('/opendoctor' , this.openDoctorPhone)
             .post('/killing' , this.killingVoting)
             .get('/killing' , this.killingScreen)
+            .post('/protected' , this.protected)
         return router;
 
     }
 
+
+    public protected(red : Request , res : Response){
+        const socket = DIContainer.get(SocketsService);
+        socket.broadcast("doctor_voted" , "");
+
+    }
 
     public killingScreen(req : Request , res : Response){
         const socket = DIContainer.get(SocketsService);
@@ -73,7 +80,7 @@ export class VotingController {
         const socket = DIContainer.get(SocketsService);
         socket.broadcast("next_round" , VotingController.votingData.sort((a :any, b:any) => b.votes - a.votes));
         InfoController.toggleGameState("Day");
-        //call to increease round counter
+        socket.broadcast("next_Round_change_screens" , "");
         //function to make all screens again to voting (socket for go to day again!)
     }
 
@@ -128,7 +135,6 @@ export class VotingController {
             const socket = DIContainer.get(SocketsService);
             socket.broadcast("history_made" , VotingController.votingData)
             VotingController.ResetRound();
-            InfoController.toggleGameState("Night");
         } , 3000);
 
         if(res){
@@ -151,6 +157,7 @@ export class VotingController {
         }
 
         personToDie.deathState = InfoController.getGameState;
+        InfoController.toggleGameState("Night");
         InfoController.pushDeadPerson(personToDie);
         socket.broadcast("on_death" , personToDie);
         socket.broadcast("deletion_made" , VotingController.votingData.sort((a :any, b:any) => b.votes - a.votes));

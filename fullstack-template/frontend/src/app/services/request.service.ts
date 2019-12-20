@@ -271,4 +271,13 @@ export class RequestService {
       })
     })
   }
+
+
+  public protected(name){
+    return new Promise((resolve , reject) => {
+      this.http.post(this.url + "/api/voting/protected" , { "name" : name}).subscribe(() => {
+
+      })
+    })
+  }
 }

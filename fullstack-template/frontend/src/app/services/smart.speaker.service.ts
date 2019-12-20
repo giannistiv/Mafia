@@ -160,6 +160,8 @@ export class MafiaSmartSpeakerService {
         this.smartSpeaker.speak("The votes have been casted and the first person is dead", () => {
             this.requestService.die().then((data) => console.log(data)).catch((err) => console.error(err));
          });
+
+        setTimeout(() => { 
         this.smartSpeaker.speak("It's time for the Mafiosi to try to claim a victim", () => { });
         this.smartSpeaker.speak("Please, everyone close your eyes", () => { });
             setTimeout(()=>{this.smartSpeaker.speak("Mafiosi open your eyes and decide who do you want to kill", () => { 
@@ -169,16 +171,17 @@ export class MafiaSmartSpeakerService {
             setTimeout(()=>{this.smartSpeaker.speak("Mafiosi close your eyes", () => { });}, 25000);
             setTimeout(()=>{this.smartSpeaker.speak("Doctor if you want to use your ability to save someone, you can do so now", () => {
                 this.requestService.openDoctorPhone().then(() => {
-                    setTimeout(()=>{this.smartSpeaker.speak("The doctor has decided", () => { });}, 48000);
-                    setTimeout(()=>{this.smartSpeaker.speak("Everyone close your eyes", () => { });}, 49000);
+                    setTimeout(()=>{this.smartSpeaker.speak("The doctor has decided", () => { });}, 40000);
+                    setTimeout(()=>{this.smartSpeaker.speak("Everyone close your eyes", () => { });}, 42000);
                     setTimeout(()=>{this.smartSpeaker.speak("A new day begins in 5 seconds", () => {
                         this.requestService.die().then((data) => {
                             console.log(data)
                             setTimeout(() => this.requestService.nextRound() , 5000);
                         }).catch((err) => console.log(err));
-                     });}, 2000);
+                     });}, 44000);
                 })
              });}, 30000);
         // })
+        } , 2000);
     }
 }
