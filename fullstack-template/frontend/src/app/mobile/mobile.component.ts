@@ -16,7 +16,7 @@ export class MobileComponent implements OnInit {
   public history: boolean;
   public vote: boolean;
   public ability: boolean;
-  public img: string;
+  public img: string = "assets/none.png";
   public name:string;
   public personHistory : any;
   constructor(

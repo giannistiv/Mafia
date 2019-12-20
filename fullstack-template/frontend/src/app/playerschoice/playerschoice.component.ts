@@ -9,9 +9,9 @@ import { SocketsService } from '../global/services';
 export class PlayerschoiceComponent implements OnInit {
 
 
-  public barman1choise;
-  public godfatherchoise;
-  public barman2choise;
+  public barman1choise = "assets/none.png";
+  public godfatherchoise = "assets/none.png";
+  public barman2choise = "assets/none.png";
   constructor(
     private socketService : SocketsService
   ) { }
@@ -37,12 +37,12 @@ export class PlayerschoiceComponent implements OnInit {
   });
 
 
-  var interval = setInterval(() => {
-      if (this.barman1choise == this.barman2choise == this.godfatherchoise && this.barman1choise != undefined){
-        clearInterval(interval);
-        console.log("They agreed on" , this.barman1choise)
-      }
-    } , 500)
+  // var interval = setInterval(() => {
+  //     if ((this.barman1choise == this.barman2choise) == this.godfatherchoise) && (this.barman1choise != undefined)){
+  //       clearInterval(interval);
+  //       console.log("They agreed on" , this.barman1choise)
+  //     }
+  //   } , 500)
   }
 
 

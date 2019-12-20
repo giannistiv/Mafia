@@ -101,7 +101,7 @@ export class MafiaSmartSpeakerService {
 
         // })
 
-        this.helpScript();
+        //this.helpScript();
 
     }
 
@@ -150,7 +150,7 @@ export class MafiaSmartSpeakerService {
             setTimeout(()=>{this.smartSpeaker.speak("Detective close your eyes", () => { });}, 50000);
             setTimeout(()=>{this.smartSpeaker.speak("A new day begins", () => {
                 this.requestService.nextRound();
-             });}, 75000);
+             });}, 55000);
         //   })
     }
 
@@ -162,7 +162,9 @@ export class MafiaSmartSpeakerService {
          });
         this.smartSpeaker.speak("It's time for the Mafiosi to try to claim a victim", () => { });
         this.smartSpeaker.speak("Please, everyone close your eyes", () => { });
-            setTimeout(()=>{this.smartSpeaker.speak("Mafiosi open your eyes and decide who do you want to kill", () => { });}, 10000);
+            setTimeout(()=>{this.smartSpeaker.speak("Mafiosi open your eyes and decide who do you want to kill", () => { 
+                this.requestService.showKillingScreen().then(() => {})
+            });}, 10000);
             setTimeout(()=>{this.smartSpeaker.speak("The Mafia striked", () => { });}, 24000);  //this will be in a different event
             setTimeout(()=>{this.smartSpeaker.speak("Mafiosi close your eyes", () => { });}, 25000);
             setTimeout(()=>{this.smartSpeaker.speak("Doctor if you want to use your ability to save someone, you can do so now", () => {

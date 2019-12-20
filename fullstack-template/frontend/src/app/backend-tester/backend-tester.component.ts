@@ -30,15 +30,15 @@ export class BackendTesterComponent implements OnInit {
     this.socketService.syncMessages("end_Round").subscribe((data) => {
       // this.mafiaspeaker.endofroundScript();
 
-      this.requestService.die().then((data) => {
-        console.log(data)
-        setTimeout(() => {
-          this.requestService.die().then((data) => {
-            console.log(data)
-            setTimeout(() => this.requestService.nextRound() , 5000);
-        })
-       } , 5000)
-      }).catch((err) => console.error(err));
+      // this.requestService.die().then((data) => {
+      //   console.log(data)
+      //   setTimeout(() => {
+      //     this.requestService.die().then((data) => {
+      //       console.log(data)
+      //       setTimeout(() => this.requestService.nextRound() , 5000);
+      //   })
+      //  } , 5000)
+      // }).catch((err) => console.error(err));
 
   })
 
