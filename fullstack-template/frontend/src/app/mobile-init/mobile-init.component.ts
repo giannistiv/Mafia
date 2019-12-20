@@ -80,7 +80,7 @@ export class MobileInitComponent implements OnInit {
       console.log(this.username);
       console.log(this.selectedObject);
 
-      this.requestService.getRandomRole().then((role) => {
+      this.requestService.getRandomRole(this.selectedObject.name).then((role) => {
         this.playerInfo = {
           "username" : this.username,
           "char" : {"name" : this.selectedObject.name , "img" : this.selectedObject.img , "color" : this.selectedObject.color},
@@ -95,7 +95,7 @@ export class MobileInitComponent implements OnInit {
           }
         }
 
-        this.requestService.reserve(this.playerInfo.char.img).then((data) => console.log("reserver" , data)).catch(err => console.error(err));
+        this.requestService.reserve(this.playerInfo.char.img).then(() => console.log()).catch(err => console.error(err));
       })
 
 

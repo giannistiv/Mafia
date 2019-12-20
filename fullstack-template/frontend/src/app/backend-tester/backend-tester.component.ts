@@ -77,7 +77,7 @@ export class BackendTesterComponent implements OnInit {
 
   addPlayer(username , charname, img , color){
 
-    this.requestService.getRandomRole().then((role) => {
+    this.requestService.getRandomRole(charname).then((role) => {
       var playerInfo = {
         "username" : username,
         "char" : {"name" : charname , "img" : img , "color" : color},
@@ -94,7 +94,7 @@ export class BackendTesterComponent implements OnInit {
       }
   
       this.playersToBeAdded.push(playerInfo);
-      this.requestService.reserve(playerInfo.char.img).then((data) => console.log("reserver" , data)).catch(err => console.error(err));
+      this.requestService.reserve(playerInfo.char.img).then((data) => console.log()).catch(err => console.error(err));
     })
   }
 

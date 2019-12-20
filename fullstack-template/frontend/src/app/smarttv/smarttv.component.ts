@@ -4,6 +4,7 @@ import { RequestService } from '../services/request.service';
 import { NameService } from '../services/name.service';
 import { SmartSpeakerService } from '../smart-speaker.service';
 import { MafiaSmartSpeakerService } from '../services/smart.speaker.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -40,7 +41,8 @@ export class SmarttvComponent {
     private requestService : RequestService,
     private nameService : NameService,
     private smartSpeaker : SmartSpeakerService,
-    private mafiaspeaker : MafiaSmartSpeakerService
+    private mafiaspeaker : MafiaSmartSpeakerService,
+    private router : Router
   ){
 
   }
@@ -57,7 +59,8 @@ export class SmarttvComponent {
 
 
     this.socketService.syncMessages("end_Round").subscribe((data) => {
-        this.mafiaspeaker.endofroundScript();
+        // this.mafiaspeaker.endofroundScript();
+        this.requestService.die().then((data) => console.log(data));
     })
 
   
@@ -74,6 +77,10 @@ export class SmarttvComponent {
     })
       
 
+
+    this.socketService.syncMessages("open_killing_screen").subscribe(() => {
+      this.router.navigateByUrl("/nightkilling");
+    });
 
 
     // this.smartSpeaker.speak("Welcome to the Mafia game" , () => {})
