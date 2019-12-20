@@ -53,6 +53,14 @@ export class MafiaSmartSpeakerService {
             this.readyPlayersScript();
         })
 
+        this.smartSpeaker.addCommand(['stop speaker'] , () => {
+            this.smartSpeaker.stopSpeaker();
+        })
+
+        this.smartSpeaker.addCommand(['banana'] , () => {
+            this.smartSpeaker.killSpeaker();
+        })
+
 
         this.smartSpeaker.addCommand(['I want to play Mafia'] , () => {
             this.initScript();
@@ -72,12 +80,6 @@ export class MafiaSmartSpeakerService {
         //   this.qrcode=!this.qrcode;
         //   this.smartSpeaker.speak("Thank you, Have fun" , () => {});
         // })
-    
-    
-    
-        this.smartSpeaker.addCommand('can you tell me the time' , () => {
-          this.smartSpeaker.speak("Look at your watch motherfucker bitch, GUARD" , () => {});
-        })
 
     }
 
@@ -106,7 +108,11 @@ export class MafiaSmartSpeakerService {
 
     public helpScript(){
         this.smartSpeaker.addCommand(['yelp', 'help', 'shelf'], () => {
-            this.smartSpeaker.speak("Help instructions follow", () => { });  //have to add some help commands, like how many are alive, and who died in the last round
+            this.smartSpeaker.speak("Help instructions follow", () => { });
+            this.smartSpeaker.speak("Say Jessica tell me the round, to find out the round that you are on", () => { });
+            this.smartSpeaker.speak("Say Jessica who died last round, to find out the last person that died", () => { });
+            this.smartSpeaker.speak("There are many more commands", () => { });
+            this.smartSpeaker.speak("Ask my creators to tell you which have been implemented", () => { });
           })
     }
 
@@ -118,7 +124,7 @@ export class MafiaSmartSpeakerService {
              });
             this.smartSpeaker.speak("A role has been assigned to you", () => { });
             this.smartSpeaker.speak("You can see that role by pressing the button in the top right corner of your phone", () => { 
-                setTimeout(() => { this.gameStartScript() } , 10000);
+                setTimeout(() => { this.gameStartScript() } , 5000);
             });
         //   })      
 
@@ -135,16 +141,16 @@ export class MafiaSmartSpeakerService {
         // this.smartSpeaker.addCommand(['Phase 3'], () => {
             this.smartSpeaker.speak("The game is about to begin", () => { });
             this.smartSpeaker.speak("Please, everyone close your eyes", () => { });
-            setTimeout(()=>{this.smartSpeaker.speak("Masons open your eyes so that you know each other", () => { });}, 10000);
-            setTimeout(()=>{this.smartSpeaker.speak("Masons close your eyes", () => { });}, 25000);
-            setTimeout(()=>{this.smartSpeaker.speak("Mafiosi open your eyes so that you know each other", () => { });}, 35000);
-            setTimeout(()=>{this.smartSpeaker.speak("Mafiosi close your eyes", () => { });}, 55000);
-            setTimeout(()=>{this.smartSpeaker.speak("All Mafiosi except the Godfather raise your hand", () => { });}, 60000);
-            setTimeout(()=>{this.smartSpeaker.speak("Detective open your eyes and see the mafia goons", () => { });}, 68000);
-            setTimeout(()=>{this.smartSpeaker.speak("Detective close your eyes", () => { });}, 78000);
+            setTimeout(()=>{this.smartSpeaker.speak("Masons open your eyes so that you know each other", () => { });}, 6000);
+            setTimeout(()=>{this.smartSpeaker.speak("Masons close your eyes", () => { });}, 15000);
+            setTimeout(()=>{this.smartSpeaker.speak("Mafiosi open your eyes so that you know each other", () => { });}, 20000);
+            setTimeout(()=>{this.smartSpeaker.speak("Mafiosi close your eyes", () => { });}, 30000);
+            setTimeout(()=>{this.smartSpeaker.speak("All Mafiosi except the Godfather raise your hand", () => { });}, 35000);
+            setTimeout(()=>{this.smartSpeaker.speak("Detective open your eyes and see the mafia goons", () => { });}, 40000);
+            setTimeout(()=>{this.smartSpeaker.speak("Detective close your eyes", () => { });}, 50000);
             setTimeout(()=>{this.smartSpeaker.speak("A new day begins", () => {
                 this.requestService.nextRound();
-             });}, 85000);
+             });}, 75000);
         //   })
     }
 
