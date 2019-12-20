@@ -62,7 +62,22 @@ export class MafiaSmartSpeakerService {
             this.smartSpeaker.killSpeaker();
         })
 
+        this.smartSpeaker.addCommand(['spanish'] , () => {
+            this.smartSpeaker.spanish();
+        })
 
+
+        this.smartSpeaker.addCommand(['German'] , () => {
+            this.smartSpeaker.deutch();
+            // SmarttvComponent.qrcode = true;
+        })
+
+
+        this.smartSpeaker.addCommand(['English'] , () => {
+            this.smartSpeaker.english();
+            // SmarttvComponent.qrcode = true;
+        })
+        
         this.smartSpeaker.addCommand(['I want to play Mafia'] , () => {
             this.initScript();
             // SmarttvComponent.qrcode = true;

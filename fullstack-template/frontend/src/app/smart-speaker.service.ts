@@ -97,5 +97,22 @@ export class SmartSpeakerService {
     console.log("killed");
   }
 
+  spanish() {
+    this.artyom.say("Mi llamo Jesssica", {
+      lang:"es-ES"
+    });
+  }
+
+  deutch(){
+    this.artyom.say("Ich heisse Jesicca", {
+      lang:"de-DE"
+    });
+
+  }
+      english(){
+        this.artyom.say("My name is Jesicca", {
+        });
+      }
+
   /**********************/
 }
