@@ -17,13 +17,16 @@ export class MobileComponent implements OnInit {
   public vote: boolean;
   public ability: boolean;
   public img: string;
-  public name:string
+  public name:string;
+  public personHistory : any;
   constructor(
     private requestService : RequestService,
     private nameService : NameService,
     private votingService : VotingService,
     private socketService : SocketsService
   ) {
+
+   
    }
 
   players = [
@@ -48,6 +51,46 @@ export class MobileComponent implements OnInit {
     this.ability= false;
 
     this.personalData  = this.nameService.getPersonalData();
+    // this.personalData = {
+    //   "username": "Sonic Bot",
+    //   "char": {
+    //     "name": "Sonic",
+    //     "img": "assets/avatars/sonic.png",
+    //     "color": "blue"
+    //   },
+    //   "votes": 0,
+    //   "width": "0vw",
+    //   "voted": [],
+    //   "votedBy": [],
+    //   "role": {
+    //     "name": "Masons",
+    //     "img": "assets/roles/masons.png",
+    //     "info": "Masons are secretive and hidden in the shadows. They blend in the crowds, hidden by their anonymity             and trusting only their own. But this anonimity may have to be lost in order to help this town in the upcoming             battle",
+    //     "ability": "Masons know each other. They seem like pawns in this grand game of chess, but with their             knowledge they know more than anyone else"
+    //   },
+    //   "history": {
+    //     "ByRound": [
+    //       {
+    //         "round": 1,
+    //         "voted": [
+    //           {
+    //             "name": "Iron Man",
+    //             "img": "assets/avatars/ironman.png",
+    //             "color": "orange"
+    //           },
+    //           {
+    //             "name": "Iron Man",
+    //             "img": "assets/avatars/ironman.png",
+    //             "color": "orange"
+    //           }
+    //         ],
+    //         "votedBy": []
+    //       }
+    //     ],
+    //     "ByChar": []
+    //   },
+    //   "alive": true
+    // }
     console.log(this.personalData);
     this.requestService.getPlayers().then((player : any[]) => {
       console.log(player);
@@ -70,6 +113,14 @@ export class MobileComponent implements OnInit {
 
     this.socketService.syncMessages("next_round").subscribe((data) => {
       this.showVoteList = true;
+    })
+
+    
+    this.socketService.syncMessages("history_made").subscribe((data) => {
+      console.log(data);
+      var person = data.message.filter(elem => elem.char.name == this.nameService.getPersonalData().char.name)
+      if(person.length != 0) this.personHistory = person[0].history.ByChar;
+      console.log(this.players);
     })
 
   }

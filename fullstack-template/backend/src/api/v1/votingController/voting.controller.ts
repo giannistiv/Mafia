@@ -38,7 +38,7 @@ export class VotingController {
     public killingScreen(req : Request , res : Response){
         const socket = DIContainer.get(SocketsService);
         socket.broadcast("open_killing_screen" , "");
-        
+
         res.status(200).end();
     }
 
@@ -115,6 +115,7 @@ export class VotingController {
                         {"name" : elemVotedBy.name , "img" : elemVotedBy.img , "totalVotes": 1 , "rounds" : [currentRound]}
                     )
 
+                    
                 }else{
                     found.rounds.push(currentRound);
                     found.totalVotes = found.rounds.length;
@@ -124,6 +125,8 @@ export class VotingController {
 
 
         setTimeout(() => {
+            const socket = DIContainer.get(SocketsService);
+            socket.broadcast("history_made" , VotingController.votingData)
             VotingController.ResetRound();
             InfoController.toggleGameState("Night");
         } , 3000);
