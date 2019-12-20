@@ -162,12 +162,14 @@ export class MobileComponent implements OnInit {
       console.log("Player" , this.nameService.getPersonalData().char.name , "used ability to" , event.name);
       this.requestService.protected(event.name)
       this.ability=false;
+      this.vote=true;
       this.day!=this.day;
     }
   }
 
   messagesfrominit2(event){
     this.vote = false;
+    this.ability = false;
     this.requestService.removeVote(this.personalData.char.name , this.name)
   }
 
