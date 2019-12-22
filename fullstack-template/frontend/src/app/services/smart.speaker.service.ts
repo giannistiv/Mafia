@@ -23,6 +23,7 @@ export class MafiaSmartSpeakerService {
                 public http: HttpClient,
                 private smartSpeaker : SmartSpeakerService,
                 private requestService : RequestService,
+                private socketService : SocketsService
               ) {
                }
 
@@ -36,20 +37,20 @@ export class MafiaSmartSpeakerService {
                                       'Last round loss'] , () => {
 
             this.requestService.getLastDead().then((data :any) => {
-                    this.smartSpeaker.speak(`In the last round ${data.char.name} died with ${data.votes} votes`)
+                    this.smartSpeaker.speak(`In the last round ${data.char.name} died!`)
             })
         })
 
 
         this.smartSpeaker.addCommand(['Tell me the round' , "Which round are we playing"] , () => {
             this.requestService.getRound().then((round : any) => {
-                this.smartSpeaker.speak(`We are in the ${round}th round`)
+                this.smartSpeaker.speak(`We are in the round number ${round - 1}`)
             })
         })
 
 
         
-        this.smartSpeaker.addCommand(['We are ready to play' , 'Lets play' , 'Start game'] , () => {
+        this.smartSpeaker.addCommand(['We are ready to play' , "We're ready to play" , 'Lets play' , 'Start game'] , () => {
             this.readyPlayersScript();
         })
 
@@ -61,13 +62,26 @@ export class MafiaSmartSpeakerService {
             this.smartSpeaker.killSpeaker();
         })
 
+        this.smartSpeaker.addCommand(['spanish'] , () => {
+            this.smartSpeaker.spanish();
+        })
 
+
+        this.smartSpeaker.addCommand(['German'] , () => {
+            this.smartSpeaker.deutch();
+            // SmarttvComponent.qrcode = true;
+        })
+
+
+        this.smartSpeaker.addCommand(['English'] , () => {
+            this.smartSpeaker.english();
+            // SmarttvComponent.qrcode = true;
+        })
+        
         this.smartSpeaker.addCommand(['I want to play Mafia'] , () => {
             this.initScript();
             // SmarttvComponent.qrcode = true;
         })
-        
-        this.smartSpeaker.speak("Let's have some fun" , () => { console.log("This")})
         
 
     
@@ -160,25 +174,33 @@ export class MafiaSmartSpeakerService {
         this.smartSpeaker.speak("The votes have been casted and the first person is dead", () => {
             this.requestService.die().then((data) => console.log(data)).catch((err) => console.error(err));
          });
+
+        setTimeout(() => { 
         this.smartSpeaker.speak("It's time for the Mafiosi to try to claim a victim", () => { });
         this.smartSpeaker.speak("Please, everyone close your eyes", () => { });
             setTimeout(()=>{this.smartSpeaker.speak("Mafiosi open your eyes and decide who do you want to kill", () => { 
-                this.requestService.showKillingScreen().then(() => {})
-            });}, 10000);
-            setTimeout(()=>{this.smartSpeaker.speak("The Mafia striked", () => { });}, 24000);  //this will be in a different event
-            setTimeout(()=>{this.smartSpeaker.speak("Mafiosi close your eyes", () => { });}, 25000);
-            setTimeout(()=>{this.smartSpeaker.speak("Doctor if you want to use your ability to save someone, you can do so now", () => {
-                this.requestService.openDoctorPhone().then(() => {
-                    setTimeout(()=>{this.smartSpeaker.speak("The doctor has decided", () => { });}, 48000);
-                    setTimeout(()=>{this.smartSpeaker.speak("Everyone close your eyes", () => { });}, 49000);
-                    setTimeout(()=>{this.smartSpeaker.speak("A new day begins in 5 seconds", () => {
-                        this.requestService.die().then((data) => {
-                            console.log(data)
-                            setTimeout(() => this.requestService.nextRound() , 5000);
-                        }).catch((err) => console.log(err));
-                     });}, 2000);
+                this.requestService.showKillingScreen().then(() => {
+                    this.socketService.syncMessages("proceed").subscribe(() => {
+                        setTimeout(()=>{this.smartSpeaker.speak("The Mafia striked", () => { });}, 1000);  //this will be in a different event
+                        setTimeout(()=>{this.smartSpeaker.speak("Mafiosi close your eyes", () => { });}, 3000);
+                        setTimeout(()=>{this.smartSpeaker.speak("Doctor if you want to use your ability to save someone, you can do so now", () => {
+                            this.requestService.openDoctorPhone().then(() => {
+                                this.socketService.syncMessages("doctor_voted").subscribe(() => {
+                                    setTimeout(()=>{this.smartSpeaker.speak("The doctor has decided", () => { });}, 1000);
+                                    setTimeout(()=>{this.smartSpeaker.speak("Everyone close your eyes", () => { });}, 3000);
+                                    setTimeout(()=>{this.smartSpeaker.speak("A new day begins in 5 seconds", () => {
+                                        this.requestService.die().then((data) => {
+                                            console.log(data)
+                                            setTimeout(() => this.requestService.nextRound() , 5000);
+                                        }).catch((err) => console.log(err));
+                                     });}, 5000);
+                                })
+                            })
+                         });}, 5000);
+                    })
                 })
-             });}, 30000);
+            });}, 5000);
         // })
+        } , 2000);
     }
 }

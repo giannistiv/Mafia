@@ -5,6 +5,7 @@ import { NameService } from '../services/name.service';
 import { SmartSpeakerService } from '../smart-speaker.service';
 import { MafiaSmartSpeakerService } from '../services/smart.speaker.service';
 import { Router } from '@angular/router';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,7 @@ export class SmarttvComponent {
   public prev;
   public next;
   public show;
+  private once = false;
   title = 'smarttv';
 
   players = [
@@ -54,9 +56,15 @@ export class SmarttvComponent {
     this.mafiaspeaker.initRandomQuestions();
 
     this.history = false;
-    this.qrcode=true;
 
-
+    this.requestService.getRound().then((data) => {
+      if(data == 1){
+        this.qrcode = true;
+      }
+    })
+    // this.socketService.syncMessages("show_qr").subscribe(() => {
+    //   this.qrcode = true;
+    // })
 
     this.socketService.syncMessages("end_Round").subscribe((data) => {
         this.mafiaspeaker.endofroundScript();
@@ -165,7 +173,7 @@ export class SmarttvComponent {
 
   messagesfromnext(event) {
     console.log(event);
-    this.put(event.char.img, event.char.name);
+    this.put(event.char.img, event.username);
   }
 
   messagesfromexit(event) {

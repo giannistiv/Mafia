@@ -5,8 +5,8 @@
     <h2>Please scan the QR-Code from the Smart table to enter the game</h2>
     <p id="rp">Registered Players:</p>
     <p id="rpnumber1">{{rp}}</p>
-    <div id="rpline">|</div>
-    <p id="rpnumber2">7</p>
-    <p id="gamestatus" *ngIf= "rp < 7">Game needs {{7-rp}} more Players</p>
-    <p id="gamestatus2" *ngIf= "rp >= 7">Jessica,Lets,Play!</p>
+    <!-- <div id="rpline">|</div>
+    <p id="rpnumber2">7</p> -->
+    <p id="gamestatus" *ngIf= "rp < 7">Game needs at least {{7-rp}} more Players</p>
+    <p id="gamestatus2" *ngIf= "rp >= 7">Jessica,We're ready to play!</p>
 </div>

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SocketsService } from '../global/services';
+import { Router } from '@angular/router';
+import { RequestService } from '../services/request.service';
+import { VotingService } from '../services/voting.service';
 
 @Component({
   selector: 'ami-fullstack-playerschoice',
@@ -13,7 +16,10 @@ export class PlayerschoiceComponent implements OnInit {
   public godfatherchoise = "assets/none.png";
   public barman2choise = "assets/none.png";
   constructor(
-    private socketService : SocketsService
+    private socketService : SocketsService,
+    private router : Router,
+    private requestService : RequestService,
+    private votingService : VotingService
   ) { }
 
 
@@ -21,6 +27,32 @@ export class PlayerschoiceComponent implements OnInit {
 
   ngOnInit() {
   
+
+    this.votingService.getResult().then((data) => {
+      var first = data[0].char.img;
+      var second = data[1].char.img;
+
+      setTimeout(() => {
+        this.godfatherchoise = first
+        setTimeout(() => {
+          this.barman2choise = first
+          setTimeout(() => {
+            this.barman1choise = second
+            setTimeout(() => {
+              this.barman1choise = first
+              this.requestService.killingDone("Deadpool").then((data)=>console.log(data));
+            } , 2000);
+          } , 3000)
+        } , 2000)
+      } , 3000);
+
+    })
+
+
+    this.socketService.syncMessages("next_round").subscribe(() => {
+      this.router.navigate(['/smarttv'])
+    })
+
     this.socketService.syncMessages("on_barman_1_kill_vote").subscribe((person : any) => {
         this.barman1choise = person.char.img;
     });

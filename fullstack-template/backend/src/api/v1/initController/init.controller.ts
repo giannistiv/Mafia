@@ -112,6 +112,8 @@ export class InitController {
     }
 
     public getAvailableIcons(req: Request, res: Response){
+        const socket = DIContainer.get(SocketsService);
+        socket.broadcast("show_qr" , "");
         console.log(InitController.charactersMapping);
         var returnValue = InitController.charactersMapping;
         res.status(200).send(returnValue);

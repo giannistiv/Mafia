@@ -3,6 +3,7 @@ import { RequestService } from '../services/request.service';
 import { NameService } from '../services/name.service';
 import { VotingService } from '../services/voting.service';
 import { SocketsService } from '../global/services';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'ami-fullstack-mobile',
@@ -123,6 +124,21 @@ export class MobileComponent implements OnInit {
       console.log(this.players);
     })
 
+    this.socketService.syncMessages("doctor_voted").subscribe((data) => {
+      this.showVoteList = false;
+    })
+
+    this.socketService.syncMessages("next_round").subscribe(() => {
+        this.vote=false;
+        this.requestService.getPlayers().then((player : any[]) => {
+          console.log(player);
+          this.players = player.filter(elem => elem.username != this.personalData.username);
+          this.img = "assets/none.png";
+          // this.showVoteList = false;
+        })
+        
+    })
+
   }
 
   messagesfrombio(event) {
@@ -156,7 +172,7 @@ export class MobileComponent implements OnInit {
     }
     if(event.event == "abilityPressed"){
       console.log("Player" , this.nameService.getPersonalData().char.name , "used ability to" , event.name);
-      this.votingService.votePlayer(event.name)
+      this.requestService.protected(event.name)
       this.ability=false;
       this.vote=true;
       this.day!=this.day;
@@ -172,7 +188,7 @@ export class MobileComponent implements OnInit {
   messagesfromability($event){
     this.ability=true;
     this.day=!this.day;
-
+    this.vote = false;
     this.personalData  = this.nameService.getPersonalData();
     console.log(this.personalData);
     this.requestService.getPlayers().then((player : any[]) => {

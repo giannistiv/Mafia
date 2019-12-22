@@ -1,6 +1,6 @@
 <ami-fullstack-background-image type="mobile"></ami-fullstack-background-image>
 <div class="overlay">
-    <ami-fullstack-mobile-header [name]="personalData.char.name" [img]="personalData.char.img" (DayMessages)="messagesfromday($event)"  (HeaderMessages)="messagesfrombio($event)" (HistoryMessages)="messagesfromhistory($event)" ></ami-fullstack-mobile-header>
+    <ami-fullstack-mobile-header [name]="personalData.username" [img]="personalData.char.img" (DayMessages)="messagesfromday($event)"  (HeaderMessages)="messagesfrombio($event)" (HistoryMessages)="messagesfromhistory($event)" ></ami-fullstack-mobile-header>
 </div>
 <div class="overlay1" *ngIf="!bio && day && !history &&!vote">
 <ami-fullstack-mobile-phase [ability]="ability"></ami-fullstack-mobile-phase>

@@ -13,7 +13,8 @@ export class SmarttableComponent implements OnInit {
   constructor(
     private socketService : SocketsService,
     private requestService : RequestService
-  ) { }
+  ) {
+   }
 
   showUi = false;
   mouseX = 0;
@@ -41,6 +42,7 @@ export class SmarttableComponent implements OnInit {
     if(this.mutexTime == 1 && this.showCemetery == false){
       this.showUi = true;
     }
+    
 
     console.log(event.screenX , event.screenY)
     this.mouseX = event.pageX;
@@ -49,6 +51,7 @@ export class SmarttableComponent implements OnInit {
 
 
   ngOnInit() {
+
     this.socketService.syncMessages("change_screens").subscribe(() => {
       this.show = true;
       this.requestService.getVotingResults().then((results :any) => { this.players = results , console.log(this.players)}).catch((err) => console.error(err));
