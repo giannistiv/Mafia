@@ -1,4 +1,7 @@
 <div class="overlay" *ngIf="!night">
+    <!-- <audio volume="0.1" autoplay loop>
+        <source src="/assets/music_day.mp3" type="audio/mpeg">
+    </audio> -->
     <div class="grid-container">
         <div class="grid-item1" style="max-height:800px; max-width: 1780px;">
             <div class="grid-container2">
@@ -96,7 +99,7 @@
                 </span>
             </p>
             <p style="margin-bottom: 80px; margin-top: -80px;">
-                <button (click)="chnight();" color="black">Day</button>
+                <button (click)="chnight();" color="black"><img class="sun_moon" src="assets/sun.png"></button>
             </p>
             <p class="note3">Active Players:
                 <!-- <font color="black">Active Players: </font> -->
@@ -107,6 +110,9 @@
 </div>
 
 <div class="overlay2" *ngIf="night">
+    <!-- <audio volume="0.1" autoplay loop>
+        <source src="/assets/music_night.mp3" type="audio/mpeg">
+    </audio> -->
     <div class="grid-container">
         <div class="grid-item1" style="max-height:800px; max-width: 1780px;">
             <div class="grid-container2">
@@ -206,12 +212,12 @@
                 </span>
             </p>
             <p style="margin-bottom: 80px; margin-top: -80px;">
-                <button (click)="chnight();" style="color:white">Night</button>
+                <button (click)="chnight();" style="color:white"><img class="sun_moon" src="assets/moon.png"></button>
             </p>
             <p class="note3" style="color: white;">Active Players:
                 <!-- <font color="black">Active Players: </font> -->
             </p>
-            <p class="note4" style="color:white;"  id="activeplayers">{{activePlayers}}</p>
+            <p class="note4" style="color:white"  id="activeplayers">{{activePlayers}}</p>
         </div>
     </div>
 </div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestService } from '../services/request.service';
 import { SocketsService } from '../global/services';
-
+import  dummyData  from "./dummydata"
 @Component({
   selector: 'ami-fullstack-wall',
   templateUrl: './wall.component.html',
@@ -24,9 +24,13 @@ export class WallComponent implements OnInit {
     this.night= false;
     this.requestservice.getRolesInfo().then((data) => {
 
-      this.roles = data;
-      console.log(this.roles);
-      
+      if(data  == []){
+        data = dummyData
+      }else{
+        this.roles = data;
+        console.log(this.roles);
+        
+      }
 
       this.roles.forEach(elem => {
         const element = document.getElementById(elem.name);

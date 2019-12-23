@@ -53,6 +53,7 @@ export class SmartSpeakerService {
   speak(text: string, onSpeakEnded?: () => any) {
     this.artyom.say(text, {
       lang:"en-GB",
+      speed: 0.8,
       onStart: () => {
         //in case you would like to run code when speak starts
         
