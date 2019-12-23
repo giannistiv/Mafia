@@ -17,3 +17,10 @@ Read the integration/README.md file for instructions on how to get started
 
 ## 3. Changed all Fonts to Redressed
 ## 4. Added sound on "wasted" event. (When someone dies in the game)
+## 5. Changed where QR is located in instructions in the SmartWall init screen
+
+# Old
+![wall-initold](/wall-initold.png)
+
+# New
+![wall-initnew](/wall-initnew.png)
