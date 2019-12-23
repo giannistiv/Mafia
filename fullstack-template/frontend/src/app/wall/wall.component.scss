@@ -5,7 +5,7 @@
     width: 1780px;
     height: 800px;
     overflow-x: visible;
-    background-image: url(/assets/day.png);
+    background-image: url(/assets/background.jpg);
     background-color: #cccccc;
     background-size: 1780px 800px;
   }
@@ -17,7 +17,7 @@
     width: 1780px;
     height: 800px;
     overflow-x: visible;
-    background-image: url(/assets/night.png);
+    background-image: url(/assets/background.jpg);
     background-color: #cccccc;
     background-size: 1780px 800px;
   }
@@ -154,7 +154,7 @@
 .note4 {
     font-size: 70px;
     font-weight: bold;
-    color:black;
+    color:white;
     clear: both;
     margin-top:-5px;
     margin-bottom:0;
@@ -163,4 +163,18 @@
   button{
     background-color: transparent;
     border: none;
+  }
+
+  p {
+    color:white
+  }
+
+  font {
+    color:white
+  }
+
+  .sun_moon {
+    width:130px;
+    padding-top:15px;
+    margin-bottom : -30px;
   }
